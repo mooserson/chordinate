@@ -40,9 +40,9 @@ It is built on React/Redux front-end with Ruby on Rails back-end. The app will d
 ###Phase 2: Synth, tunes and API  (3 days w8d4-w9)
 **Objective:** Synth works with API to CRUD tunes.
 ###Phase 3: Tunes sharing and feeds (2 days w9d1-d2)
-**Objective:** Tunes can be passed from private to public feed. Feeds load tunes upon login.
+**Objective:** Tunes can be passed from private to public feed. Feeds load tunes upon login. Tunes can be liked by users.
 ###Phase 4: Discover tunes (2 days w9d3-d4)
-**Objective:** Tune index page that allows for browsing public feed, searching by tag and searching by user.
+**Objective:** Tune index page that allows for browsing public feed, songs can be searched by name/tags.
 ###Phase 5: User pages (1 days w9d5)
 **Objective:** Users have profile pages displaying user-info, tunes.
 
