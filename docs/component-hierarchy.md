@@ -1,29 +1,30 @@
-#Component Hierarchy
+# Component Hierarchy
 **AuthFormContainer**
-  -AuthForm
+- AuthForm
+
 **HomeContainer**
--SynthContainer
-  +Synth
-  -RecordingSongContainer
-    +RecordingSongDetail
--PlaybackSongContainer
-  +PlaybackSongDetail
--SideBarContainer
-  -NavButton
-  -SearchBar
-  -SongIndexContainer
-    +SongIndex
-  -SearchContainer
-    +SearchDetail
-  -ProfileContainer
-    +ProfileDetail
+- SynthContainer
+  + Synth
+  - SongInfoContainer
+    + SongInfo
+- SideBarContainer
+  - PlaybackSongDetail
+  - NavButton
+  - SearchBar
+  - SongIndexContainer
+    + SongIndex
+  - SearchContainer
+    + SearchDetail
+  - ProfileContainer
+    + ProfileDetail
 
 ## Routes and Container Components
 
-path="/sign-up" component="AuthFormContainer"
-path="/sign-in" component="AuthFormContainer"
-path="/home" component="HomeContainer"
-path="/home/song/:id" component="PlaybackSongContainer"
-path="/home/profile" component="ProfileContainer"
-path="/home/profile/:username" component="ProfileContainer"
-path="/home/search" component="SearchContainer"
+- path="/sign-up" component="AuthFormContainer"
+- path="/sign-in" component="AuthFormContainer"
+- path="/home" component="HomeContainer"
+  - index route component="RecordContainer, DiscoverContainer"
+  - path="/home/song/:id" component="PlayContainer, DiscoverContainer"
+  - path="/home/profile" component="PlayContainer, ProfileContainer"
+  - path="/home/profile/:username" component="RecordContainer, ProfileContainer"
+    - path="/home/profile/:username/song/:id" component="SearchContainer"

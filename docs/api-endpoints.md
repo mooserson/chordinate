@@ -15,20 +15,20 @@
 
 ### Session
 
--'POST /api/session'
+- 'POST /api/session'
 - 'DELETE /api/session'
 - 'GET /api/session'
 
 ### Songs
 - 'GET /api/songs'
-  -For songs index, takes param to return n most-recent songs
+  - For songs index, takes param to return n most-recent songs,
+  includes song likes and song plays
 - 'POST /api/songs'
-- 'GET /api/songs/:id/rolls'
-  -Gets array of notes objects with notes and timeslices for song
-- 'PATCH /api/songs/:id'
-- 'DELETE /api/songs/:id'
+  - Creates new song and saves all song slices to the db
 
-### Rolls (not sure if all access should be through songs endpoints)
-- 'POST /api/rolls'
-  -Takes array of note objects
-- 'DELETE /api/rolls/:id'
+- 'GET /api/songs/:id/slices'
+  - Gets array of notes objects with notes and timeslices for song
+
+- 'PATCH /api/songs/:id'
+
+- 'DELETE /api/songs/:id'
