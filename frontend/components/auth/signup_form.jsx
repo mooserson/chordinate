@@ -17,7 +17,6 @@ class SignupForm extends React.Component {
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-      debugger;
       hashHistory.push("/");
     }
   }

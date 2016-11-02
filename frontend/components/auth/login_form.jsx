@@ -17,20 +17,26 @@ class LoginForm extends React.Component {
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-      hashHistory.push("/");
+      hashHistory.push("/Signup");
     }
   }
 
   renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, idx) => (
-          <li key={idx}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+    if (this.props.errors) {
+      return (
+        <ul>
+          {this.props.errors.map((error, idx) => (
+            <li key={idx}>
+              {error}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  }
+
+  signUp() {
+    hashHistory.push("/Signup");
   }
 
   handleSubmit(e) {
@@ -69,13 +75,12 @@ class LoginForm extends React.Component {
               onChange={this.update('password')} />
           </label>
           <br/>
-          <button>Sign In</button>
+          <button className="login-button">Sign In</button>
         </form>
-        <Link className="create-button" to="/signup">New User</Link>
+        <button onClick="signup-button">Create Account</button>
         <button>Guest Login</button>
     </div>
     );
-// TODO: make link a button?
   }
 }
 

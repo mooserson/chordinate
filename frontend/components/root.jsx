@@ -5,24 +5,34 @@ import Home from './home';
 import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
 
-const Root = ({store}) => (
+import {logout} from '../actions/session_actions';
+window.logout = logout;
 
-  // function redirectIfLoggedIn() {
-  //   if
-  // }
-  //
-  // function redirectIfNotLoggedIn() {
-  //
-  // }
+const Root = ({store}) => {
 
-  <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path='/' component={Home} />
-      <Route path='/login' component={LoginFormContainer} />
-      <Route path='/signup' component={SignupFormContainer} />
-    </Router>
-  </Provider>
+  const _redirectIfLoggedIn = (nextState, replace) => {
+    if (window.currentUser) {
+      replace("/");
+    }
+  };
 
-);
+  const _redirectIfNotLoggedIn = (nextState, replace) => {
+    if (!window.currentUser){
+      replace("/login");
+    }
+  };
+
+
+  return (
+    <Provider store={store}>
+      <Router history={hashHistory}>
+        <Route path='/' component={Home}>
+          <Route path='/login' component={LoginFormContainer} />
+          <Route path='/signup' component={SignupFormContainer} />
+        </Route>
+      </Router>
+    </Provider>
+  );
+};
 
 export default Root;
