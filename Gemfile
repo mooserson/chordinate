@@ -28,6 +28,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor'
+gem 'newrelic_rpm'
+
+
 
 group :development, :test do
   gem 'pry-rails'
