@@ -18,15 +18,15 @@ class LoginForm extends React.Component {
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-      hashHistory.push("/signup");
+      hashHistory.push("/home");
     }
   }
 
-    renderErrors(field) {
+    renderErrors() {
       if (this.props.errors) {
         return (
           <ul className={`error-list`}>
-            <li>{this.props.errors[field]}</li>
+            <li>{this.props.errors}</li>
           </ul>
         );
       }
@@ -40,7 +40,6 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
   e.preventDefault();
   const user = this.state;
-  debugger;
   this.props.login({user});
   }
 
@@ -52,7 +51,7 @@ class LoginForm extends React.Component {
 
   handleGuest(e) {
     e.preventDefault();
-    const username = `guest${Math.floor(Math.random() * 1000)}`;
+    const username = `guest${Math.floor(Math.random() * 10000)}`;
     this.props.signup(
       {user: {username: username, password: 'password', guest: true}}
     );
@@ -65,7 +64,7 @@ class LoginForm extends React.Component {
         <br/>
         <form className="login-form" onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username</label>
-            {this.renderErrors('username')}
+            {this.renderErrors()}
             <br/>
             <input
               id="username"
@@ -74,7 +73,6 @@ class LoginForm extends React.Component {
               onChange={this.update('username')} />
             <br/>
             <label htmlFor="password">Password</label>
-              {this.renderErrors('password')}
               <br/>
               <input
                 id="password"

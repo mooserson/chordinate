@@ -45,7 +45,7 @@ class SignupForm extends React.Component {
 
   cancel(e) {
     e.preventDefault;
-    hashHistory.push("/login");
+    hashHistory.push("/");
   }
 
   render() {

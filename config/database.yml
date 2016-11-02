@@ -78,8 +78,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: Chordinate_production
-  username: Chordinate
-  password: <%= ENV['CHORDINATE_DATABASE_PASSWORD'] %>
