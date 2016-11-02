@@ -1,14 +1,12 @@
 ```js
 
 {
-  currentUser: {
-    id: 1,
-    username: "wchurchill"
-  },
-  forms: {
-    signUp: {errors: []},
-    logIn: {errors:[]},
-    saveTune: {errors:[]}
+  session: {
+    currentUser: {
+      id: 1,
+      username: "wchurchill"
+    },
+    errors: []
   },
   isRecording: false,
   keys: ['f', 'g'],
@@ -17,7 +15,11 @@
       id: 1,
       user: "wchurchill",
       name: 'Track 1',
-      roll:
+      date: '12/15/1990'
+      liked: true,
+      likes: 10,
+      plays: 10,
+      slices:
       [
         { notes: [ 'A5' ], timeSlice: 1250191 },
         { notes: [], timeSlice: 1255000 },

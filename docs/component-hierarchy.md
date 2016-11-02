@@ -1,7 +1,6 @@
 # Component Hierarchy
 **AuthFormContainer**
 - AuthForm
-
 **HomeContainer**
 - SynthContainer
   + Synth
