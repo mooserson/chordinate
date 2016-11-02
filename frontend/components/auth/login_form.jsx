@@ -60,9 +60,9 @@ class LoginForm extends React.Component {
   render() {
     return(
     <div className="auth-form-container">
-      <h2>Make Tunes Together</h2>
-        <br/>
         <form className="login-form" onSubmit={this.handleSubmit}>
+          <h2>Make Tunes Together</h2>
+          <br/>
           <label htmlFor="username">Username</label>
             {this.renderErrors()}
             <br/>
@@ -82,7 +82,7 @@ class LoginForm extends React.Component {
             <br/>
           <button className="submit-button">Sign In</button>
           <button className="signup-button" onClick={this.signUp}>Create Account</button>
-          <button onClick={this.handleGuest}>Guest Login</button>
+          <button className="guest-button" onClick={this.handleGuest}>Guest Login</button>
         </form>
     </div>
     );

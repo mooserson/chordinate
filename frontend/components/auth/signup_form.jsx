@@ -9,6 +9,7 @@ class SignupForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   componentDidUpdate() {
@@ -24,9 +25,7 @@ class SignupForm extends React.Component {
   renderErrors(field) {
     if (this.props.errors) {
       return (
-        <ul className={`error-list`}>
-          <li>{this.props.errors[field]}</li>
-        </ul>
+        <span>{this.props.errors[field]}</span>
       );
     }
   }
@@ -45,15 +44,16 @@ class SignupForm extends React.Component {
 
   cancel(e) {
     e.preventDefault;
+    this.props.clearErrors();
     hashHistory.push("/");
   }
 
   render() {
     return(
     <div className="auth-form-container">
-      <h2>Create New User</h2>
-        <br/>
         <form className="auth-form" onSubmit={this.handleSubmit}>
+          <h2>Create New User</h2>
+          <br/>
           <label htmlFor="username">Username</label>
             {this.renderErrors('username')}
             <br/>
@@ -65,7 +65,7 @@ class SignupForm extends React.Component {
             <br/>
           <label htmlFor="password">Password</label>
             {this.renderErrors('password')}
-            <br/>
+
             <input
               id="password"
               type="password"

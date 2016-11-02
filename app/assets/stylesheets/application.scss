@@ -30,11 +30,14 @@ html, body {
  display: block;
  height: 100%;
 
+form{
+  margin-left: 50px;
+  padding-top: 50px;
+
   h2 {
    font-size: 70px;
    font-weight: 400;
    color: white;
-   margin-left: 45px;
   }
 
   label {
@@ -64,9 +67,11 @@ html, body {
     margin-top: 1px;
   }
 
-  form{
-    display: inline-block;
-    margin-left: 50px;
+  .cancel-button, .signup-button, .guest-button{
+    opacity: 0.5;
+  }
+
+
   }
 
 }

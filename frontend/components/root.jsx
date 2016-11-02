@@ -6,6 +6,7 @@ import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
 import Home from './home';
 
+// testing
 import {logout} from '../actions/session_actions';
 window.logout = logout;
 
@@ -31,7 +32,6 @@ const Root = ({store}) => {
           <IndexRoute component={LoginFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/signup' component={SignupFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
-            <Route path='/home/recorder' component={RecorderContainer}
           </Route>
         </Route>
       </Router>
@@ -40,3 +40,5 @@ const Root = ({store}) => {
 };
 
 export default Root;
+
+// <Route path='/home/recorder' component={RecorderContainer}/>
