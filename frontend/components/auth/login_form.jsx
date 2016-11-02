@@ -9,6 +9,7 @@ class LoginForm extends React.Component {
       password: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   componentDidUpdate() {
@@ -17,31 +18,29 @@ class LoginForm extends React.Component {
 
   redirectIfLoggedIn() {
     if (this.props.loggedIn) {
-      hashHistory.push("/Signup");
+      hashHistory.push("/signup");
     }
   }
 
-  renderErrors() {
-    if (this.props.errors) {
-      return (
-        <ul>
-          {this.props.errors.map((error, idx) => (
-            <li key={idx}>
-              {error}
-            </li>
-          ))}
-        </ul>
-      );
+    renderErrors(field) {
+      if (this.props.errors) {
+        return (
+          <ul className={`error-list`}>
+            <li>{this.props.errors[field]}</li>
+          </ul>
+        );
+      }
     }
-  }
 
-  signUp() {
-    hashHistory.push("/Signup");
+  signUp(e) {
+    e.preventDefault();
+    hashHistory.push("/signup");
   }
 
   handleSubmit(e) {
   e.preventDefault();
   const user = this.state;
+  debugger;
   this.props.login({user});
   }
 
@@ -51,34 +50,42 @@ class LoginForm extends React.Component {
     });
   }
 
-  render() {
+  handleGuest(e) {
+    e.preventDefault();
+    const username = `guest${Math.floor(Math.random() * 1000)}`;
+    this.props.signup(
+      {user: {username: username, password: 'password', guest: true}}
+    );
+  }
 
+  render() {
     return(
-    <div className="login-form-container">
+    <div className="auth-form-container">
       <h2>Make Tunes Together</h2>
         <br/>
         <form className="login-form" onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
-          <label>Username
+          <label htmlFor="username">Username</label>
+            {this.renderErrors('username')}
             <br/>
             <input
+              id="username"
               type="text"
               value={this.state.username}
               onChange={this.update('username')} />
-          </label>
-          <br/>
-          <label>Password
             <br/>
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update('password')} />
-          </label>
-          <br/>
-          <button className="login-button">Sign In</button>
+            <label htmlFor="password">Password</label>
+              {this.renderErrors('password')}
+              <br/>
+              <input
+                id="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.update('password')} />
+            <br/>
+          <button className="submit-button">Sign In</button>
+          <button className="signup-button" onClick={this.signUp}>Create Account</button>
+          <button onClick={this.handleGuest}>Guest Login</button>
         </form>
-        <button onClick="signup-button">Create Account</button>
-        <button>Guest Login</button>
     </div>
     );
   }

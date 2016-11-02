@@ -10,13 +10,17 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
+time, mark, audio, video, input {
+	margin: 0 auto;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
+	font: inherit;
 	font-family: "Helvetica Neue", sans-serif;
-	vertical-align: baseline;
+	vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: none;
+	background: transparent;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

@@ -1,0 +1,72 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+
+}
+
+.auth-form-container {
+ background: rgb(7, 60, 120); /* For browsers that do not support gradients */
+ background: -webkit-linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* For Safari 5.1 to 6.0 */
+ background: -o-linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* For Opera 11.1 to 12.0 */
+ background: -moz-linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* For Firefox 3.6 to 15 */
+ background: linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* Standard syntax */
+ display: block;
+ height: 100%;
+
+  h2 {
+   font-size: 70px;
+   font-weight: 400;
+   color: white;
+   margin-left: 45px;
+  }
+
+  label {
+   font-size: 10px;
+   font-weight: 200;
+   color: white;
+   float: left;
+   padding-right: 5px;
+  }
+
+  .error-list {
+    font-size: 10px;
+    font-weight: 200;
+    color: orange;
+  }
+
+  input{
+   border: white solid 1px;
+   border-radius: 3px;
+   font-size: 16px;
+   padding: 0px 44px 9px 16px;
+  }
+
+   .submit-button
+  {
+    float: left;
+    margin-top: 1px;
+  }
+
+  form{
+    display: inline-block;
+    margin-left: 50px;
+  }
+
+}

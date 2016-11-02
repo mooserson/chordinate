@@ -21,16 +21,14 @@ class SignupForm extends React.Component {
     }
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {this.props.errors.map((error, idx) => (
-          <li key={idx}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+  renderErrors(field) {
+    if (this.props.errors) {
+      return (
+        <ul className={`error-list`}>
+          <li>{this.props.errors[field]}</li>
+        </ul>
+      );
+    }
   }
 
   handleSubmit(e) {
@@ -45,33 +43,38 @@ class SignupForm extends React.Component {
     });
   }
 
-  render() {
+  cancel(e) {
+    e.preventDefault;
+    hashHistory.push("/login");
+  }
 
+  render() {
     return(
-    <div className="signup-form-container">
+    <div className="auth-form-container">
       <h2>Create New User</h2>
         <br/>
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
-          <label>Username
+        <form className="auth-form" onSubmit={this.handleSubmit}>
+          <label htmlFor="username">Username</label>
+            {this.renderErrors('username')}
             <br/>
             <input
+              id="username"
               type="text"
               value={this.state.username}
               onChange={this.update('username')} />
-          </label>
-          <br/>
-          <label>Password
+            <br/>
+          <label htmlFor="password">Password</label>
+            {this.renderErrors('password')}
             <br/>
             <input
+              id="password"
               type="password"
               value={this.state.password}
               onChange={this.update('password')} />
-          </label>
           <br/>
-          <button>Create</button>
+          <button className="submit-button">Create</button>
+          <button className="cancel-button" onClick={this.cancel}>Cancel</button>
         </form>
-        <Link className="cancel-button" to="/">Cancel</Link>
     </div>
     );
   }
