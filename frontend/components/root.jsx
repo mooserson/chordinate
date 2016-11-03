@@ -1,12 +1,14 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+
 import App from './app';
+import Home from './home';
 import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
-import Home from './home';
+import KeyboardContainer from './synth/keyboard_container';
 
-// testing
+// TODO: testing
 import {logout} from '../actions/session_actions';
 window.logout = logout;
 
@@ -32,6 +34,7 @@ const Root = ({store}) => {
           <IndexRoute component={LoginFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/signup' component={SignupFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
+            <IndexRoute component={KeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
           </Route>
         </Route>
       </Router>

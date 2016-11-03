@@ -1,10 +1,11 @@
 # Chordinate README
 
 
-[Heroku link]
+[Heroku link][heroku]
 [Trello link][trello]
 
-[trello]: https://trello.com/b/lXHl7GZQ/chordinate
+[trello]: https://trello.com/b/ulXHl7GZQ/chordinate
+[heroku]: http://chordinate-app.herokuapp.com
 
 ## Minimum Viable Product
 

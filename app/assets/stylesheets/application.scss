@@ -23,10 +23,10 @@ html, body {
 
 .auth-form-container {
  background: rgb(7, 60, 120); /* For browsers that do not support gradients */
- background: -webkit-linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* For Safari 5.1 to 6.0 */
- background: -o-linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* For Opera 11.1 to 12.0 */
- background: -moz-linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* For Firefox 3.6 to 15 */
- background: linear-gradient(rgb(7,60,120), rgb(134,123,132)); /* Standard syntax */
+ background: -webkit-linear-gradient(rgb(134,123,132), rgb(7,60,120)); /* For Safari 5.1 to 6.0 */
+ background: -o-linear-gradient(rgb(134,123,132), rgb(7,60,120)); /* For Opera 11.1 to 12.0 */
+ background: -moz-linear-gradient(rgb(134,123,132), rgb(7,60,120)); /* For Firefox 3.6 to 15 */
+ background: linear-gradient(rgb(134,123,132), rgb(7,60,120)); /* Standard syntax */
  display: block;
  height: 100vh;
 
