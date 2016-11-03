@@ -25,7 +25,7 @@ class SignupForm extends React.Component {
   renderErrors(field) {
     if (this.props.errors) {
       return (
-        <span>{this.props.errors[field]}</span>
+        <span className="error-span">{this.props.errors[field]}</span>
       );
     }
   }
@@ -65,21 +65,22 @@ class SignupForm extends React.Component {
             <br/>
           <label htmlFor="password">Password</label>
             {this.renderErrors('password')}
-
+            <br/>
             <input
               id="password"
               type="password"
               value={this.state.password}
               onChange={this.update('password')} />
           <br/>
-          <button className="submit-button">Create</button>
-          <button className="cancel-button" onClick={this.cancel}>Cancel</button>
+          <span className="signup-button-span">
+            <button className="submit-button">Create</button>
+            <button className="cancel-button" onClick={this.cancel}>Cancel</button>
+          </span>
         </form>
     </div>
     );
   }
 }
-// TODO: make link a button?
 
 
 export default SignupForm;

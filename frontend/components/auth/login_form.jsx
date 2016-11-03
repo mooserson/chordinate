@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
+    this.signUp = this.signUp.bind(this);
   }
 
   componentDidUpdate() {
@@ -25,15 +26,14 @@ class LoginForm extends React.Component {
     renderErrors() {
       if (this.props.errors) {
         return (
-          <ul className={`error-list`}>
-            <li>{this.props.errors}</li>
-          </ul>
+          <span className="error-span">{this.props.errors}</span>
         );
       }
     }
 
   signUp(e) {
     e.preventDefault();
+    this.props.clearErrors();
     hashHistory.push("/signup");
   }
 
@@ -80,9 +80,11 @@ class LoginForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update('password')} />
             <br/>
-          <button className="submit-button">Sign In</button>
-          <button className="signup-button" onClick={this.signUp}>Create Account</button>
-          <button className="guest-button" onClick={this.handleGuest}>Guest Login</button>
+            <span className="button-span">
+              <button className="submit-button">Sign In</button>
+              <button className="signup-button" onClick={this.signUp}>Create Account</button>
+              <button className="guest-button" onClick={this.handleGuest}>Guest Login</button>
+            </span>
         </form>
     </div>
     );
