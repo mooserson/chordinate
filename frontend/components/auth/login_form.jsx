@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, hashHistory} from 'react-router';
+import {hashHistory} from 'react-router';
 
 class LoginForm extends React.Component {
   constructor(props) {

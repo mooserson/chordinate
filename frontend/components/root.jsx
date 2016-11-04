@@ -7,6 +7,7 @@ import Home from './home';
 import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
 import KeyboardContainer from './synth/keyboard_container';
+import DiscoverContainer from './sidebar/discover_container';
 
 // TODO: testing
 import {logout} from '../actions/session_actions';
@@ -34,7 +35,7 @@ const Root = ({store}) => {
           <IndexRoute component={LoginFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/signup' component={SignupFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
-            <IndexRoute component={KeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
+            <IndexRoute components={{synth: KeyboardContainer, sidebar: DiscoverContainer}} onEnter={_redirectIfNotLoggedIn} />
           </Route>
         </Route>
       </Router>
@@ -43,5 +44,3 @@ const Root = ({store}) => {
 };
 
 export default Root;
-
-// <Route path='/home/recorder' component={RecorderContainer}/>
