@@ -11,7 +11,6 @@ const KeysReducer = (state = [], action) => {
   Object.freeze(state);
   const validKey = NOTE_NAMES.includes(action.key);
   const idx = state.indexOf(action.key);
-  console.log(state);
   switch (action.type) {
     case KEY_PRESSED:
       if (validKey && idx === -1) {

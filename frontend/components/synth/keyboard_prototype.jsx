@@ -1,16 +1,16 @@
 import React from 'react';
 import NoteKey from './note_key';
 import NilKey from './nil_key';
+import {  NOTE_NAMES, TONES} from '../../util/tones';
 import {
-  NOTE_NAMES,
-  TONES,
   NUM_ROW_KEYS,
   TAB_ROW_KEYS,
   CAPS_ROW_KEYS,
   SHIFT_ROW_KEYS,
-  FN_ROW_KEYS,
+  FN_ROW_LEFT_KEYS,
+  FN_ROW_RIGHT_KEYS,
   ARROW_KEYS
-} from '../../util/tones';
+} from '../../util/key_rows';
 import Note from '../../util/note';
 
 class KeyboardPrototype extends React.Component {
@@ -50,9 +50,9 @@ class KeyboardPrototype extends React.Component {
     });
   }
 
-  buildRow(name, keys) {
+  buildRow(keys) {
     return (
-      <section className={name}>
+      <span>
         {keys.map((key, idx) => {
           if (NOTE_NAMES.includes(key)) {
             return (
@@ -60,26 +60,38 @@ class KeyboardPrototype extends React.Component {
                 note={key}
                 pressed={this.props.keys.includes(key)}
                 key={key}/>
-            )
+            );
           } else {
             return(
             <NilKey val={key} pressed={false} key={idx}/>
-            )
+            );
           }
         })}
-      </section>
-    )
+      </span>
+    );
   }
 
   render() {
     this.playNotes();
     return (
-        <div className="keyboard">
-          {this.buildRow('num-row', NUM_ROW_KEYS)}
-          {this.buildRow('tab-row', TAB_ROW_KEYS)}
-          {this.buildRow('caps-row', CAPS_ROW_KEYS)}
-          {this.buildRow('shift-row', SHIFT_ROW_KEYS)}
-          {this.buildRow('fn-row', FN_ROW_KEYS)}
+        <div className="keyboard live">
+          <section className='num-row'>
+            {this.buildRow(NUM_ROW_KEYS)}
+          </section>
+          <section className='tab-row'>
+            {this.buildRow(TAB_ROW_KEYS)}
+          </section>
+          <section className='caps-row'>
+            {this.buildRow(CAPS_ROW_KEYS)}
+          </section>
+          <section className='shift-row'>
+            {this.buildRow(SHIFT_ROW_KEYS)}
+          </section>
+          <section className='fn-row'>
+            {this.buildRow(FN_ROW_LEFT_KEYS)}
+            <NilKey val="Start Recording" pressed={false} key='space' />
+            {this.buildRow(FN_ROW_RIGHT_KEYS)}
+          </section>
         </div>
     );
   }

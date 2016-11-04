@@ -25,6 +25,12 @@
   }
 }
 
+.live {
+  #Space{
+    content: 'Start Recording';
+  }
+}
+
 .note-key, .nil-key {
   padding: 15px 20px 15px 20px;
   background-color: white;
@@ -34,6 +40,7 @@
   -moz-transition : background-color 400ms;
   transition : background-color 400ms;
   text-align: center;
+  font-size: 14px;
 }
 
 .nil-key {

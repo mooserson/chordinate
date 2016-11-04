@@ -16,9 +16,9 @@
   //   // songinfo
   // }
   // },
+  isPlaying: true,
+  isRecording: false
   currentSong: {
-    isPlaying: true,
-    isRecording: false
     currentSong: {
       id: 2,
       user: "wchurchill",
