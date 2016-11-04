@@ -29,3 +29,23 @@ export const SpaceKey = ({mode}) => {
     </span>
   );
 };
+
+export const BackspaceKey = ({mode}) => {
+  return(
+    <span
+      className='backspace-key'
+      id={mode.replace(/\s+/g, '-').toLowerCase()}>
+      {mode}
+    </span>
+  );
+};
+
+export const EnterKey = ({mode}) => {
+  return(
+    <span
+      className='backspace-key'
+      id={mode.replace(/\s+/g, '-').toLowerCase()}>
+      {mode}
+    </span>
+  );
+};

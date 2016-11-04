@@ -1,17 +1,9 @@
 import React from 'react';
 import { NOTE_NAMES, TONES } from '../../util/tones';
-import {
-  NUM_ROW_KEYS,
-  TAB_ROW_KEYS,
-  CAPS_ROW_KEYS,
-  SHIFT_ROW_KEYS,
-  FN_ROW_KEYS,
-  ARROW_KEYS
-} from '../../util/key_rows';
-import {buildRow} from './build_row';
+import {buildRecordKeyboard} from './build_keyboard';
 import Note from '../../util/note';
 
-class KeyboardRecord extends React.Component {
+class RecordKeyboard extends React.Component {
   constructor(props) {
     super(props);
     this.notes = NOTE_NAMES.map(note => new Note(TONES[note]));
@@ -92,19 +84,14 @@ class KeyboardRecord extends React.Component {
     });
   }
 
-
   render() {
     this.playNotes();
     return (
-        <div className="keyboard">
-            {buildRow(NUM_ROW_KEYS, 'num')}
-            {buildRow(TAB_ROW_KEYS, 'tab')}
-            {buildRow(CAPS_ROW_KEYS, 'caps')}
-            {buildRow(SHIFT_ROW_KEYS, 'shift')}
-            {buildRow(FN_ROW_KEYS, 'fn')}
+        <div className="keyboard-container">
+          {buildRecordKeyboard()}
         </div>
     );
   }
 }
 
-export default KeyboardRecord;
+export default RecordKeyboard;

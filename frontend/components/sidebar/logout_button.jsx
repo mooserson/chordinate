@@ -1,11 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {hashHistory} from 'react-router';
 
-export const LogoutButton = ({logout}) => {
-  const handleLogout = () => {
-    logout();
-  };
-  return (
-    <button className="logout-button" onClick={handleLogout}>Logout</button>
-  );
-};
+class LogoutButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  componentDidUpdate() {
+    this.redirectIfLoggedOut();
+  }
+
+  redirectIfLoggedOut() {
+    if (this.props.loggedOut) {
+      hashHistory.push("/");
+    }
+  }
+
+  handleLogout () {
+    this.props.logout();
+  }
+
+  render() {
+    return (
+      <button className="logout-button" onClick={this.handleLogout}>Logout</button>
+    );
+  }
+}
+
+export default LogoutButton;

@@ -5,7 +5,7 @@ import {
   stopRecording,
   addNotes
 } from '../../actions/current_song_actions';
-import KeyboardRecord from './keyboard_record';
+import RecordKeyboard from './record_keyboard';
 
 const mapStateToProps = ({ keys, currentSong, isRecording }) => {
   return ({
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(KeyboardRecord);
+)(RecordKeyboard);
