@@ -1,0 +1,55 @@
+.synth {
+  height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-around;
+  position: relative;
+}
+
+.keyboard {
+  height: 35%;
+  background-color: red;
+  width: 65%;
+  position: absolute;
+  bottom: 25%;
+  left: 18%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  section{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.note-key, .nil-key {
+  padding: 15px 20px 15px 20px;
+  background-color: white;
+  border-radius: 5px;
+  border: solid 1px black;
+  -webkit-transition : background-color 400ms;
+  -moz-transition : background-color 400ms;
+  transition : background-color 400ms;
+  text-align: center;
+}
+
+.nil-key {
+  color: lightgrey;
+}
+
+#Space {
+  width: 30%;
+}
+
+#Capslock {
+  width: 7%;
+  text-align: left;
+  padding: 15px 8px 5px 5px;
+}
+
+.pressed {
+  background-color: yellow;
+}

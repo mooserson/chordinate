@@ -11,7 +11,7 @@ const KeysReducer = (state = [], action) => {
   Object.freeze(state);
   const validKey = NOTE_NAMES.includes(action.key);
   const idx = state.indexOf(action.key);
-  console.log(state)
+  console.log(state);
   switch (action.type) {
     case KEY_PRESSED:
       if (validKey && idx === -1) {
@@ -19,24 +19,24 @@ const KeysReducer = (state = [], action) => {
           ...state,
           action.key
         ];
+      } else {
+        return state;
       }
-      return state;
     case KEY_RELEASED:
       if (idx !== -1) {
         return [
           ...state.slice(0, idx),
           ...state.slice(idx + 1)
         ];
-      }
-      console.log("Key released")
+      } else {
       return state;
+      }
     case GROUP_UPDATE:
-        return [
-          action.key
-        ];
-      console.log("Group update")
-      default:
-        return state;
+      return [
+        action.key
+      ];
+    default:
+      return state;
   }
 };
 

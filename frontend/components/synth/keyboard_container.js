@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import { keyPressed, keyReleased } from '../../actions/keys_actions';
 import { addNotes } from '../../actions/current_song_actions';
-import Keyboard from './keyboard';
+import KeyboardPrototype from './keyboard_prototype';
 
 const mapStateToProps = ({ keys, currentSong }) => ({
   keys,
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Keyboard);
+)(KeyboardPrototype);

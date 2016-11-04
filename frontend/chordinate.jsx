@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  $(document).on('keydown', e=> console.log(e));
   window.store = store;
   ReactDOM.render(<Root store={store} />, root);
 });
