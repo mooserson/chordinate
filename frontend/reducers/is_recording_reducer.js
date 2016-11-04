@@ -3,7 +3,7 @@ import {
   STOP_RECORDING
 } from '../actions/current_song_actions';
 
-const RecordingReducer = (state = false, action) => {
+const isRecordingReducer = (state = false, action) => {
   Object.freeze(state);
   switch (action.type) {
     case START_RECORDING:
@@ -15,4 +15,4 @@ const RecordingReducer = (state = false, action) => {
   }
 };
 
-export default RecordingReducer;
+export default isRecordingReducer;

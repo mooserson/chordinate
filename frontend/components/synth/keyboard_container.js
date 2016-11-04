@@ -1,20 +1,29 @@
 import {connect} from 'react-redux';
 import { keyPressed, keyReleased } from '../../actions/keys_actions';
-import { addNotes } from '../../actions/current_song_actions';
-import KeyboardPrototype from './keyboard_prototype';
+import {
+  startRecording,
+  stopRecording,
+  addNotes
+} from '../../actions/current_song_actions';
+import KeyboardRecord from './keyboard_record';
 
-const mapStateToProps = ({ keys, currentSong }) => ({
+const mapStateToProps = ({ keys, currentSong, isRecording }) => {
+  return ({
   keys,
-  currentSong
+  currentSong,
+  isRecording
 });
+};
 
 const mapDispatchToProps = dispatch => ({
   keyPressed: key => dispatch(keyPressed(key)),
   keyReleased: key => dispatch(keyReleased(key)),
-  addNotes: notes => dispatch(addNotes(notes))
+  addNotes: notes => dispatch(addNotes(notes)),
+  startRecording: () => dispatch(startRecording()),
+  stopRecording: () => dispatch(stopRecording())
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(KeyboardPrototype);
+)(KeyboardRecord);

@@ -1,11 +1,14 @@
 import { combineReducers } from 'redux';
 import SessionReducer from './session_reducer';
 import KeysReducer from './keys_reducer';
-import RecordingReducer from './recording_reducer';
+import isRecordingReducer from './is_recording_reducer';
+import CurrentSongReducer from './current_song_reducer';
+
 const RootReducer = combineReducers({
   session: SessionReducer,
   keys: KeysReducer,
-  recording: RecordingReducer
+  isRecording: isRecordingReducer,
+  currentSong: CurrentSongReducer
 });
 
 export default RootReducer;

@@ -64,17 +64,16 @@ export const SHIFT_ROW_KEYS = [
   'Shift'
 ];
 
-export const FN_ROW_LEFT_KEYS = [
+export const FN_ROW_KEYS = [
   'none',
   'Control',
   'Alt',
-  'Meta'
-];
-
-export const FN_ROW_RIGHT_KEYS = [
+  'Meta',
+  'Space',
   'Meta',
   'Alt'
 ];
+
 
 export const ARROW_KEYS = [
   'ArrowUp',
