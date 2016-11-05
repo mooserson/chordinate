@@ -2,6 +2,7 @@ import React from 'react';
 import { NOTE_NAMES, TONES } from '../../util/tones';
 import {buildRecordKeyboard} from './build_keyboard';
 import Note from '../../util/note';
+import {hashHistory} from 'react-router';
 
 class RecordKeyboard extends React.Component {
   constructor(props) {
@@ -10,16 +11,23 @@ class RecordKeyboard extends React.Component {
     }
 
     componentDidMount() {
+      console.log('record mounted');
       $(document).on('keydown', e=> this.onKeyDown(e));
       $(document).on('keyup', e=> this.onKeyUp(e));
     }
 
+    componentWillUnmount() {
+      console.log('record unmounted');
+      $(document).off();
+    }
+
     onSpaceUp() {
       let $space = $('.space-key');
-
+      console.log('record space-up');
       if (this.props.isRecording) {
         this.props.stopRecording();
         $space.text("Start Recording");
+        hashHistory.push("/save");
       } else {
         this.props.startRecording();
         $space.text("Stop Recording");

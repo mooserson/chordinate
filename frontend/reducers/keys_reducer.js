@@ -32,7 +32,7 @@ const KeysReducer = (state = [], action) => {
       }
     case GROUP_UPDATE:
       return [
-        action.key
+        ...action.notes
       ];
     default:
       return state;

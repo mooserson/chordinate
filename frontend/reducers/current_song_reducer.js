@@ -22,7 +22,7 @@ const CurrentSongReducer = (state = {}, action) => {
       return merge({}, state,{
         slices: [
           ...state.slices,
-          { notes: [], timeSlice: action.timeNow - state.Timestart }
+          { notes: [], timeSlice: action.timeNow - state.timeStart }
         ]
       });
 

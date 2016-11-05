@@ -6,8 +6,11 @@ import App from './app';
 import Home from './home';
 import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
-import KeyboardContainer from './synth/keyboard_container';
+import RecordKeyboardContainer from './synth/record_keyboard_container';
 import DiscoverContainer from './sidebar/discover_container';
+import SaveKeyboardContainer from './synth/save_keyboard_container';
+
+import merge from 'lodash/merge';
 
 // TODO: testing
 import {logout} from '../actions/session_actions';
@@ -27,6 +30,18 @@ const Root = ({store}) => {
     }
   };
 
+  const _redirectIfNoSong = (nextState, replace) => {
+    if (
+      store.getState().currentSong.slices === undefined ||
+      store.getState().currentSong.slices.length < 1) {
+        replace("/home");
+      }
+  };
+
+  const homeComponents = ({
+    synth: RecordKeyboardContainer,
+    sidebar: DiscoverContainer
+  });
 
   return (
     <Provider store={store}>
@@ -35,8 +50,9 @@ const Root = ({store}) => {
           <IndexRoute component={LoginFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/signup' component={SignupFormContainer} onEnter={_redirectIfLoggedIn}/>
           <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
-            <IndexRoute components={{synth: KeyboardContainer, sidebar: DiscoverContainer}} onEnter={_redirectIfNotLoggedIn} />
+            <IndexRoute components={homeComponents} onEnter={_redirectIfNotLoggedIn} />
           </Route>
+          <Route path='/save' component={SaveKeyboardContainer} onEnter={_redirectIfNoSong} />
         </Route>
       </Router>
     </Provider>
