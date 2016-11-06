@@ -40,7 +40,7 @@ class SaveKeyboard extends React.Component {
     }
 
     if (e.key === "Enter") {
-      $('.backspace-key').addClass('pressed');
+      $('.enter-key').addClass('pressed');
     }
   }
 
@@ -48,8 +48,10 @@ class SaveKeyboard extends React.Component {
     if (e.key === " ") {
       let space = $('.space-key');
       space.removeClass('pressed');
-      this.props.onPlay(this.props.currentSong);
+      if (!this.props.isPlaying) {
+        this.props.onPlay(this.props.currentSong);
       }
+    }
 
     if (e.key === "Backspace") {
       $('.backspace-key').removeClass('pressed');
@@ -57,7 +59,7 @@ class SaveKeyboard extends React.Component {
     }
 
     if (e.key === "Enter") {
-      $('.backspace-key').removeClass('pressed');
+      $('.enter-key').removeClass('pressed');
 
     }
   }

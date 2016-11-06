@@ -10,8 +10,8 @@
 
 ### Users
 
--'POST /api/users'
--'PATCH /api/users'
+- 'POST /api/users'
+- 'PATCH /api/users'
 
 ### Session
 
@@ -25,10 +25,7 @@
   includes song likes and song plays
 - 'POST /api/songs'
   - Creates new song and saves all song slices to the db
-
-- 'GET /api/songs/:id/slices'
+- 'GET /api/songs/:id/'
   - Gets array of notes objects with notes and timeslices for song
-
 - 'PATCH /api/songs/:id'
-
 - 'DELETE /api/songs/:id'

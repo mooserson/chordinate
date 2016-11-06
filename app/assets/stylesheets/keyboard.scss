@@ -1,19 +1,15 @@
 .synth {
   height: 100vh;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-around;
   position: relative;
 }
 
 .keyboard {
-  height: 35%;
   background-color: red;
-  width: 65%;
+  height: 350px;
+  width: 850px;
   position: absolute;
   bottom: 25%;
   left: 18%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -25,8 +21,8 @@
   }
 }
 
+
 span[class*="key"] {
-  padding: 15px 20px 15px 20px;
   background-color: white;
   border-radius: 5px;
   border: solid 1px black;
@@ -35,30 +31,52 @@ span[class*="key"] {
   transition : background-color 400ms;
   text-align: center;
   font-size: 14px;
+
+  &.pressed {
+    background-color: yellow;
+  }
+}
+
+.note-key {
+  padding-top: 21px;
+  padding-bottom: 34px;
+  height: 0;
+  width: 56px;
 }
 
 .nil-key {
   color: lightgrey;
-}
-
-.Capslock {
-  width: 7%;
-  text-align: left;
-  padding: 15px 8px 5px 5px;
+  padding-top: 22px;
+  padding-bottom: 34px;
+  height: 0;
+  width: 56px;
+  &#Shift {
+    width: 100px;
+  }
+  &#Capslock {
+    width: 85px;
+  }
 }
 
 .space-key {
-  // padding-left: 80px;
-  // padding-right: 80px;
-  width: 200px;
+  padding-top: 20px;
+   width: 250px;
   margin-left: 0;
   margin-right: 0;
 }
 
-.pressed {
-  background-color: yellow;
+.backspace-key{
+  width: 75px;
+  padding-top: 20px;
+  &#backspace {
+    color: lightgrey;
+  }
 }
 
+.enter-key{
+  width: 85px;
+  padding-top: 20px;
+}
 .fn-row .nil-key {
   margin-left: 3px;
   margin-right: 3px;

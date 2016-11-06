@@ -29,10 +29,18 @@ const buildRecordRow = (notes, row) => (
           return (
             <SpaceKey mode="Start Recording" key="space"/>
           );
-        } else {
-          return (
-          <NilKey val={key} key={idx}/>
+        } else if (key === 'Backspace') {
+            return (
+              <BackspaceKey mode='Backspace' key="backspace" />
+            );
+        } else if (key === 'Enter') {
+            return (
+              <EnterKey mode='Enter' key='enter' />
           );
+        } else {
+            return (
+              <NilKey val={key} key={idx}/>
+            );
         }
       })}
     </section>
@@ -57,7 +65,7 @@ const buildSaveRow = (notes, row) => (
         );
       } else if (key === 'Backspace') {
           return (
-            <BackspaceKey mode='Delete' key="backspace" />
+            <BackspaceKey mode='Cancel' key="backspace" />
         );
       } else if (key === 'Enter') {
           return (

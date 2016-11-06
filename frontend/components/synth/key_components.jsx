@@ -4,8 +4,7 @@ export const NilKey = ({val,row}) => {
   return (
     <span
       className='nil-key'
-      id={val}>
-      {val}
+      id={val}>{val}
       </span>
   );
 };

@@ -9,13 +9,6 @@
     errors: []
   },
   keys: ['f', 'g'],
-  // TODO: Need recording?
-  // recording:{
-  // isRecording: false
-  // currentSong: {
-  //   // songinfo
-  // }
-  // },
   isPlaying: true,
   isRecording: false,
   currentSong: {
