@@ -11,17 +11,23 @@ class SaveKeyboard extends React.Component {
   }
 
   componentDidMount() {
-    console.log('save mounted');
-    if (!this.props.isPlaying) {
-      $(document).on('keydown', e=> this.onKeyDown(e));
-      $(document).on('keyup', e=> this.onKeyUp(e));
-      $('.space-key').addClass('pressed');
-    }
-
+    $(document).on('keydown', e=> this.onKeyDown(e));
+    $(document).on('keyup', e=> this.onKeyUp(e));
   }
 
   componentWillUnmount() {
     $(document).off();
+  }
+
+  updateSpaceKey() {
+    let space = $('.space-key');
+    if (this.props.isPlaying) {
+      space.attr('id', 'playing-back-recording');
+      space.text('Playing...');
+    } else {
+      space.attr('id', 'play-back-recording');
+      space.text('Play Back Recording');
+    }
   }
 
   onKeyDown(e) {
@@ -43,7 +49,6 @@ class SaveKeyboard extends React.Component {
       let space = $('.space-key');
       space.removeClass('pressed');
       this.props.onPlay(this.props.currentSong);
-      space.text("Playing");
       }
 
     if (e.key === "Backspace") {
@@ -61,17 +66,15 @@ class SaveKeyboard extends React.Component {
     NOTE_NAMES.forEach((note, idx) => {
       if (this.props.keys.indexOf(note) !== -1) {
         this.notes[idx].start();
-        $(`#${note}`).addClass('pressed');
       } else {
         this.notes[idx].stop();
-        $(`#${note}`).removeClass('pressed');
       }
-
     });
   }
 
   render() {
     this.playNotes();
+    this.updateSpaceKey();
     return (
       <div className='keyboard-container'>
         {buildSaveKeyboard()}

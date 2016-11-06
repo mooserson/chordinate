@@ -43,7 +43,7 @@ export const BackspaceKey = ({mode}) => {
 export const EnterKey = ({mode}) => {
   return(
     <span
-      className='backspace-key'
+      className='enter-key'
       id={mode.replace(/\s+/g, '-').toLowerCase()}>
       {mode}
     </span>

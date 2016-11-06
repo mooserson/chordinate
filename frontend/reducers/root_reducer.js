@@ -9,7 +9,7 @@ const RootReducer = combineReducers({
   session: SessionReducer,
   keys: KeysReducer,
   isRecording: isRecordingReducer,
-  isplaying: isPlayingReducer,
+  isPlaying: isPlayingReducer,
   currentSong: CurrentSongReducer
 });
 

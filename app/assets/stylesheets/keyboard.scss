@@ -25,13 +25,7 @@
   }
 }
 
-.live {
-  #Space{
-    content: 'Start Recording';
-  }
-}
-
-.note-key, .nil-key, .space-key {
+span[class*="key"] {
   padding: 15px 20px 15px 20px;
   background-color: white;
   border-radius: 5px;
@@ -47,16 +41,25 @@
   color: lightgrey;
 }
 
-#Space {
-  width: 30%;
-}
-
-#Capslock {
+.Capslock {
   width: 7%;
   text-align: left;
   padding: 15px 8px 5px 5px;
 }
 
+.space-key {
+  // padding-left: 80px;
+  // padding-right: 80px;
+  width: 200px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .pressed {
   background-color: yellow;
+}
+
+.fn-row .nil-key {
+  margin-left: 3px;
+  margin-right: 3px;
 }
