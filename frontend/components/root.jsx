@@ -9,12 +9,9 @@ import SignupFormContainer from './auth/signup_form_container';
 import RecordKeyboardContainer from './synth/record_keyboard_container';
 import DiscoverContainer from './sidebar/discover_container';
 import SaveKeyboardContainer from './synth/save_keyboard_container';
+import PlaybackKeyboardContainer from './synth/playback_keyboard_container';
 
 import merge from 'lodash/merge';
-
-// TODO: testing
-import {logout} from '../actions/session_actions';
-window.logout = logout;
 
 const Root = ({store}) => {
 
@@ -52,7 +49,8 @@ const Root = ({store}) => {
           <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
             <IndexRoute components={homeComponents} onEnter={_redirectIfNotLoggedIn} />
           </Route>
-          <Route path='/save' component={SaveKeyboardContainer} onEnter={_redirectIfNoSong} />
+          <Route path='/home/save' component={SaveKeyboardContainer} onEnter={_redirectIfNoSong} />
+          <Route path='/home/songs/:id' component={PlaybackKeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
         </Route>
       </Router>
     </Provider>

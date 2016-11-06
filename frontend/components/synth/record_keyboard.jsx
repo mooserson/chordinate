@@ -27,7 +27,7 @@ class RecordKeyboard extends React.Component {
       if (this.props.isRecording) {
         this.props.stopRecording();
         $space.text("Start Recording");
-        hashHistory.push("/save");
+        hashHistory.push("/home/save");
       } else {
         this.props.startRecording();
         $space.text("Stop Recording");
