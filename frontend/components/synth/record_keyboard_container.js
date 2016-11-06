@@ -12,7 +12,7 @@ const mapStateToProps = ({ keys, currentSong, isRecording }) => {
   keys,
   currentSong,
   isRecording
-});
+  });
 };
 
 const mapDispatchToProps = dispatch => ({

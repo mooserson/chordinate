@@ -4,14 +4,15 @@ import {
   stopPlaying
 } from '../../actions/is_playing_actions';
 import { groupUpdate } from '../../actions/keys_actions';
-// import { createSong } from
+import { createSong } from '../../actions/current_song_actions';
 import SaveKeyboard from './save_keyboard';
 
-const mapStateToProps = ({keys, currentSong, isPlaying}) => {
+const mapStateToProps = ({keys, currentSong, isPlaying, session: {currentUser: {id}}}) => {
   return ({
     keys,
     currentSong,
-    isPlaying
+    isPlaying,
+    userId: id
   });
 };
 
@@ -35,7 +36,7 @@ const mapDispatchToProps = dispatch => ({
       }
     }, 1);
   },
-
+  createSong: (song, userId) => dispatch(createSong(song, userId))
 });
 
 export default connect(

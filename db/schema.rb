@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106031218) do
+ActiveRecord::Schema.define(version: 20161106192957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "slices", force: :cascade do |t|
     t.string   "notes"
-    t.integer  "timeSlice",  null: false
+    t.integer  "time_slice", null: false
     t.integer  "song_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

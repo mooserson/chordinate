@@ -1,7 +1,8 @@
 import {
   START_RECORDING,
   STOP_RECORDING,
-  ADD_NOTES
+  ADD_NOTES,
+  RECEIVE_SONG
 } from '../actions/current_song_actions';
 
 import merge from 'lodash/merge';
@@ -11,10 +12,8 @@ const CurrentSongReducer = (state = {}, action) => {
   switch (action.type) {
     case START_RECORDING:
       return {
-        id: null,
-        user: action.username,
-        title: action.title,
-        date: null,
+        userId: action.userId,
+        title: action.title || 'Untitled',
         slices: [],
         timeStart: action.timeNow
       };
@@ -25,7 +24,6 @@ const CurrentSongReducer = (state = {}, action) => {
           { notes: [], timeSlice: action.timeNow - state.timeStart }
         ]
       });
-
     case ADD_NOTES:
       return merge({}, state, {
         slices: [
@@ -35,6 +33,9 @@ const CurrentSongReducer = (state = {}, action) => {
           }
         ]
       });
+    case RECEIVE_SONG:
+      let song = action.song;
+      return action.song;
     default:
       return state;
   }

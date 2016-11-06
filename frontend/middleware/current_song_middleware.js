@@ -6,8 +6,14 @@ export default ({getState, dispatch}) => next => action => {
   const successCallback = data => console.log(data);
   switch (action.type) {
     case CREATE_SONG:
-      debugger;
-      break;
+      let song = action.song;
+      let newSong = {
+        user_id: song.userId,
+        title: song.title,
+        slices: JSON.stringify(song.slices)
+      };
+      createSong(newSong, successCallback);
+      return next(action);
     default:
       return next(action);
   }

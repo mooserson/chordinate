@@ -60,7 +60,7 @@ class SaveKeyboard extends React.Component {
 
     if (e.key === "Enter") {
       $('.enter-key').removeClass('pressed');
-
+      this.props.createSong(this.props.currentSong, this.props.userId)
     }
   }
 

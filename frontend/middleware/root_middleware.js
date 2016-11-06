@@ -1,9 +1,12 @@
 import {applyMiddleware} from 'redux';
 import SessionMiddleware from './session_middleware';
-// import createLogger from 'redux-logger';
+import CurrentSongMiddleware from'./current_song_middleware';
+import createLogger from 'redux-logger';
 
-// const logger = createLogger();
 
+const logger = createLogger();
 export default applyMiddleware(
-  SessionMiddleware
+  SessionMiddleware,
+  CurrentSongMiddleware,
+  logger
 );

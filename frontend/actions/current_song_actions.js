@@ -2,9 +2,11 @@ export const START_RECORDING = "START_RECORDING";
 export const STOP_RECORDING = "STOP_RECORDING";
 export const ADD_NOTES = "ADD_NOTES";
 export const CREATE_SONG = "CREATE_SONG";
+export const RECEIVE_SONG = "RECEIVE_SONG";
 
 export const startRecording = () => ({
   type: START_RECORDING,
+  userId: window.currentUser.id,
   timeNow: Date.now()
 });
 
@@ -23,4 +25,9 @@ export const createSong = (song, userId) => ({
   type: CREATE_SONG,
   song,
   userId
+});
+
+export const receiveSong = song => ({
+	type: RECEIVE_SONG,
+	song
 });
