@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import * as Song from './actions/current_song_actions';
-window.song = Song;
-
-
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   if (window.currentUser) {

@@ -11,13 +11,11 @@ class RecordKeyboard extends React.Component {
     }
 
     componentDidMount() {
-      console.log('record mounted');
       $(document).on('keydown', e=> this.onKeyDown(e));
       $(document).on('keyup', e=> this.onKeyUp(e));
     }
 
     componentWillUnmount() {
-      console.log('record unmounted');
       $(document).off();
     }
 

@@ -3,6 +3,9 @@ export const STOP_RECORDING = "STOP_RECORDING";
 export const ADD_NOTES = "ADD_NOTES";
 export const CREATE_SONG = "CREATE_SONG";
 export const RECEIVE_SONG = "RECEIVE_SONG";
+export const REQUEST_SONG = "REQUEST_SONG";
+export const DELETE_SONG = "DELETE_SONG";
+export const REMOVE_SONG = "REMOVE_SONG";
 
 export const startRecording = () => ({
   type: START_RECORDING,
@@ -27,7 +30,21 @@ export const createSong = (song, userId) => ({
   userId
 });
 
+export const requestSong = id => ({
+	type: REQUEST_SONG,
+	id
+});
+
 export const receiveSong = song => ({
 	type: RECEIVE_SONG,
 	song
+});
+
+export const deleteSong = id => ({
+	type: DELETE_SONG,
+	id
+});
+
+export const removeSong = () => ({
+  type: REMOVE_SONG
 });

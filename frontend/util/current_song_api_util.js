@@ -10,7 +10,15 @@ export const createSong = (song, success) => {
 export const fetchSong = (id, success) => {
   $.ajax({
     method: 'GET',
-    url: `api/song/${id}`,
+    url: `api/songs/${id}`,
+    success
+  });
+};
+
+export const destroySong = (id, success) => {
+  $.ajax({
+    method: 'DELETE',
+    url: `api/songs/${id}`,
     success
   });
 };

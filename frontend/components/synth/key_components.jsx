@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const NilKey = ({val,row}) => {
+export const NilKey = ({val,row, className = 'nil-key'}) => {
   return (
     <span
-      className='nil-key'
+      className={className}
       id={val}>{val}
       </span>
   );
@@ -44,6 +44,16 @@ export const EnterKey = ({mode}) => {
     <span
       className='enter-key'
       id={mode.replace(/\s+/g, '-').toLowerCase()}>
+      {mode}
+    </span>
+  );
+};
+
+export const ShiftKey = ({mode, id, disabled}) => {
+  return(
+    <span
+      className={disabled ? `shift-key disabled` : 'shift-key'}
+      id={id}>
       {mode}
     </span>
   );

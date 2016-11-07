@@ -7,9 +7,27 @@ class Api::SongsController < ApplicationController
     )
     if @song.save
       save_slices(@song.id)
-      render :show 
+      render :show
     else
-      render json: ["Invalid song"]
+      render json: ["Invalid song!"]
+    end
+  end
+
+  def show
+    @song = Song.find(params[:id])
+    if @song
+      render :show
+    else
+      render json: ["Invalid song id!"]
+    end
+  end
+
+  def destroy
+    @song = Song.find(params[:id])
+    if @song.delete
+      render json: ["Success!"]
+    else
+      render json: ["Invalid song id!"], status: 404
     end
   end
 

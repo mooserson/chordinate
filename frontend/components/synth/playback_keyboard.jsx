@@ -1,10 +1,10 @@
 import React from 'react';
-import {buildSaveKeyboard} from './build_keyboard';
+import { buildPlaybackKeyboard } from './build_keyboard';
 import { NOTE_NAMES, TONES } from '../../util/tones';
 import Note from '../../util/note';
-import {hashHistory} from 'react-router';
+import { hashHistory } from 'react-router';
 
-class SaveKeyboard extends React.Component {
+class PlaybackKeyboard extends React.Component {
   constructor(props) {
     super(props);
     this.notes = NOTE_NAMES.map(note => new Note(TONES[note]));
@@ -13,6 +13,12 @@ class SaveKeyboard extends React.Component {
   componentDidMount() {
     $(document).on('keydown', e=> this.onKeyDown(e));
     $(document).on('keyup', e=> this.onKeyUp(e));
+    const id = this.props.params.id;
+    this.props.requestSong(id);
+    this.redirectIfNoSong();
+  }
+
+  componentDidUpdate() {
     this.redirectIfNoSong();
   }
 
@@ -40,7 +46,33 @@ class SaveKeyboard extends React.Component {
     }
   }
 
+  updateShiftKey(e) {
+    let other = e.originalEvent.location === 1 ? 2 : 1;
+    let $holdShift = $(`#${e.originalEvent.location}.shift-key`);
+    let $otherShift = $(`#${other}.shift-key`);
+
+    if (e.type === "keydown") {
+      if ($otherShift.text() === "?") {
+        $holdShift.addClass('pressed');
+        $holdShift.text('Deleting...');
+        $otherShift.text('Deleting...');
+        this.props.deleteSong(this.props.params.id);
+      } else {
+        $holdShift.addClass('pressed');
+        $holdShift.text('?');
+        $otherShift.text('Confirm Delete');
+      }
+    }
+
+    if (e.type === "keyup" && $holdShift.text() !== 'Deleting...') {
+      $holdShift.removeClass('pressed');
+      $holdShift.text('Delete');
+      $otherShift.text('Delete')
+    }
+  }
+
   onKeyDown(e) {
+    // console.log(e);
     if (e.key === " ") {
       $('.space-key').addClass('pressed');
     }
@@ -52,7 +84,12 @@ class SaveKeyboard extends React.Component {
     if (e.key === "Enter") {
       $('.enter-key').addClass('pressed');
     }
+
+    if (e.key === "Shift") {
+      this.updateShiftKey(e);
+    }
   }
+
 
   onKeyUp(e) {
     if (e.key === " ") {
@@ -70,7 +107,10 @@ class SaveKeyboard extends React.Component {
 
     if (e.key === "Enter") {
       $('.enter-key').removeClass('pressed');
-      this.props.createSong(this.props.currentSong, this.props.userId)
+    }
+
+    if (e.key === "Shift") {
+      this.updateShiftKey(e);
     }
   }
 
@@ -89,11 +129,11 @@ class SaveKeyboard extends React.Component {
     this.updateSpaceKey();
     return (
       <div className='keyboard-container'>
-        {buildSaveKeyboard()}
+        {buildPlaybackKeyboard()}
       </div>
     );
   }
 
 }
 
-export default SaveKeyboard;
+export default PlaybackKeyboard;

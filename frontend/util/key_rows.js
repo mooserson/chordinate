@@ -50,7 +50,7 @@ export const CAPS_ROW_KEYS = [
 ];
 
 export const SHIFT_ROW_KEYS = [
-  'Shift',
+  'Shift1',
   'z',
   'x',
   'c',
@@ -61,7 +61,7 @@ export const SHIFT_ROW_KEYS = [
   ',',
   '.',
   '/',
-  'Shift'
+  'Shift2'
 ];
 
 export const FN_ROW_KEYS = [

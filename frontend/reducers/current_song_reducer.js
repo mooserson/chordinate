@@ -2,7 +2,8 @@ import {
   START_RECORDING,
   STOP_RECORDING,
   ADD_NOTES,
-  RECEIVE_SONG
+  RECEIVE_SONG,
+  REMOVE_SONG
 } from '../actions/current_song_actions';
 
 import merge from 'lodash/merge';
@@ -36,6 +37,8 @@ const CurrentSongReducer = (state = {}, action) => {
     case RECEIVE_SONG:
       let song = action.song;
       return action.song;
+    case REMOVE_SONG:
+      return {}
     default:
       return state;
   }

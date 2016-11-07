@@ -73,9 +73,21 @@ span[class*="key"] {
   }
 }
 
+.shift-key{
+  width: 100px;
+  padding-top: 20px;
+}
+
+.disabled{
+  color: lightgrey
+}
+
 .enter-key{
   width: 85px;
   padding-top: 20px;
+  &#enter {
+    color: lightgrey;
+  }
 }
 .fn-row .nil-key {
   margin-left: 3px;

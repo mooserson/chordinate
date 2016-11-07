@@ -27,13 +27,13 @@ const Root = ({store}) => {
     }
   };
 
-  const _redirectIfNoSong = (nextState, replace) => {
-    if (
-      store.getState().currentSong.slices === undefined ||
-      store.getState().currentSong.slices.length < 1) {
-        replace("/home");
-      }
-  };
+  // const _redirectIfNoSong = (nextState, replace) => {
+  //   if (
+  //     store.getState().currentSong.slices === undefined ||
+  //     store.getState().currentSong.slices.length < 1) {
+  //       replace("/home");
+  //     }
+  // };
 
   const homeComponents = ({
     synth: RecordKeyboardContainer,
@@ -49,7 +49,7 @@ const Root = ({store}) => {
           <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
             <IndexRoute components={homeComponents} onEnter={_redirectIfNotLoggedIn} />
           </Route>
-          <Route path='/home/save' component={SaveKeyboardContainer} onEnter={_redirectIfNoSong} />
+          <Route path='/home/save' component={SaveKeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
           <Route path='/home/songs/:id' component={PlaybackKeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
         </Route>
       </Router>
