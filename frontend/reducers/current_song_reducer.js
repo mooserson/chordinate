@@ -3,7 +3,8 @@ import {
   STOP_RECORDING,
   ADD_NOTES,
   RECEIVE_SONG,
-  REMOVE_SONG
+  REMOVE_SONG,
+  UPDATE_TITLE
 } from '../actions/current_song_actions';
 
 import {
@@ -12,8 +13,9 @@ import {
 
 import merge from 'lodash/merge';
 
-const CurrentSongReducer = (state = {}, action) => {
+const CurrentSongReducer = (state = {title: ""}, action) => {
   Object.freeze(state);
+  let newState;
   switch (action.type) {
     case START_RECORDING:
       return {
@@ -38,14 +40,16 @@ const CurrentSongReducer = (state = {}, action) => {
           }
         ]
       });
+    case UPDATE_TITLE:
+      newState =  merge({}, state, { title: action.title });
+      return newState;
     case RECEIVE_SONG:
       let song = action.song;
       return action.song;
     case REMOVE_SONG:
       return {};
     case RECEIVE_LIKE:
-      debugger;
-      let newState = merge({}, state, {liked: action.liked});
+      newState = merge({}, state, {liked: action.liked});
       return newState;
     default:
       return state;

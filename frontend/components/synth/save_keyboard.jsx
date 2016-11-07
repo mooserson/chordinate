@@ -3,6 +3,7 @@ import {buildSaveKeyboard} from './build_keyboard';
 import { NOTE_NAMES, TONES } from '../../util/tones';
 import Note from '../../util/note';
 import {hashHistory} from 'react-router';
+import SongTitleFormContainer from '../song_info/song_title_form_container';
 
 class SaveKeyboard extends React.Component {
   constructor(props) {
@@ -13,19 +14,10 @@ class SaveKeyboard extends React.Component {
   componentDidMount() {
     $(document).on('keydown', e=> this.onKeyDown(e));
     $(document).on('keyup', e=> this.onKeyUp(e));
-    this.redirectIfNoSong();
   }
 
   componentWillUnmount() {
     $(document).off();
-  }
-
-  redirectIfNoSong() {
-    if (
-      this.props.currentSong.slices === undefined ||
-      this.props.currentSong.slices.length < 1) {
-        hashHistory.push("/home");
-      }
   }
 
   updateSpaceKey() {
@@ -64,12 +56,13 @@ class SaveKeyboard extends React.Component {
 
     if (e.key === "Backspace") {
       $('.backspace-key').removeClass('pressed');
-      hashHistory.push("/home");
+      this.props.stopSaving()
     }
 
     if (e.key === "Enter") {
       $('.enter-key').removeClass('pressed');
       this.props.createSong(this.props.currentSong, this.props.userId);
+
     }
   }
 
@@ -87,7 +80,9 @@ class SaveKeyboard extends React.Component {
     this.playNotes();
     this.updateSpaceKey();
     return (
+
       <div className='keyboard-container'>
+        <SongTitleFormContainer />
         {buildSaveKeyboard()}
       </div>
     );

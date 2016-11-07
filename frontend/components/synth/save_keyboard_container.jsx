@@ -5,7 +5,9 @@ import {
 } from '../../actions/is_playing_actions';
 import { groupUpdate } from '../../actions/keys_actions';
 import { createSong } from '../../actions/current_song_actions';
+import { stopSaving } from '../../actions/is_saving_action';
 import SaveKeyboard from './save_keyboard';
+
 
 const mapStateToProps = ({
     keys,
@@ -40,7 +42,8 @@ const mapDispatchToProps = dispatch => ({
       }
     }, 1);
   },
-  createSong: (song, userId) => dispatch(createSong(song, userId))
+  createSong: (song, userId) => dispatch(createSong(song, userId)),
+  stopSaving: () => dispatch(stopSaving())
 });
 
 export default connect(

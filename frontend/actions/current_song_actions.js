@@ -6,6 +6,7 @@ export const RECEIVE_SONG = "RECEIVE_SONG";
 export const REQUEST_SONG = "REQUEST_SONG";
 export const DELETE_SONG = "DELETE_SONG";
 export const REMOVE_SONG = "REMOVE_SONG";
+export const UPDATE_TITLE = "UPDATE_TITLE";
 
 export const startRecording = () => ({
   type: START_RECORDING,
@@ -47,4 +48,9 @@ export const deleteSong = id => ({
 
 export const removeSong = () => ({
   type: REMOVE_SONG
+});
+
+export const updateTitle = (title) => ({
+  type: UPDATE_TITLE,
+  title
 });

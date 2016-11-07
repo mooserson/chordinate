@@ -3,6 +3,7 @@ import { NOTE_NAMES, TONES } from '../../util/tones';
 import {buildRecordKeyboard} from './build_keyboard';
 import Note from '../../util/note';
 import {hashHistory} from 'react-router';
+import SongTitleFormContainer from '../song_info/song_title_form_container';
 
 class RecordKeyboard extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class RecordKeyboard extends React.Component {
     componentDidMount() {
       $(document).on('keydown', e=> this.onKeyDown(e));
       $(document).on('keyup', e=> this.onKeyUp(e));
+      // $('input').attr('disabled', true);
     }
 
     componentWillUnmount() {
@@ -95,6 +97,7 @@ class RecordKeyboard extends React.Component {
     this.playNotes();
     return (
         <div className="keyboard-container">
+          <SongTitleFormContainer/>
           {buildRecordKeyboard()}
         </div>
     );

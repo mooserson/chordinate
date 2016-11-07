@@ -10,6 +10,7 @@ import RecordKeyboardContainer from './synth/record_keyboard_container';
 import DiscoverContainer from './sidebar/discover_container';
 import SaveKeyboardContainer from './synth/save_keyboard_container';
 import PlaybackKeyboardContainer from './synth/playback_keyboard_container';
+import SongTitleFormContainer from './song_info/song_title_form_container';
 
 import merge from 'lodash/merge';
 

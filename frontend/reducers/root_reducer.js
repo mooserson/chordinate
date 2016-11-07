@@ -4,12 +4,14 @@ import KeysReducer from './keys_reducer';
 import isRecordingReducer from './is_recording_reducer';
 import isPlayingReducer from './is_playing_reducer';
 import CurrentSongReducer from './current_song_reducer';
+import isSavingReducer from './is_saving_reducer';
 
 const RootReducer = combineReducers({
   session: SessionReducer,
-  keys: KeysReducer,
   isRecording: isRecordingReducer,
   isPlaying: isPlayingReducer,
+  isSaving: isSavingReducer,
+  keys: KeysReducer,
   currentSong: CurrentSongReducer
 });
 
