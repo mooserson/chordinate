@@ -16,6 +16,7 @@ class PlaybackKeyboard extends React.Component {
     const id = this.props.params.id;
     this.props.requestSong(id);
     this.redirectIfNoSong();
+
   }
 
   componentDidUpdate() {
@@ -67,8 +68,17 @@ class PlaybackKeyboard extends React.Component {
     if (e.type === "keyup" && $holdShift.text() !== 'Deleting...') {
       $holdShift.removeClass('pressed');
       $holdShift.text('Delete');
-      $otherShift.text('Delete')
+      $otherShift.text('Delete');
     }
+  }
+
+  updateEnterKey(e) {
+    let $enter = ('.enter-key');
+    $enter.toggleClass('pressed');
+
+    if (e.type === "keyup" && this.props.liked) {
+    }
+
   }
 
   onKeyDown(e) {
@@ -82,7 +92,7 @@ class PlaybackKeyboard extends React.Component {
     }
 
     if (e.key === "Enter") {
-      $('.enter-key').addClass('pressed');
+      this.updateEnterKey(e);
     }
 
     if (e.key === "Shift") {
@@ -106,7 +116,7 @@ class PlaybackKeyboard extends React.Component {
     }
 
     if (e.key === "Enter") {
-      $('.enter-key').removeClass('pressed');
+      this.updateEnterKey(e);
     }
 
     if (e.key === "Shift") {
@@ -129,7 +139,7 @@ class PlaybackKeyboard extends React.Component {
     this.updateSpaceKey();
     return (
       <div className='keyboard-container'>
-        {buildPlaybackKeyboard()}
+        {buildPlaybackKeyboard(this.props.liked)}
       </div>
     );
   }

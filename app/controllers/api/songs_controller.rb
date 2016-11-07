@@ -24,7 +24,8 @@ class Api::SongsController < ApplicationController
 
   def destroy
     @song = Song.find(params[:id])
-    if @song.delete
+    if @song
+      @song.delete
       render json: ["Success!"]
     else
       render json: ["Invalid song id!"], status: 404

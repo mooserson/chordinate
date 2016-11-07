@@ -4,11 +4,17 @@ import {
   stopPlaying
 } from '../../actions/is_playing_actions';
 import { groupUpdate } from '../../actions/keys_actions';
-// import { createLike, removeLike, createPlay } from '../../actions/song_actions';
+import {
+  createLike,
+  removeLike,
+  createPlay } from '../../actions/song_actions';
 import { requestSong, deleteSong } from '../../actions/current_song_actions';
 import PlaybackKeyboard from './playback_keyboard';
 
-const mapStateToProps = ({keys, currentSong, isPlaying, session: {currentUser: {id}}}) => {
+const mapStateToProps = ({keys,
+  currentSong,
+  isPlaying,
+  session: {currentUser: {id}}}) => {
   return ({
     keys,
     currentSong,
