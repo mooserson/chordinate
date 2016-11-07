@@ -7,7 +7,11 @@ import { groupUpdate } from '../../actions/keys_actions';
 import { createSong } from '../../actions/current_song_actions';
 import SaveKeyboard from './save_keyboard';
 
-const mapStateToProps = ({keys, currentSong, isPlaying, session: {currentUser: {id}}}) => {
+const mapStateToProps = ({
+    keys,
+    currentSong,
+    isPlaying,
+    session: {currentUser: {id}}}) => {
   return ({
     keys,
     currentSong,

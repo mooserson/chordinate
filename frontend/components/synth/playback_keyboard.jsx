@@ -15,25 +15,34 @@ class PlaybackKeyboard extends React.Component {
     $(document).on('keyup', e=> this.onKeyUp(e));
     const id = this.props.params.id;
     this.props.requestSong(id);
-    this.redirectIfNoSong();
-
   }
 
   componentDidUpdate() {
     this.redirectIfNoSong();
+    this.initializeEnterKey();
   }
 
   componentWillUnmount() {
     $(document).off();
   }
 
+  initializeEnterKey() {
+    let $enter = $('.enter-key');
+    if (this.props.currentSong.liked) {
+      $enter.addClass("liked");
+      $enter.text("Unlike");
+    } else {
+      $enter.text("Like");
+      $enter.removeClass("liked");
+    }
+  }
   redirectIfNoSong() {
     if (
       this.props.currentSong.slices === undefined ||
       this.props.currentSong.slices.length < 1) {
         hashHistory.push("/home");
         console.log("redirected");
-      }
+    }
   }
 
   updateSpaceKey() {
@@ -54,41 +63,52 @@ class PlaybackKeyboard extends React.Component {
 
     if (e.type === "keydown") {
       if ($otherShift.text() === "?") {
-        $holdShift.addClass('pressed');
+        $holdShift.toggleClass('pressed');
         $holdShift.text('Deleting...');
         $otherShift.text('Deleting...');
         this.props.deleteSong(this.props.params.id);
       } else {
-        $holdShift.addClass('pressed');
+        $holdShift.toggleClass('pressed');
         $holdShift.text('?');
         $otherShift.text('Confirm Delete');
+        $otherShift.toggleClass('confirmation');
       }
     }
 
     if (e.type === "keyup" && $holdShift.text() !== 'Deleting...') {
-      $holdShift.removeClass('pressed');
+      $holdShift.toggleClass('pressed');
+      $otherShift.toggleClass('confirmation');
       $holdShift.text('Delete');
       $otherShift.text('Delete');
     }
   }
 
   updateEnterKey(e) {
-    let $enter = ('.enter-key');
+    let $enter = $('.enter-key');
     $enter.toggleClass('pressed');
-
-    if (e.type === "keyup" && this.props.liked) {
+    if (e.type === "keyup" && this.props.currentSong.liked) {
+      this.props.destroyLike(
+        this.props.userId,
+        this.props.currentSong.id
+      );
+      this.initializeEnterKey();
+    } else if (e.type === "keyup") {
+        this.props.createLike(
+          this.props.userId,
+          this.props.currentSong.id
+         );
+        // $enter.toggleClass('liked');
+        this.initializeEnterKey();
     }
-
   }
 
   onKeyDown(e) {
-    // console.log(e);
     if (e.key === " ") {
-      $('.space-key').addClass('pressed');
+      $('.space-key').toggleClass('pressed');
     }
 
     if (e.key === "Backspace") {
-      $('.backspace-key').addClass('pressed');
+      $('.backspace-key').toggleClass('pressed');
     }
 
     if (e.key === "Enter") {
@@ -104,14 +124,14 @@ class PlaybackKeyboard extends React.Component {
   onKeyUp(e) {
     if (e.key === " ") {
       let space = $('.space-key');
-      space.removeClass('pressed');
+      space.toggleClass('pressed');
       if (!this.props.isPlaying) {
         this.props.onPlay(this.props.currentSong);
       }
     }
 
     if (e.key === "Backspace") {
-      $('.backspace-key').removeClass('pressed');
+      $('.backspace-key').toggleClass('pressed');
       hashHistory.push("/home");
     }
 
@@ -139,7 +159,7 @@ class PlaybackKeyboard extends React.Component {
     this.updateSpaceKey();
     return (
       <div className='keyboard-container'>
-        {buildPlaybackKeyboard(this.props.liked)}
+        {buildPlaybackKeyboard()}
       </div>
     );
   }

@@ -25,7 +25,6 @@ class SaveKeyboard extends React.Component {
       this.props.currentSong.slices === undefined ||
       this.props.currentSong.slices.length < 1) {
         hashHistory.push("/home");
-        console.log("redirected");
       }
   }
 
@@ -70,7 +69,7 @@ class SaveKeyboard extends React.Component {
 
     if (e.key === "Enter") {
       $('.enter-key').removeClass('pressed');
-      this.props.createSong(this.props.currentSong, this.props.userId)
+      this.props.createSong(this.props.currentSong, this.props.userId);
     }
   }
 

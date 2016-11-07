@@ -3,16 +3,20 @@ class Api::LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
     if @like.save
-      render status: 200
+      render json: true
     else
       render json: @like.errors, status: 422
     end
   end
 
   def destroy
-    @like = Like.find_by_credentials(user_id, song_id)
+    @like = Like.find_by_credentials(
+      like_params[:user_id],
+      like_params[:song_id]
+    )
     if @like
       @like.delete
+      render json: false
     else
       render json: "Like not found", status: 422
     end

@@ -29,20 +29,20 @@ export const SpaceKey = ({mode}) => {
   );
 };
 
-export const BackspaceKey = ({mode}) => {
+export const BackspaceKey = ({mode, disabled}) => {
   return(
     <span
-      className='backspace-key'
+      className={disabled ? 'backspace-key disabled' : 'backspace-key'}
       id={mode.replace(/\s+/g, '-').toLowerCase()}>
       {mode}
     </span>
   );
 };
 
-export const EnterKey = ({mode}) => {
+export const EnterKey = ({mode, disabled}) => {
   return(
     <span
-      className='enter-key'
+      className={disabled ? 'enter-key disabled' : 'enter-key'}
       id={mode.replace(/\s+/g, '-').toLowerCase()}>
       {mode}
     </span>

@@ -3,4 +3,5 @@ class Song < ApplicationRecord
 
   belongs_to :user
   has_many :slices
+  has_many :likes
 end

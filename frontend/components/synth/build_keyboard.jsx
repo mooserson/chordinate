@@ -32,11 +32,11 @@ const buildRecordRow = (notes, row) => (
           );
         } else if (key === 'Backspace') {
             return (
-              <BackspaceKey mode='Backspace' key="backspace" />
+              <BackspaceKey mode='Backspace' key="backspace" disabled/>
             );
         } else if (key === 'Enter') {
             return (
-              <EnterKey mode='Enter' key='enter' />
+              <EnterKey mode='Save' key='enter' disabled/>
           );
         } else if (key === 'Shift1') {
             return (
@@ -100,7 +100,7 @@ const buildPlaybackRow = (notes, row) => (
         );
       } else if (key === 'Enter') {
           return (
-            <EnterKey mode='Like' key={idx} />
+            <EnterKey mode='Like' key={idx}/>
         );
       } else if (key === 'Shift1') {
           return (
@@ -139,7 +139,7 @@ export const buildSaveKeyboard = () => (
   </div>
 );
 
-export const buildPlaybackKeyboard = () => (
+export const buildPlaybackKeyboard = (liked) => (
   <div className='keyboard'>
   {buildPlaybackRow(NUM_ROW_KEYS, 'num')}
   {buildPlaybackRow(TAB_ROW_KEYS, 'tab')}

@@ -21,14 +21,15 @@ class RecordKeyboard extends React.Component {
 
     onSpaceUp() {
       let $space = $('.space-key');
-      console.log('record space-up');
       if (this.props.isRecording) {
         this.props.stopRecording();
-        $space.text("Start Recording");
+        $space.text("Saving...");
+        $space.toggleClass("recording");
         hashHistory.push("/home/save");
       } else {
         this.props.startRecording();
         $space.text("Stop Recording");
+        $space.toggleClass("recording");
       }
     }
 

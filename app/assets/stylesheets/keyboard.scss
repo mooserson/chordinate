@@ -4,7 +4,6 @@
 }
 
 .keyboard {
-  background-color: red;
   height: 350px;
   width: 850px;
   position: absolute;
@@ -23,14 +22,12 @@
 
 
 span[class*="key"] {
-  background-color: white;
   border-radius: 5px;
-  border: solid 1px black;
   -webkit-transition : background-color 400ms;
   -moz-transition : background-color 400ms;
   transition : background-color 400ms;
   text-align: center;
-  font-size: 14px;
+  font-size: 17px;
 
   &.pressed {
     background-color: yellow;
@@ -38,14 +35,17 @@ span[class*="key"] {
 }
 
 .note-key {
-  padding-top: 21px;
+  padding-top: 20px;
   padding-bottom: 34px;
   height: 0;
   width: 56px;
+  background-color: #053b78;
+  color: white;
 }
 
 .nil-key {
-  color: lightgrey;
+  background-color: lightgray;
+  color: transparent;
   padding-top: 22px;
   padding-bottom: 34px;
   height: 0;
@@ -59,34 +59,58 @@ span[class*="key"] {
 }
 
 .space-key {
+  color: white;
   padding-top: 20px;
    width: 250px;
   margin-left: 0;
   margin-right: 0;
+  background-color: #053b78;
+  &.recording, &#playing-back-recording{
+    background-color: #fa461e;
+  }
 }
 
 .backspace-key{
   width: 75px;
   padding-top: 20px;
-  &#backspace {
-    color: lightgrey;
+  background-color: #053b78;
+  color: white;
+  &.disabled {
+    color: transparent;
+    opacity: 0.5;
+    font-size: 14px;
+  }
+  &.confirmation {
+    color: #fa461e;
   }
 }
 
 .shift-key{
-  width: 100px;
-  padding-top: 20px;
+  width: 120px;
+  padding-top: 18px;
+  background-color: #053b78;
+  color: white;
+  &.disabled{
+    color: transparent;
+    background-color: lightgray;
+  }
 }
 
-.disabled{
-  color: lightgrey
+#tab {
+  width: 70px;
 }
 
 .enter-key{
-  width: 85px;
+  width: 98px;
   padding-top: 20px;
-  &#enter {
-    color: lightgrey;
+  background-color: #053b78;
+  color: white;
+  &.disabled {
+    color: transparent;
+    opacity: 0.5;
+  }
+  &.liked {
+    background-color: #fa461e;
   }
 }
 .fn-row .nil-key {

@@ -6,6 +6,10 @@ import {
   REMOVE_SONG
 } from '../actions/current_song_actions';
 
+import {
+  RECEIVE_LIKE
+} from '../actions/songs_actions';
+
 import merge from 'lodash/merge';
 
 const CurrentSongReducer = (state = {}, action) => {
@@ -38,7 +42,11 @@ const CurrentSongReducer = (state = {}, action) => {
       let song = action.song;
       return action.song;
     case REMOVE_SONG:
-      return {}
+      return {};
+    case RECEIVE_LIKE:
+      debugger;
+      let newState = merge({}, state, {liked: action.liked});
+      return newState;
     default:
       return state;
   }
