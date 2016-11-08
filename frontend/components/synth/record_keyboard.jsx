@@ -9,6 +9,7 @@ class RecordKeyboard extends React.Component {
   constructor(props) {
     super(props);
     this.notes = NOTE_NAMES.map(note => new Note(TONES[note]));
+    window.notes = this.notes;
     }
 
     componentWillMount() {
@@ -22,14 +23,26 @@ class RecordKeyboard extends React.Component {
           }
         });
       $(document).on('keyup', e=> {
-          if (e.target.tagName !== 'INPUT') {
-            this.onKeyUp(e);
-          }
+        this.onKeyUp(e);
+        }
+      );
+      $(window).on('blur', () => {
+        this.props.keys.forEach(key => {
+          this.onKeyUp({'key': key});
         });
+      });
+    }
+
+    componentDidUpdate() {
+      this.playNotes();
     }
 
     componentWillUnmount() {
       $(document).off();
+      this.props.keys.forEach(key => {
+        this.onKeyUp({'key': key});
+      });
+      this.stopNotes();
     }
 
     onSpaceUp() {
@@ -94,6 +107,7 @@ class RecordKeyboard extends React.Component {
     }
 
   playNotes() {
+    console.log(this.props.keys);
     NOTE_NAMES.forEach((note, idx) => {
       if (this.props.keys.indexOf(note) !== -1) {
         this.notes[idx].start();
@@ -103,8 +117,11 @@ class RecordKeyboard extends React.Component {
     });
   }
 
+  stopNotes() {
+    this.notes.forEach(note => note.stop());
+  }
+
   render() {
-    this.playNotes();
     return (
         <div className="keyboard-container">
           <SongTitleFormContainer/>

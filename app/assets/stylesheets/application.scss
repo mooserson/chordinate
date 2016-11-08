@@ -14,6 +14,10 @@
  *= require_self
  */
 
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
+
  input {
    -webkit-transition: all 95ms linear;
    -moz-transition: all 95ms linear;

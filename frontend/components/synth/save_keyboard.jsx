@@ -18,14 +18,23 @@ class SaveKeyboard extends React.Component {
         }
       });
     $(document).on('keyup', e=> {
-        if (e.target.tagName !== 'INPUT') {
-          this.onKeyUp(e);
-        }
+      this.onKeyUp(e);
+      }
+    );
+    $(window).on('blur', () => {
+      this.props.keys.forEach(key => {
+        this.onKeyUp({'key': key});
       });
+    });
+  }
+
+  componentDidUpdate() {
+    this.playNotes();
   }
 
   componentWillUnmount() {
     $(document).off();
+    this.stopNotes();
   }
 
   updateSpaceKey() {
@@ -64,7 +73,7 @@ class SaveKeyboard extends React.Component {
 
     if (e.key === "Backspace") {
       $('.backspace-key').removeClass('pressed');
-      this.props.stopSaving()
+      this.props.stopSaving();
     }
 
     if (e.key === "Enter") {
@@ -83,8 +92,11 @@ class SaveKeyboard extends React.Component {
     });
   }
 
+  stopNotes() {
+    this.notes.forEach(note => note.stop());
+  }
+
   render() {
-    this.playNotes();
     this.updateSpaceKey();
     return (
 

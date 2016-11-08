@@ -22,6 +22,7 @@ const KeysReducer = (state = [], action) => {
         return state;
       }
     case KEY_RELEASED:
+      console.log('key released');
       if (idx !== -1) {
         return [
           ...state.slice(0, idx),

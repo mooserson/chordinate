@@ -23,10 +23,14 @@ class PlaybackKeyboard extends React.Component {
         }
       });
     $(document).on('keyup', e=> {
-        if (e.target.tagName !== 'INPUT') {
-          this.onKeyUp(e);
-        }
+      this.onKeyUp(e);
+      }
+    );
+    $(window).on('blur', () => {
+      this.props.keys.forEach(key => {
+        this.onKeyUp({'key': key});
       });
+    });
   }
 
   componentDidUpdate() {
@@ -37,6 +41,7 @@ class PlaybackKeyboard extends React.Component {
 
   componentWillUnmount() {
     $(document).off();
+    this.stopNotes();
   }
 
   initializeEnterKey() {
@@ -175,6 +180,10 @@ class PlaybackKeyboard extends React.Component {
         this.notes[idx].stop();
       }
     });
+  }
+
+  stopNotes() {
+    this.notes.forEach(note => note.stop());
   }
 
   render() {

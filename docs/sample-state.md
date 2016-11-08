@@ -28,15 +28,36 @@
     ],
     timeStart: 1470164117527
   },
-  songs: {
-    "1": {
-      id: 1,
-      user: "wchurchill",
-      title: 'Track 1',
-      date: '12/15/1990'
-      liked: true,
-      likes: 10,
-      plays: 10,  
+  lists: {
+    newSongs: {
+      '1': {
+        id: 1,
+        user: "wchurchill",
+        title: 'Track 1',
+        date: '12/15/1990'
+        liked: true,
+        likes: 10,
+        plays: 10,          
+      },
+      '2' : {
+        // song info
+      }
+    },
+    mostPlayedSongs: {
+      '1': {
+        // song info
+      },
+      '2' : {
+        // song info
+      }
+    },
+    mostLikedSongs: {
+      '1': {
+        // song info
+      },
+      '2' : {
+        // song info
+      }
     }
   }
 }

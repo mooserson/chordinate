@@ -14,7 +14,6 @@ class LoginForm extends React.Component {
   }
 
   componentDidMount() {
-    debugger;
     document.getElementById("username").focus();
   }
 

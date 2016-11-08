@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {logout} from '../../actions/session_actions';
 import LogoutButton from './logout_button';
 
-
 const mapStateToProps = ({session}) => ({
   loggedOut: Boolean(!session.currentUser)
 });
