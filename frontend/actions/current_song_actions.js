@@ -8,9 +8,9 @@ export const DELETE_SONG = "DELETE_SONG";
 export const REMOVE_SONG = "REMOVE_SONG";
 export const UPDATE_TITLE = "UPDATE_TITLE";
 
-export const startRecording = () => ({
+export const startRecording = (id) => ({
   type: START_RECORDING,
-  userId: window.currentUser.id,
+  userId: id,
   timeNow: Date.now()
 });
 

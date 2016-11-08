@@ -13,6 +13,11 @@ class LoginForm extends React.Component {
     this.signUp = this.signUp.bind(this);
   }
 
+  componentDidMount() {
+    debugger;
+    document.getElementById("username").focus();
+  }
+
   componentDidUpdate() {
     this.redirectIfLoggedIn();
   }

@@ -5,7 +5,7 @@ import {
 } from '../../actions/is_playing_actions';
 import { groupUpdate } from '../../actions/keys_actions';
 import { createSong } from '../../actions/current_song_actions';
-import { stopSaving } from '../../actions/is_saving_action';
+import { stopSaving } from '../../actions/is_saving_actions';
 import SaveKeyboard from './save_keyboard';
 
 

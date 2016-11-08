@@ -4,20 +4,15 @@ class SongTitleForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.title
+      title: this.props.currentSong.title
     };
   }
 
-  // componentDidMount() {
-  //   // if (this.props.disabled) {
-  //   //   $(".song-title-form :input").attr("disabled", true);
-  //   // }
-  //
-  // }
-
-  // componentWillUnmount () {
-  //   this.props.updateTitle(this.state.title);
-  // }
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      title: newProps.currentSong.title
+    });
+  }
 
   update() {
     return e => this.setState({
@@ -27,19 +22,19 @@ class SongTitleForm extends React.Component {
 
   render () {
     return(
-      <div className="song-title-container" >
+      <div className="song-title-container">
+        <span className="song-owner">{this.props.currentSong.user}</span>
         <form className="song-title-form">
           <input
             value = {this.state.title}
             type="text"
-            placeholder="Untitiled"
-            onChange={this.update()}/>
+            placeholder="Untitled"
+            onChange={this.update()}
+            tabIndex='1' />
         </form>
       </div>
     );
   }
 }
-
-
 
 export default SongTitleForm;

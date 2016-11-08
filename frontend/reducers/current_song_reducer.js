@@ -20,7 +20,7 @@ const CurrentSongReducer = (state = {title: ""}, action) => {
     case START_RECORDING:
       return {
         userId: action.userId,
-        title: action.title || 'Untitled',
+        title: state.title || 'Untitled',
         slices: [],
         timeStart: action.timeNow
       };

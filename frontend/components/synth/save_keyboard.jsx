@@ -12,8 +12,16 @@ class SaveKeyboard extends React.Component {
   }
 
   componentDidMount() {
-    $(document).on('keydown', e=> this.onKeyDown(e));
-    $(document).on('keyup', e=> this.onKeyUp(e));
+    $(document).on('keydown', e=> {
+        if (e.target.tagName !== 'INPUT') {
+          this.onKeyDown(e);
+        }
+      });
+    $(document).on('keyup', e=> {
+        if (e.target.tagName !== 'INPUT') {
+          this.onKeyUp(e);
+        }
+      });
   }
 
   componentWillUnmount() {
@@ -62,7 +70,6 @@ class SaveKeyboard extends React.Component {
     if (e.key === "Enter") {
       $('.enter-key').removeClass('pressed');
       this.props.createSong(this.props.currentSong, this.props.userId);
-
     }
   }
 

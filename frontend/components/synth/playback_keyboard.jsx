@@ -1,8 +1,9 @@
 import React from 'react';
 import { buildPlaybackKeyboard } from './build_keyboard';
+import SongTitleFormContainer from '../song_info/song_title_form_container';
 import { NOTE_NAMES, TONES } from '../../util/tones';
 import Note from '../../util/note';
-import { hashHistory } from 'react-router';
+import { hashHistory, withRouter } from 'react-router';
 
 class PlaybackKeyboard extends React.Component {
   constructor(props) {
@@ -10,16 +11,28 @@ class PlaybackKeyboard extends React.Component {
     this.notes = NOTE_NAMES.map(note => new Note(TONES[note]));
   }
 
-  componentDidMount() {
-    $(document).on('keydown', e=> this.onKeyDown(e));
-    $(document).on('keyup', e=> this.onKeyUp(e));
+  componentWillMount() {
     const id = this.props.params.id;
     this.props.requestSong(id);
   }
 
+  componentDidMount() {
+    $(document).on('keydown', e=> {
+        if (e.target.tagName !== 'INPUT') {
+          this.onKeyDown(e);
+        }
+      });
+    $(document).on('keyup', e=> {
+        if (e.target.tagName !== 'INPUT') {
+          this.onKeyUp(e);
+        }
+      });
+  }
+
   componentDidUpdate() {
-    this.redirectIfNoSong();
     this.initializeEnterKey();
+    this.initializeShiftKey();
+    this.disableInput();
   }
 
   componentWillUnmount() {
@@ -36,12 +49,20 @@ class PlaybackKeyboard extends React.Component {
       $enter.removeClass("liked");
     }
   }
-  redirectIfNoSong() {
-    if (
-      this.props.currentSong.slices === undefined ||
-      this.props.currentSong.slices.length < 1) {
-        hashHistory.push("/home");
-        console.log("redirected");
+
+  disableInput() {
+    let $input = $('.song-title-container input');
+    if (this.props.currentSong.user !== this.props.username) {
+      $input.attr('disabled', 'disabled');
+    }
+  }
+
+  initializeShiftKey() {
+    let $shifts = $('.shift-key');
+    if (this.props.currentSong.user !== this.props.username) {
+      $shifts.addClass('disabled');
+    } else {
+      $shifts.removeClass('disabled');
     }
   }
 
@@ -57,29 +78,32 @@ class PlaybackKeyboard extends React.Component {
   }
 
   updateShiftKey(e) {
-    let other = e.originalEvent.location === 1 ? 2 : 1;
     let $holdShift = $(`#${e.originalEvent.location}.shift-key`);
+    let other = e.originalEvent.location === 1 ? 2 : 1;
     let $otherShift = $(`#${other}.shift-key`);
 
-    if (e.type === "keydown") {
-      if ($otherShift.text() === "?") {
-        $holdShift.toggleClass('pressed');
-        $holdShift.text('Deleting...');
-        $otherShift.text('Deleting...');
-        this.props.deleteSong(this.props.params.id);
-      } else {
-        $holdShift.toggleClass('pressed');
-        $holdShift.text('?');
-        $otherShift.text('Confirm Delete');
-        $otherShift.toggleClass('confirmation');
-      }
-    }
+    if (!$holdShift.hasClass('disabled')) {
 
-    if (e.type === "keyup" && $holdShift.text() !== 'Deleting...') {
-      $holdShift.toggleClass('pressed');
-      $otherShift.toggleClass('confirmation');
-      $holdShift.text('Delete');
-      $otherShift.text('Delete');
+      if (e.type === "keydown") {
+        if ($otherShift.text() === "?") {
+          $holdShift.toggleClass('pressed');
+          $holdShift.text('Deleting...');
+          $otherShift.text('Deleting...');
+          this.props.deleteSong(this.props.params.id);
+        } else {
+          $holdShift.toggleClass('pressed');
+          $holdShift.text('?');
+          $otherShift.text('Confirm Delete');
+          $otherShift.toggleClass('confirmation');
+        }
+      }
+
+      if (e.type === "keyup" && $holdShift.text() !== 'Deleting...') {
+        $holdShift.toggleClass('pressed');
+        $otherShift.toggleClass('confirmation');
+        $holdShift.text('Delete');
+        $otherShift.text('Delete');
+      }
     }
   }
 
@@ -97,7 +121,6 @@ class PlaybackKeyboard extends React.Component {
           this.props.userId,
           this.props.currentSong.id
          );
-        // $enter.toggleClass('liked');
         this.initializeEnterKey();
     }
   }
@@ -159,6 +182,7 @@ class PlaybackKeyboard extends React.Component {
     this.updateSpaceKey();
     return (
       <div className='keyboard-container'>
+        <SongTitleFormContainer/>
         {buildPlaybackKeyboard()}
       </div>
     );
@@ -166,4 +190,4 @@ class PlaybackKeyboard extends React.Component {
 
 }
 
-export default PlaybackKeyboard;
+export default withRouter(PlaybackKeyboard);

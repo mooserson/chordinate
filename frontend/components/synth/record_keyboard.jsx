@@ -11,10 +11,21 @@ class RecordKeyboard extends React.Component {
     this.notes = NOTE_NAMES.map(note => new Note(TONES[note]));
     }
 
+    componentWillMount() {
+      this.props.removeSong();
+    }
+
     componentDidMount() {
-      $(document).on('keydown', e=> this.onKeyDown(e));
-      $(document).on('keyup', e=> this.onKeyUp(e));
-      // $('input').attr('disabled', true);
+      $(document).on('keydown', e=> {
+          if (e.target.tagName !== 'INPUT') {
+            this.onKeyDown(e);
+          }
+        });
+      $(document).on('keyup', e=> {
+          if (e.target.tagName !== 'INPUT') {
+            this.onKeyUp(e);
+          }
+        });
     }
 
     componentWillUnmount() {
@@ -27,7 +38,6 @@ class RecordKeyboard extends React.Component {
         this.props.stopRecording();
         $space.text("Saving...");
         $space.toggleClass("recording");
-        hashHistory.push("/home/save");
       } else {
         this.props.startRecording();
         $space.text("Stop Recording");

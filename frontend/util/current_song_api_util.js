@@ -7,11 +7,12 @@ export const createSong = (song, success) => {
   });
 };
 
-export const fetchSong = (id, success) => {
+export const fetchSong = (id, success, error) => {
   $.ajax({
     method: 'GET',
     url: `api/songs/${id}`,
-    success
+    success,
+    error
   });
 };
 

@@ -1,15 +1,15 @@
 .keyboard-container {
-  height: 70vh;
-  width: 70vw;
+  height: 100vh;
+  width: 70vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .keyboard {
   height: 350px;
   width: 850px;
-  position: absolute;
-  bottom: 10%;
-  left: 18%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

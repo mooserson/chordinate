@@ -1,19 +1,25 @@
-.song-title-container input {
+.song-title-container {
   background-color: white;
-  border: solid 1px #053b78;
-  color: #053b78;
-  border-radius: 3px;
   font-size: 16px;
   height: 35px;
-  width: 275px;
-  padding-left: 15px;
+  width: 330px;
+  margin-bottom: 47px;
+  margin-left: 3px;
 
-  position: absolute;
-  bottom: 65%;
+  input {
+    padding-left: 15px;
+    font-size: 22px;
+    height: 56px;
+    border-radius: 3px;
+    color: #053b78;
+    border: solid 1px #053b78;
+    width: 100%;
+    margin-top: 3px;
+  }
 
-  margin-top: 76px;
-  margin-left: 152px;
-  height: 56px;
-  width: 581px;
-  font-size: 22px;
+  .song-owner {
+    color: #053b78;
+    display: block;
+    height: 18px;
+  }
 }

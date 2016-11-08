@@ -3,16 +3,11 @@ import {Provider} from 'react-redux';
 import {Router, Route, IndexRoute, hashHistory} from 'react-router';
 
 import App from './app';
-import Home from './home';
+import HomeContainer from './home_container';
+import PlaybackContainer from './playback_container';
 import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
-import RecordKeyboardContainer from './synth/record_keyboard_container';
 import DiscoverContainer from './sidebar/discover_container';
-import SaveKeyboardContainer from './synth/save_keyboard_container';
-import PlaybackKeyboardContainer from './synth/playback_keyboard_container';
-import SongTitleFormContainer from './song_info/song_title_form_container';
-
-import merge from 'lodash/merge';
 
 const Root = ({store}) => {
 
@@ -36,22 +31,21 @@ const Root = ({store}) => {
   //     }
   // };
 
-  const homeComponents = ({
-    synth: RecordKeyboardContainer,
-    sidebar: DiscoverContainer
-  });
-
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={LoginFormContainer} onEnter={_redirectIfLoggedIn}/>
-          <Route path='/signup' component={SignupFormContainer} onEnter={_redirectIfLoggedIn}/>
-          <Route path='/home' component={Home} onEnter={_redirectIfNotLoggedIn}>
-            <IndexRoute components={homeComponents} onEnter={_redirectIfNotLoggedIn} />
+          <Route
+             path='/signup'
+             component={SignupFormContainer}
+             onEnter={_redirectIfLoggedIn} />
+          <Route
+            path='/home'
+            component={HomeContainer}
+            onEnter={_redirectIfNotLoggedIn} >
+              <Route path='songs/:id' onEnter={_redirectIfNotLoggedIn} />
           </Route>
-          <Route path='/home/save' component={SaveKeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
-          <Route path='/home/songs/:id' component={PlaybackKeyboardContainer} onEnter={_redirectIfNotLoggedIn} />
         </Route>
       </Router>
     </Provider>

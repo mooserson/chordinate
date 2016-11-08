@@ -120,7 +120,7 @@ const buildPlaybackRow = (notes, row) => (
 );
 
 export const buildRecordKeyboard = () => (
-  <div className='keyboard'>
+  <div className='keyboard' tabIndex='2'>
     {buildRecordRow(NUM_ROW_KEYS, 'num')}
     {buildRecordRow(TAB_ROW_KEYS, 'tab')}
     {buildRecordRow(CAPS_ROW_KEYS, 'caps')}
@@ -130,7 +130,7 @@ export const buildRecordKeyboard = () => (
 );
 
 export const buildSaveKeyboard = () => (
-  <div className='keyboard'>
+  <div className='keyboard' tabIndex='2'>
   {buildSaveRow(NUM_ROW_KEYS, 'num')}
   {buildSaveRow(TAB_ROW_KEYS, 'tab')}
   {buildSaveRow(CAPS_ROW_KEYS, 'caps')}
@@ -140,7 +140,7 @@ export const buildSaveKeyboard = () => (
 );
 
 export const buildPlaybackKeyboard = (liked) => (
-  <div className='keyboard'>
+  <div className='keyboard' tabIndex='2'>
   {buildPlaybackRow(NUM_ROW_KEYS, 'num')}
   {buildPlaybackRow(TAB_ROW_KEYS, 'tab')}
   {buildPlaybackRow(CAPS_ROW_KEYS, 'caps')}

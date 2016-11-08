@@ -8,15 +8,13 @@ import { createLike, destroyLike } from '../../actions/songs_actions';
 import { requestSong, deleteSong } from '../../actions/current_song_actions';
 import PlaybackKeyboard from './playback_keyboard';
 
-const mapStateToProps = ({keys,
-  currentSong,
-  isPlaying,
-  session: {currentUser: {id}}}) => {
+const mapStateToProps = ({keys, currentSong, isPlaying, session}) => {
   return ({
     keys,
     currentSong,
     isPlaying,
-    userId: id
+    userId: `${session.currentUser ? session.currentUser.id : null}`,
+    username: `${session.currentUser ? session.currentUser.username : null}`
   });
 };
 

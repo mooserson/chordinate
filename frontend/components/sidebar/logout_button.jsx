@@ -11,6 +11,9 @@ class LogoutButton extends React.Component {
     this.redirectIfLoggedOut();
   }
 
+  componentWillReceiveProps() {
+  }
+
   redirectIfLoggedOut() {
     if (this.props.loggedOut) {
       hashHistory.push("/");
