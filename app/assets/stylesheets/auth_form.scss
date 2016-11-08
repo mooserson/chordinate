@@ -39,6 +39,11 @@ form{
     width: 275px;
     padding-left: 15px;
     color: white;
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 8px #9ecaed;
+    }
+
   }
 
   input[type="password"]{

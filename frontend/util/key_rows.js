@@ -65,13 +65,13 @@ export const SHIFT_ROW_KEYS = [
 ];
 
 export const FN_ROW_KEYS = [
-  'none',
-  'Control',
-  'Alt',
-  'Meta',
-  'Space',
-  'Meta',
-  'Alt'
+  // 'none',
+  // 'Control',
+  // 'Alt',
+  // 'Meta',
+  'Space'
+  // 'Meta',
+  // 'Alt'
 ];
 
 

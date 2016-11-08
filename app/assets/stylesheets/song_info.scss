@@ -15,7 +15,14 @@
     border: solid 1px #053b78;
     width: 100%;
     margin-top: 3px;
+
+    &:focus {
+      outline: none;
+      border-color: black;
+      box-shadow: 0 0 8px #9ecaed;
+    }
   }
+
 
   .song-owner {
     color: #053b78;

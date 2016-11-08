@@ -5,19 +5,26 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 10vh;
 }
 
 .keyboard {
-  height: 350px;
+  height: 315px;
   width: 850px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  border-radius: 10px;
+
+
+  &:focus {
+    outline: none;
+  }
 
   section{
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -62,7 +69,8 @@ span[class*="key"] {
 .space-key {
   color: white;
   padding-top: 20px;
-   width: 250px;
+  padding-bottom: 20px;
+   width: 400px;
   margin-left: 0;
   margin-right: 0;
   background-color: #053b78;
@@ -114,7 +122,10 @@ span[class*="key"] {
     background-color: #fa461e;
   }
 }
-.fn-row .nil-key {
-  margin-left: 3px;
-  margin-right: 3px;
+.fn-row {
+  justify-content: center;
+  .nil-key {
+    margin-left: 3px;
+    margin-right: 3px;
+  }
 }
