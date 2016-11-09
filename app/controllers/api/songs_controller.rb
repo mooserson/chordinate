@@ -28,6 +28,8 @@ class Api::SongsController < ApplicationController
       @songs = Song.order(:created_at).last(4)
     when 'popular'
       @songs = Song.popular_4
+    when 'played'
+      @songs = Song.played_4
     end
   end
 

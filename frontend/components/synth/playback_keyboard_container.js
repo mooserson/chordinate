@@ -4,8 +4,12 @@ import {
   stopPlaying
 } from '../../actions/is_playing_actions';
 import { groupUpdate } from '../../actions/keys_actions';
-import { createLike, destroyLike } from '../../actions/songs_actions';
-import { requestSong, deleteSong } from '../../actions/current_song_actions';
+import {
+  createLike,
+  destroyLike,
+  createPlay } from '../../actions/songs_actions';
+import { requestSong,
+  deleteSong } from '../../actions/current_song_actions';
 import PlaybackKeyboard from './playback_keyboard';
 
 const mapStateToProps = ({keys, currentSong, isPlaying, session}) => {
@@ -38,10 +42,10 @@ const mapDispatchToProps = dispatch  => ({
       }
     }, 1);
   },
-  requestSong: id => dispatch(requestSong(id)),
   deleteSong: id => dispatch(deleteSong(id)),
   createLike: (userId, songId) => dispatch(createLike(userId, songId)),
-  destroyLike: (userId, songId) => dispatch(destroyLike(userId, songId))
+  destroyLike: (userId, songId) => dispatch(destroyLike(userId, songId)),
+  createPlay: (userId, songId) => dispatch(createPlay(userId, songId))
 });
 
 export default connect(

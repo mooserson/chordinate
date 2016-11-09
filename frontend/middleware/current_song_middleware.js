@@ -8,6 +8,7 @@ import {
   createSong,
   fetchSong,
   destroySong } from '../util/current_song_api_util';
+import { createPlay } from '../actions/songs_actions';
 import { stopSaving } from '../actions/is_saving_actions';
 import { hashHistory } from 'react-router';
 
@@ -21,6 +22,7 @@ export default ({getState, dispatch}) => next => action => {
   };
   const receiveSongSuccessCallback = data => {
     dispatch(receiveSong(data));
+    dispatch(createPlay(data.id));
   };
   const receiveSongErrorCallback = () => {
     hashHistory.push('/home');

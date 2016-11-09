@@ -15,3 +15,11 @@ export const destroyLike = (like, success) => {
     success
   });
 };
+
+export const createPlay = (play) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/plays',
+    data: play
+  });
+};

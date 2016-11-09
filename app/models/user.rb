@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :songs
   has_many :likes
+  has_many :plays
   has_many :liked_songs, through: :likes, source: :song
 
   def password=(password)

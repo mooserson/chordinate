@@ -13,7 +13,6 @@ class PlaybackKeyboard extends React.Component {
 
   componentWillMount() {
     const id = this.props.params.id;
-    this.props.requestSong(id);
   }
 
   componentDidMount() {
