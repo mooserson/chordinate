@@ -18,8 +18,8 @@ export const NOTE_NAMES = [
   'k', //d
   'o', //d#
   'l', //e
-  'p', //e#
-  ';', //f
+  'p', //f
+  ';', //f#
 ];
 
 export const TONES = makeTones(NOTE_NAMES);

@@ -75,7 +75,7 @@ class PlaybackKeyboard extends React.Component {
     let space = $('.space-key');
     if (this.props.isPlaying) {
       space.attr('id', 'playing-back-recording');
-      space.text('Playing...');
+      space.text('Stop');
     } else {
       space.attr('id', 'play-back-recording');
       space.text('Play Back Recording');

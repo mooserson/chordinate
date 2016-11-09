@@ -2,13 +2,13 @@ import React from 'react';
 import SongListItem from './song_list_item';
 import {hashHistory} from 'react-router';
 
-class NewList extends React.Component {
+class PlayedList extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount(){
-    this.props.requestNewSongs();
+    this.props.requestPlayedSongs();
   }
 
   buildListRow(songs, num) {
@@ -28,7 +28,7 @@ class NewList extends React.Component {
 
   render () {
       return(
-        <div className="song-list" id="new">
+        <div className="song-list" id="played">
           {this.buildListRow(this.props.songs.slice(0,2), 1)}
           {this.buildListRow(this.props.songs.slice(2), 2)}
         </div>
@@ -36,4 +36,4 @@ class NewList extends React.Component {
   }
 }
 
-export default NewList ;
+export default PlayedList ;

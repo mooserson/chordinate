@@ -108,7 +108,6 @@ class RecordKeyboard extends React.Component {
     }
 
   playNotes() {
-    console.log(this.props.keys);
     NOTE_NAMES.forEach((note, idx) => {
       if (this.props.keys.indexOf(note) !== -1) {
         this.notes[idx].start();

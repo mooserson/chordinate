@@ -31,6 +31,7 @@ class Api::SongsController < ApplicationController
     when 'played'
       @songs = Song.played_4
     end
+    render :index
   end
 
   def destroy

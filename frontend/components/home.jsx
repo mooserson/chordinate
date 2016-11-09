@@ -24,7 +24,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log("home render");
     return(
       <div className="home">
         {this.synth()}

@@ -20,11 +20,15 @@ class SongTitleForm extends React.Component {
     }, this.props.updateTitle(e.target.value));
   }
 
+  preventDefault (e) {
+    e.preventDefault();
+  }
+
   render () {
     return(
       <div className="song-title-container">
         <span className="song-owner">{this.props.currentSong.user}</span>
-        <form className="song-title-form">
+        <form className="song-title-form" onSubmit={this.preventDefault}>
           <input
             value = {this.state.title}
             type="text"

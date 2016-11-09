@@ -1,22 +1,76 @@
 .discover {
-  border: solid black 1px;
+  border-left: solid black 1px;
   margin-right: 2px;
   width: 25vw;
-  h1{
-    font-size: 40px;
+
+  h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
   }
 }
 
-.logout-button {
-  color: white;
-  background-color: #053b78;
-  padding: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: 2px 2px 3px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow: 2px 2px 3px 6px #ccc; /* Firefox 3.5 - 3.6 */
-  box-shadow: 1px 1px 0px 0px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+.user-nav {
+  float: right;
+
+  .logout-button {
+    color: white;
+    background-color: #053b78;
+    padding: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 2px 2px 3px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow: 2px 2px 3px 6px #ccc; /* Firefox 3.5 - 3.6 */
+    box-shadow: 1px 1px 0px 0px #ccc; /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  }
 }
 
+
 .song-item {
-  border: solid 1px black;
+  margin-bottom: 10px;
+  width: 12vw;
+  font-size: 15px;
+
+  a {
+    padding-top: 3.5%;
+    width: calc(100% - 56px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 1px;
+  }
+
+  .fa {
+    font-size:  26px;
+    margin: 0;
+  }
+
+  .fa-heart {
+    color: gray;
+    &.liked {
+      color: #fa461e;
+    }
+  }
+
+  .fa-play-circle {
+    color: #053b78;
+    background: radial-gradient(white 10px,transparent 0px)
+    }
+
+  .song-name {
+    border-radius: 7px;
+    background-color: #edecef;
+    display: flex;
+    padding: 5px;
+    margin-top: 1px;
+    height: 26px;
+  }
+}
+
+.song-list{
+  margin-bottom: 10px;
+  display: flex;
 }

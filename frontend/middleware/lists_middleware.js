@@ -28,7 +28,7 @@ export default ({getState, dispatch}) => next => action => {
       fetchNewSongs(receiveNewSongsSuccessCallback);
       return next(action);
     case REQUEST_POPULAR_SONGS:
-      fetchPopularSongs(receiveNewSongsSuccessCallback);
+      fetchPopularSongs(receivePopularSongsSuccessCallback);
       return next(action);
     case REQUEST_PLAYED_SONGS:
       fetchPlayedSongs(receivePlayedSongsSuccessCallback);

@@ -22,31 +22,34 @@ const mapStateToProps = ({keys, currentSong, isPlaying, session}) => {
   });
 };
 
-const mapDispatchToProps = dispatch  => ({
-  onPlay: currentSong => {
-    dispatch(startPlaying());
-    const slices = currentSong.slices;
-    const playBackStartTime = Date.now();
-    let currNote = 0;
-    let timeElapsed;
-    let interval = setInterval(() => {
-      if (currNote < slices.length) {
-        timeElapsed = Date.now() - playBackStartTime;
-        if (timeElapsed >= slices[currNote].timeSlice) {
-          dispatch(groupUpdate(slices[currNote].notes));
-          currNote++;
+const mapDispatchToProps = dispatch  => {
+  return ({
+    onPlay: currentSong => {
+      dispatch(startPlaying());
+      const slices = currentSong.slices;
+      const playBackStartTime = Date.now();
+      let currNote = 0;
+      let timeElapsed;
+      let interval = setInterval(() => {
+        console.log(slices[currNote]);
+        if (currNote < slices.length) {
+          timeElapsed = Date.now() - playBackStartTime;
+          if (timeElapsed >= slices[currNote].timeSlice) {
+            dispatch(groupUpdate(slices[currNote].notes));
+            currNote++;
+          }
+        } else {
+          clearInterval(interval);
+          dispatch(stopPlaying());
         }
-      } else {
-        clearInterval(interval);
-        dispatch(stopPlaying());
-      }
-    }, 1);
-  },
-  deleteSong: id => dispatch(deleteSong(id)),
-  createLike: (userId, songId) => dispatch(createLike(userId, songId)),
-  destroyLike: (userId, songId) => dispatch(destroyLike(userId, songId)),
-  createPlay: (userId, songId) => dispatch(createPlay(userId, songId))
-});
+      }, 1);
+    },
+    deleteSong: id => dispatch(deleteSong(id)),
+    createLike: (userId, songId) => dispatch(createLike(userId, songId)),
+    destroyLike: (userId, songId) => dispatch(destroyLike(userId, songId)),
+    createPlay: (userId, songId) => dispatch(createPlay(userId, songId))
+  });
+};
 
 export default connect(
   mapStateToProps,
