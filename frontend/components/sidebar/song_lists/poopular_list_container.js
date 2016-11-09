@@ -4,7 +4,7 @@ import NewList from './new_list';
 import {requestNewSongs} from '../../../actions/lists_actions';
 
 const mapStateToProps = ({lists}) => ({
-  songs: Object.values(lists.newSongs)
+  songs: Object.values(lists.popularSongs)
 });
 
 const mapDispatchToProps = dispatch => ({

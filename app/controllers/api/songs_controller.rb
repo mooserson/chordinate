@@ -22,6 +22,15 @@ class Api::SongsController < ApplicationController
     end
   end
 
+  def index
+    case params[:type]
+    when 'new'
+      @songs = Song.order(:created_at).last(4)
+    when 'popular'
+      @songs = Song.popular_4
+    end
+  end
+
   def destroy
     @song = Song.find(params[:id])
     if @song

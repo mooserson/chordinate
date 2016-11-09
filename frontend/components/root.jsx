@@ -1,10 +1,10 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import { Provider } from 'react-redux';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { requestSong } from '../actions/current_song_actions';
 
 import App from './app';
 import HomeContainer from './home_container';
-import PlaybackContainer from './playback_container';
 import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
 import DiscoverContainer from './sidebar/discover_container';
@@ -21,6 +21,10 @@ const Root = ({store}) => {
     if (!store.getState().session.currentUser) {
       replace("/");
     }
+  };
+
+  const _requestNextSong = (nextState) => {
+    store.dispatch(requestSong(nextState.params.id));
   };
 
   // const _redirectIfNoSong = (nextState, replace) => {
@@ -44,7 +48,7 @@ const Root = ({store}) => {
             path='/home'
             component={HomeContainer}
             onEnter={_redirectIfNotLoggedIn} >
-              <Route path='songs/:id' onEnter={_redirectIfNotLoggedIn} />
+              <Route path='songs/:id' onEnter={_requestNextSong} />
           </Route>
         </Route>
       </Router>

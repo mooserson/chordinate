@@ -1,7 +1,7 @@
 const makeTones = keys => {
   let tones = {};
   keys.forEach((key, idx) => {
-    tones[key] = 349.23 * Math.pow(2, (idx/12));
+    tones[key] = 329.63 * Math.pow(2, (idx/12));
   });
   return tones;
 };

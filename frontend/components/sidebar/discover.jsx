@@ -1,7 +1,7 @@
 import React from 'react';
 import LogoutButtonContainer from './logout_button_container';
 import { hashHistory } from 'react-router';
-// import SongItem from './song_item';
+import NewListContainer from './song_lists/new_list_container';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -12,7 +12,13 @@ class Discover extends React.Component {
     return (
     <div className="discover">
       <h1>Discover</h1>
-      <LogoutButtonContainer />
+      <div className="user-nav">
+        <LogoutButtonContainer />
+      </div>
+      <div className='lists-container'>
+        <h3>New Songs</h3>
+        <NewListContainer />
+      </div>
     </div>);
   }
 }

@@ -9,6 +9,7 @@ class Home extends React.Component {
   constructor (props) {
     super(props);
   }
+
   synth () {
     switch (this.props.location.pathname) {
       case "/home":
@@ -23,6 +24,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log("home render");
     return(
       <div className="home">
         {this.synth()}

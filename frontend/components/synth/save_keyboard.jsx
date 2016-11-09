@@ -13,14 +13,15 @@ class SaveKeyboard extends React.Component {
 
   componentDidMount() {
     $(document).on('keydown', e=> {
-        if (e.target.tagName !== 'INPUT') {
-          this.onKeyDown(e);
-        }
-      });
-    $(document).on('keyup', e=> {
-      this.onKeyUp(e);
+      if (e.target.tagName !== 'INPUT') {
+        this.onKeyDown(e);
       }
-    );
+    });
+    $(document).on('keyup', e=> {
+      if (e.target.tagName !== 'INPUT') {
+        this.onKeyUp(e);
+      }
+    });
     $(window).on('blur', () => {
       this.props.keys.forEach(key => {
         this.onKeyUp({'key': key});

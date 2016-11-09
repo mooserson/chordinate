@@ -2,6 +2,7 @@ export const CREATE_LIKE = "CREATE_LIKE";
 export const DESTROY_LIKE = "DESTROY_LIKE";
 export const ADD_PLAY = "ADD_PLAY";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
+export const REQUEST_NEW_SONGS = "REQUEST_NEW_SONGS";
 
 export const createLike = (userId, songId) => ({
   type: CREATE_LIKE,
