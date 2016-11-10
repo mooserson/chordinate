@@ -35,6 +35,7 @@ class SaveKeyboard extends React.Component {
 
   componentWillUnmount() {
     $(document).off();
+    this.props.stopPlayback();
     this.stopNotes();
   }
 
@@ -42,7 +43,7 @@ class SaveKeyboard extends React.Component {
     let space = $('.space-key');
     if (this.props.isPlaying) {
       space.attr('id', 'playing-back-recording');
-      space.text('Playing...');
+      space.text('Stop');
     } else {
       space.attr('id', 'play-back-recording');
       space.text('Play Back Recording');
@@ -69,6 +70,9 @@ class SaveKeyboard extends React.Component {
       space.removeClass('pressed');
       if (!this.props.isPlaying) {
         this.props.onPlay(this.props.currentSong);
+      } else {
+        this.props.stopPlayback();
+        this.stopNotes();
       }
     }
 

@@ -24,3 +24,12 @@ export const fetchPlayedSongs = (success) => {
     success,
   });
 };
+
+export const fetchSearchSongs = (query, success) => {
+  $.ajax({
+    method: 'get',
+    url: 'api/songs',
+    data: {type: 'query', query: query},
+    success,
+  });
+};

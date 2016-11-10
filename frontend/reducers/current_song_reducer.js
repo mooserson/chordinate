@@ -13,7 +13,14 @@ import {
 
 import merge from 'lodash/merge';
 
-const CurrentSongReducer = (state = {title: ""}, action) => {
+const _defaultState = {
+  user: "",
+  title: "",
+  plays: "",
+  likes: ""
+};
+
+const CurrentSongReducer = (state = _defaultState, action) => {
   Object.freeze(state);
   let newState;
   switch (action.type) {
@@ -49,7 +56,13 @@ const CurrentSongReducer = (state = {title: ""}, action) => {
     case REMOVE_SONG:
       return {};
     case RECEIVE_LIKE:
-      newState = merge({}, state, {liked: action.liked});
+      let newCount = action.liked ? 1 : -1;
+      newState = merge(
+        {},
+        state,
+        {liked: action.liked},
+        {likes: state.likes + newCount}
+      );
       return newState;
     default:
       return state;

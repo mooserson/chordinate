@@ -21,6 +21,7 @@ time, mark, audio, video, input {
   box-sizing: inherit;
   text-decoration: none;
 	background: transparent;
+	color: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

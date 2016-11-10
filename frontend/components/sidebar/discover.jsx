@@ -4,6 +4,7 @@ import { hashHistory } from 'react-router';
 import NewListContainer from './song_lists/new_list_container';
 import PopularListContainer from  './song_lists/popular_list_container';
 import PlayedListContainer from './song_lists/played_list_container';
+import {UserButton} from './user_button';
 
 class Discover extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class Discover extends React.Component {
     return (
     <div className="discover">
       <div className="user-nav">
+        <UserButton />
         <LogoutButtonContainer />
       </div>
       <div className='lists-container'>

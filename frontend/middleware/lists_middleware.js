@@ -4,12 +4,15 @@ receiveNewSongs,
 REQUEST_POPULAR_SONGS,
 receivePopularSongs,
 REQUEST_PLAYED_SONGS,
-receivePlayedSongs
+receivePlayedSongs,
+REQUEST_SEARCH_SONGS,
+receiveSearchSongs
 } from '../actions/lists_actions';
 
 import { fetchNewSongs,
   fetchPopularSongs,
-  fetchPlayedSongs } from '../util/lists_api_util';
+  fetchPlayedSongs,
+  fetchSearchSongs } from '../util/lists_api_util';
 
 export default ({getState, dispatch}) => next => action => {
 
@@ -33,6 +36,8 @@ export default ({getState, dispatch}) => next => action => {
     case REQUEST_PLAYED_SONGS:
       fetchPlayedSongs(receivePlayedSongsSuccessCallback);
       return next(action);
+    case REQUEST_SEARCH_SONGS:
+      fetchSearchSongs(action.query)
     default:
       return next(action);
   }

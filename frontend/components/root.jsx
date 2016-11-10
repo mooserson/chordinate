@@ -49,6 +49,7 @@ const Root = ({store}) => {
             component={HomeContainer}
             onEnter={_redirectIfNotLoggedIn} >
               <Route path='songs/:id' onEnter={_requestNextSong} />
+
           </Route>
         </Route>
       </Router>

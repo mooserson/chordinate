@@ -9,7 +9,8 @@ import {
 const _defaultState = {
   newSongs: {},
   popularSongs: {},
-  playedSongs: {}
+  playedSongs: {},
+  searchSongResults: {}
 };
 
 const ListsReducer = (state = _defaultState, action) => {

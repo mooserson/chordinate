@@ -41,6 +41,7 @@ class PlaybackKeyboard extends React.Component {
 
   componentWillUnmount() {
     $(document).off();
+    this.props.stopPlayback();
     this.stopNotes();
   }
 
@@ -155,6 +156,9 @@ class PlaybackKeyboard extends React.Component {
       space.toggleClass('pressed');
       if (!this.props.isPlaying) {
         this.props.onPlay(this.props.currentSong);
+      } else {
+        this.props.stopPlayback();
+        this.stopNotes();
       }
     }
 

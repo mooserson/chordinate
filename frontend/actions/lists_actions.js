@@ -4,6 +4,9 @@ export const REQUEST_POPULAR_SONGS = "REQUEST_POPULAR_SONGS";
 export const RECEIVE_POPULAR_SONGS = "RECEIVE_POPULAR_SONGS";
 export const REQUEST_PLAYED_SONGS = "REQUEST_PLAYED_SONGS";
 export const RECEIVE_PLAYED_SONGS = "RECEIVE_PLAYED_SONGS";
+export const REQUEST_SEARCH_SONGS = "REQUEST_SEARCH_SONGS";
+export const RECEIVE_SEARCH_SONGS = "RECEIVE_SEARCH_SONGS";
+
 
 export const requestNewSongs = () => ({
   type: REQUEST_NEW_SONGS
@@ -29,5 +32,14 @@ export const requestPlayedSongs = () => ({
 
 export const receivePlayedSongs = songs => ({
   type: RECEIVE_PLAYED_SONGS,
+  songs
+});
+
+export const requestSearchSongs = () => ({
+  type: REQUEST_SEARCH_SONGS
+});
+
+export const receiveSearchSongs = songs => ({
+  type: RECEIVE_SEARCH_SONGS,
   songs
 });

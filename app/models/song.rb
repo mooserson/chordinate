@@ -4,6 +4,7 @@ class Song < ApplicationRecord
   belongs_to :user
   has_many :slices
   has_many :likes
+  has_many :likers, through: :likes, source: :user
   has_many :plays
   scope :popular_4, -> {
     select('songs.*, COUNT(likes.song_id) AS likes_count')

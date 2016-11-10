@@ -23,6 +23,7 @@ const mapStateToProps = ({keys, currentSong, isPlaying, session}) => {
 };
 
 const mapDispatchToProps = dispatch  => {
+  var interval;
   return ({
     onPlay: currentSong => {
       dispatch(startPlaying());
@@ -30,8 +31,7 @@ const mapDispatchToProps = dispatch  => {
       const playBackStartTime = Date.now();
       let currNote = 0;
       let timeElapsed;
-      let interval = setInterval(() => {
-        console.log(slices[currNote]);
+        interval = setInterval(() => {
         if (currNote < slices.length) {
           timeElapsed = Date.now() - playBackStartTime;
           if (timeElapsed >= slices[currNote].timeSlice) {
@@ -47,7 +47,12 @@ const mapDispatchToProps = dispatch  => {
     deleteSong: id => dispatch(deleteSong(id)),
     createLike: (userId, songId) => dispatch(createLike(userId, songId)),
     destroyLike: (userId, songId) => dispatch(destroyLike(userId, songId)),
-    createPlay: (userId, songId) => dispatch(createPlay(userId, songId))
+    createPlay: (userId, songId) => dispatch(createPlay(userId, songId)),
+    stopPlayback: () => {
+      clearInterval(interval);
+      dispatch(stopPlaying());
+      dispatch(groupUpdate(""));
+    }
   });
 };
 

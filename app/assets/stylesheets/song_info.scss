@@ -4,7 +4,7 @@
   height: 35px;
   width: 330px;
   margin-bottom: 47px;
-  margin-left: 3px;
+  margin-left: 5.5%;
 
   input {
     padding-left: 15px;
@@ -15,6 +15,7 @@
     border: solid 1px #053b78;
     width: 100%;
     margin-top: 3px;
+    font-weight: 600;
 
     &:focus {
       outline: none;
@@ -24,9 +25,26 @@
   }
 
 
+}
+
+.song-info{
+  height: 16px;
   .song-owner {
     color: #053b78;
-    display: block;
-    height: 18px;
+    margin-left: 0;
+    float: left;
+    padding-right: 5px;
+  }
+  .song-info-icons-container{
+    margin-right: 0;
+    .fa {
+      color: #053b78;
+      padding-right: 6px;
+    }
+    span {
+      font-weight: 300;
+      padding-right: 5px;
+      color: #053b78;
+    }
   }
 }

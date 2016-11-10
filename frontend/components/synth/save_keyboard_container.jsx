@@ -22,29 +22,37 @@ const mapStateToProps = ({
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  onPlay: currentSong => {
-    dispatch(startPlaying());
-    const slices = currentSong.slices;
-    const playBackStartTime = Date.now();
-    let currNote = 0;
-    let timeElapsed;
-    let interval = setInterval(() => {
-      if (currNote < slices.length) {
-        timeElapsed = Date.now() - playBackStartTime;
-        if (timeElapsed >= slices[currNote].timeSlice) {
-          dispatch(groupUpdate(slices[currNote].notes));
-          currNote++;
+const mapDispatchToProps = dispatch => {
+  var interval;
+  return ({
+    onPlay: currentSong => {
+      dispatch(startPlaying());
+      const slices = currentSong.slices;
+      const playBackStartTime = Date.now();
+      let currNote = 0;
+      let timeElapsed;
+        interval = setInterval(() => {
+        if (currNote < slices.length) {
+          timeElapsed = Date.now() - playBackStartTime;
+          if (timeElapsed >= slices[currNote].timeSlice) {
+            dispatch(groupUpdate(slices[currNote].notes));
+            currNote++;
+          }
+        } else {
+          clearInterval(interval);
+          dispatch(stopPlaying());
         }
-      } else {
-        clearInterval(interval);
-        dispatch(stopPlaying());
-      }
-    }, 1);
-  },
-  createSong: (song, userId) => dispatch(createSong(song, userId)),
-  stopSaving: () => dispatch(stopSaving())
-});
+      }, 1);
+    },
+    createSong: (song, userId) => dispatch(createSong(song, userId)),
+    stopSaving: () => dispatch(stopSaving()),
+    stopPlayback: () => {
+      clearInterval(interval);
+      dispatch(stopPlaying());
+      dispatch(groupUpdate(""));
+    }
+  });
+};
 
 export default connect(
   mapStateToProps,
