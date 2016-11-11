@@ -29,7 +29,22 @@ export const fetchSearchSongs = (query, success) => {
   $.ajax({
     method: 'get',
     url: 'api/songs',
-    data: {type: 'query', query: query},
+    data: {
+      type: 'query',
+      query: query
+    },
+    success,
+  });
+};
+
+export const fetchUserSongs = (user, success) => {
+  $.ajax({
+    method: 'get',
+    url: 'api/songs',
+    data: {
+      type: 'user',
+      user: user
+    },
     success,
   });
 };

@@ -54,6 +54,7 @@ class SignupForm extends React.Component {
         <form className="auth-form" onSubmit={this.handleSubmit}>
           <h2>Create New User</h2>
           <br/>
+          <div className="input-area">
           <label htmlFor="username">Username</label>
             {this.renderErrors('username')}
             <br/>
@@ -76,6 +77,7 @@ class SignupForm extends React.Component {
             <button className="submit-button">Create</button>
             <button className="cancel-button" onClick={this.cancel}>Cancel</button>
           </span>
+        </div>
         </form>
     </div>
     );

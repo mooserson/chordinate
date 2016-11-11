@@ -194,9 +194,11 @@ class PlaybackKeyboard extends React.Component {
     this.playNotes();
     this.updateSpaceKey();
     return (
-      <div className='keyboard-container'>
-        <SongTitleFormContainer/>
-        {buildPlaybackKeyboard()}
+      <div className="keyboard-pane-container">
+        <div className="keyboard-pane">
+          <SongTitleFormContainer/>
+          {buildPlaybackKeyboard()}
+        </div>
       </div>
     );
   }

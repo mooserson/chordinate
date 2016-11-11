@@ -1,6 +1,5 @@
 import React from 'react';
-import SongListItem from './song_list_item';
-import {hashHistory} from 'react-router';
+import SongListItemContainer from './song_list_item_container';
 
 class NewList extends React.Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class NewList extends React.Component {
     return (
       <div className="song-row" id={num}>
       {songs.map(song => (
-        <SongListItem
+        <SongListItemContainer
           id={song.id}
           user={song.user}
           title={song.title}

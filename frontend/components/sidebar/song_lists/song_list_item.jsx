@@ -1,9 +1,10 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router';
+import {Link} from 'react-router';
 
 class SongListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.goToUser = this.goToUser.bind(this);
   }
 
   likeHeart() {
@@ -18,12 +19,23 @@ class SongListItem extends React.Component {
     }
   }
 
+  goToUser() {
+    this.props.requestUserSongs(this.props.user);
+  }
+
   render() {
     return (
       <div className="song-item">
-        <div className="user">{this.props.user}</div>
+        <div className="user"
+          onClick={this.goToUser}>
+          {this.props.user}
+        </div>
         <div className="song-name">
-          <i className="fa fa-play-circle" aria-hidden="true"></i>
+          <Link
+            to={`home/songs/${this.props.id}`}
+            className="play-circle-link">
+            <i className="fa fa-play-circle" aria-hidden="true"></i>
+          </Link>
           <Link
             to={`home/songs/${this.props.id}`}
             className="title">
@@ -36,4 +48,4 @@ class SongListItem extends React.Component {
   }
 }
 
-export default withRouter(SongListItem);
+export default SongListItem;

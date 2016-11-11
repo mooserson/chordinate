@@ -30,6 +30,11 @@ class Api::SongsController < ApplicationController
       @songs = Song.popular_4
     when 'played'
       @songs = Song.played_4
+    when 'query'
+      @songs = Song.where("title ILIKE ?", "%#{params[:query]}%").order(:title)
+    when 'user'
+      user_id = User.find_by_username(params[:user]).id
+      @songs = Song.where("user_id = ?", "#{user_id}").order(:title)
     end
     render :index
   end

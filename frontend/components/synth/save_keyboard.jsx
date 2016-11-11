@@ -104,10 +104,11 @@ class SaveKeyboard extends React.Component {
   render() {
     this.updateSpaceKey();
     return (
-
-      <div className='keyboard-container'>
-        <SongTitleFormContainer />
-        {buildSaveKeyboard()}
+      <div className="keyboard-pane-container">
+        <div className='keyboard-pane'>
+          <SongTitleFormContainer />
+          {buildSaveKeyboard()}
+        </div>
       </div>
     );
   }

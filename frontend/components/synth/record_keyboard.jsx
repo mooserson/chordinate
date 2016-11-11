@@ -123,9 +123,11 @@ class RecordKeyboard extends React.Component {
 
   render() {
     return (
-        <div className="keyboard-container">
-          <SongTitleFormContainer/>
-          {buildRecordKeyboard()}
+        <div className="keyboard-pane-container">
+          <div className="keyboard-pane">
+            <SongTitleFormContainer/>
+            {buildRecordKeyboard()}
+          </div>
         </div>
     );
   }

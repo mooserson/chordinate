@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Home from './home';
 
 const mapStateToProps = state => ({
-  isSaving: state.isSaving
+  isSaving: Boolean(state.isSaving)
 });
 
 export default connect(

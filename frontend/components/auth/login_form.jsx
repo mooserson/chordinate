@@ -67,6 +67,7 @@ class LoginForm extends React.Component {
         <form className="login-form" onSubmit={this.handleSubmit}>
           <h2>Make Tunes Together</h2>
           <br/>
+          <div className="input-area">
           <label htmlFor="username">Username</label>
             {this.renderErrors()}
             <br/>
@@ -89,6 +90,7 @@ class LoginForm extends React.Component {
               <button className="signup-button" onClick={this.signUp}>Create Account</button>
               <button className="guest-button" onClick={this.handleGuest}>Guest Login</button>
             </span>
+          </div>
         </form>
     </div>
     );

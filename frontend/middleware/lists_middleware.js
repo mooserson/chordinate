@@ -6,13 +6,16 @@ receivePopularSongs,
 REQUEST_PLAYED_SONGS,
 receivePlayedSongs,
 REQUEST_SEARCH_SONGS,
-receiveSearchSongs
-} from '../actions/lists_actions';
+receiveSearchSongs,
+REQUEST_USER_SONGS,
+receiveUserSongs } from '../actions/lists_actions';
 
-import { fetchNewSongs,
+import {
+  fetchNewSongs,
   fetchPopularSongs,
   fetchPlayedSongs,
-  fetchSearchSongs } from '../util/lists_api_util';
+  fetchSearchSongs,
+  fetchUserSongs } from '../util/lists_api_util';
 
 export default ({getState, dispatch}) => next => action => {
 
@@ -24,6 +27,13 @@ export default ({getState, dispatch}) => next => action => {
   };
   const receivePlayedSongsSuccessCallback = data => {
     dispatch(receivePlayedSongs(data));
+  };
+  const receiveSearchSongsSuccessCallback = data => {
+    dispatch(receiveSearchSongs(data));
+    $('.search-clear .fa').removeClass('fa-circle-o-notch').addClass('fa-times');
+  };
+  const receiveUserSongsSuccessCallback = data => {
+    dispatch(receiveUserSongs(data));
   };
 
   switch (action.type) {
@@ -37,7 +47,11 @@ export default ({getState, dispatch}) => next => action => {
       fetchPlayedSongs(receivePlayedSongsSuccessCallback);
       return next(action);
     case REQUEST_SEARCH_SONGS:
-      fetchSearchSongs(action.query)
+      fetchSearchSongs(action.query, receiveSearchSongsSuccessCallback);
+      return next(action);
+    case REQUEST_USER_SONGS:
+      fetchUserSongs(action.user, receiveUserSongsSuccessCallback);
+      return next(action);
     default:
       return next(action);
   }

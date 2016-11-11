@@ -1,10 +1,20 @@
 import React from 'react';
-import {Link} from 'react-router';
+import LogoutButtonContainer from './logout_button_container';
 
-export const UserButton = () => {
+export default (props) => {
+
+  const goToUser = () => {
+    props.requestUserSongs(props.username);
+  };
+
   return (
-    <div className="user-button-container">
-      <i className="fa fa-user-circle" aria-hidden="true"></i>
+    <div className='user-nav-buttons'>
+      <div className="user-button-container" onClick={goToUser}>
+        <i
+          className="fa fa-user-circle"
+          aria-hidden="true"/>
+      </div>
+      <LogoutButtonContainer />
     </div>
   );
 };

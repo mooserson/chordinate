@@ -1,8 +1,15 @@
-.keyboard-container {
-  height: 100vh;
+.keyboard-pane-container {
   width: 100%;
-  padding-top: 20vh;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.keyboard-pane {
+  display: flex;
+  flex-direction: column;
+  width:850px;
+}
 
 .keyboard {
   height: 315px;
