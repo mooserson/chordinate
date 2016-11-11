@@ -6,6 +6,9 @@ import isPlayingReducer from './is_playing_reducer';
 import CurrentSongReducer from './current_song_reducer';
 import isSavingReducer from './is_saving_reducer';
 import ListsReducer from './lists_reducer';
+import LoadingDiscoverReducer from './loading_discover_reducer';
+import LoadingKeyboardReducer from './loading_keyboard_reducer';
+
 
 const RootReducer = combineReducers({
   session: SessionReducer,
@@ -14,7 +17,9 @@ const RootReducer = combineReducers({
   isSaving: isSavingReducer,
   keys: KeysReducer,
   currentSong: CurrentSongReducer,
-  lists: ListsReducer
+  lists: ListsReducer,
+  loadingKeyboard: LoadingKeyboardReducer,
+  loadingDiscover: LoadingDiscoverReducer
 });
 
 export default RootReducer;

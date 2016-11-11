@@ -8,7 +8,7 @@ class UserList extends React.Component {
 
   buildListRow(songs, num) {
     return (
-      <div className="song-row" key={num}>
+      <div className="song-row search" key={num}>
       {songs.map(song => (
         <SongListItemContainer
           id={song.id}

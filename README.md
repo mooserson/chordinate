@@ -24,7 +24,7 @@ BIG THANKS: Chordinate was visually designed by Rachel Needle -- a truly brillia
 [schema]: docs/schema.md
 
 ## Keyboard
-![Keyboard](/docs/img/keyboard.jpg)
+[![Keyboard](/docs/img/keyboard.jpg)](http://www.chordinate-app.com)
 The app is built around the keyboard which determines the URL depending on if it is in recording or playback state.
 
 
@@ -53,7 +53,7 @@ slices:
 ]
 ```
 ## Sharing
-![Sharing](/docs/img/social.jpg)
+[![Sharing](/docs/img/social.jpg)](http://www.chordinate-app.com)
 #### Songs go to a feed that sorts by age, likes and plays. Songs are searchable and clicking a username will show all the user's songs.
 
 

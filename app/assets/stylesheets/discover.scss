@@ -7,36 +7,36 @@
   color:#053b78;
   max-height: 100%;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
 
   h2 {
-    font-size: 35px;
-    margin-bottom: 20px;
+    font-size: 27px;
+    margin-top: 1vh;
     margin-left: 5px;
     font-weight: 100;
-    padding-top: 6px;
-    cursor: default;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
-    user-select: none;          /* Likely future */
+    padding-top: 8px;
   }
 }
 
 .user-nav {
   display: flex;
-  margin: 0 0 2% 0;
+  margin: 0;
   text-align: center;
   padding-left: 2%;
+  height: 7vh;
 
   .search-form {
-    margin: 12% 0 0 0;
     width: 70%;
-    border-bottom: solid #fa461e 1px;
-
+    padding-top: 2.5vh;
+    margin: 0;
+    border-bottom: solid 1px #fa461e;
+    display: flex;
 
     i{
       font-size: 22px;
       margin: 0;
+
       &.fa-circle-o-notch{
         -webkit-animation: fa-spin 2s infinite linear;
         animation: fa-spin 2s infinite linear;
@@ -50,8 +50,7 @@
     input {
       font-size: 22px;
       width: 89%;
-      float: left;
-
+      margin: 0;
       &:focus {
         outline: none;
       }
@@ -79,72 +78,111 @@
 }
 
 
-.song-item {
-  margin-bottom: 10px;
-  width: 12vw;
-  font-size: 15px;
 
-  .title{
-    padding-top: 3.5%;
-    width: calc(100% - 56px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.lists-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 5%;
+  margin-left: .8%;
 
-  .user {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-bottom: 1px;
-    margin-left: 5px;
-    cursor: pointer;
-  }
+  .song-list {
+    margin: 0 5px 2px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    &#search-song{
+      display: block;
+      padding-top: 2%;
+    }
+    &#user-songs{
+      padding-top: 1%;
+      padding-right: 4.5%;
+    }
 
-  .fa {
-    font-size:  26px;
-    margin: 0;
-  }
+    .song-row {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      height: 100%;
+      &.search {
+        justify-content: flex-start;
+        height: initial;
+        .song-item{
+          margin-bottom: 2%;
+        }
+      }
 
-  .fa-heart {
-    color: gray;
-    &.liked {
+      .song-item {
+        width: 23vw;
+        font-size: 15px;
+        margin-top: 1px;
+
+        .title{
+          padding-top: 1%;
+          width: calc(100% - 56px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 14px;
+        }
+
+        .user {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding-bottom: 1px;
+          margin-left: 5px;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 14px;
+        }
+
+        .fa {
+          font-size:  21px;
+          margin: 0;
+        }
+
+        .fa-heart {
+          color: gray;
+          &.liked {
+            color: #fa461e;
+          }
+        }
+
+        .fa-play-circle {
+          color: #053b78;
+          background: radial-gradient(white 5px,transparent 0px)
+        }
+
+        .song-name {
+          border-radius: 7px;
+          background-color: #edecef;
+          display: flex;
+          height: 19px;
+          margin: -2px 0px 0px 0px;
+          padding: 2px;
+        }
+      }
+    }
+
+    &.empty {
       color: #fa461e;
     }
+    &#search-song, &#user-songs {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
   }
 
-  .fa-play-circle {
-    color: #053b78;
-    background: radial-gradient(white 10px,transparent 0px)
+  .song-list-single {
+    .song-item{
+      width: 97%;
     }
 
-  .song-name {
-    border-radius: 7px;
-    background-color: #edecef;
-    display: flex;
-    padding: 5px;
-    height: 26px;
-    margin: 1px 4px 4px 4px
-  }
-}
-
-.song-list {
-  margin: 0 5px 10px 5px;
-  display: flex;
-  &.empty {
-    color: #fa461e;
-  }
-  &#search-song, &#user-songs {
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-}
-
-.song-list-single {
-  .song-item{
-    width: 97%;
-  }
-
-  .title  {
-    padding-top: 1.5%;
+    .title  {
+      padding-top: 1.5%;
+    }
   }
 }
