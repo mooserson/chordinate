@@ -1,25 +1,14 @@
-# Chordinate README
+# Chordinate
 
+[Chordinate live][heroku]
 
-[Heroku link][heroku]
-[Trello link][trello]
+[heroku]: http://www.chordinate-app.com
 
-[trello]: https://trello.com/b/ulXHl7GZQ/chordinate
-[heroku]: http://chordinate-app.herokuapp.com
+Chordinate is a web-application that offers a light-weight instrument to encourage musical creativity and social play. The project was a chance to grow as a web-developer working under deadline.  
 
-## Minimum Viable Product
+[![Chordinate](/docs/img/maketunes.jpg)](http://www.chordinate-app.com)
 
-Chordinate is a web-application that offers a light-weight instrument to encourage musical creativity and social play.
-It is built on React/Redux front-end with Ruby on Rails back-end. The app will demonstrate professional styling, smooth, bug-free navigation and demonstrative seed data within following features (minimum):
-
-- [ ] Production README
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
-- [ ] CRUD Tunes via Synth
-- [ ] Share tunes via feed
-- [ ] Discoverable tunes
-- [ ] User Pages
-
+BIG THANKS: Chordinate was visually designed by Rachel Needle -- a truly brilliant artist and generous friend (Product Designer @ Apple). Thank you and thanks to those who took time to check out the app.
 
 ## Design Docs
 * [View Wireframes][wireframes]
@@ -34,21 +23,47 @@ It is built on React/Redux front-end with Ruby on Rails back-end. The app will d
 [api-endpoints]: docs/api-endpoints.md
 [schema]: docs/schema.md
 
-## Implementation Timeline
+## Keyboard
+![Keyboard](/docs/img/keyboard.jpg)
+The app is built around the keyboard which determines the URL depending on if it is in recording or playback state.
 
-###Phase 1: Backend setup and Front End User Authentication (2 days w8d2-3)
-**Objective:** Front-end authentication with functioning Rails back-end. Hosted on Heroku.
-###Phase 2: Synth, tunes and API  (3 days w8d4-w9)
-**Objective:** Synth works with API to CRUD tunes.
-###Phase 3: Tunes sharing and feeds (2 days w9d1-d2)
-**Objective:** Tunes can be passed from private to public feed. Discover feed loads tunes upon login. Tunes can be liked by users.
-###Phase 4: Discover tunes (2 days w9d3-d4)
-**Objective:** Tune index page that allows for browsing public feed, songs can be searched by name/tags.
-###Phase 5: User pages (1 days w9d5)
-**Objective:** Users have profile pages displaying user-info, tunes.
 
-### Bonus Features (TBD)
-- [ ] Synth instrument options
-- [ ] Custom key-mapping
-- [ ] Changelogs for Notes
-- [ ] Multiple sessions
+## Songs
+
+#### Notes are built by mapping a list of keyboard keys through a function that generates frequencies to create AudioContext nodes.
+
+```javascript
+const makeTones = keys => {
+  let tones = {};
+  keys.forEach((key, idx) => {
+    tones[key] = 329.63 * Math.pow(2, (idx/12));
+  });
+  return tones;
+};
+```
+#### Songs are then saved in with note-keys in an array of slices which can be played back by storing the difference from the time the song started and the time the note or chord was played.
+
+```javascript
+slices:
+[
+  { notes: [ 'a' ], timeSlice: 1250191 },
+  { notes: [], timeSlice: 1255000 },
+  { notes: [ 'a', 's' ], timeSlice: 1265180 }
+  { notes: [], timeSlice: 1279511 }
+]
+```
+## Sharing
+![Sharing](/docs/img/social.jpg)
+#### Songs go to a feed that sorts by age, likes and plays. Songs are searchable and clicking a username will show all the user's songs.
+
+
+The features for a minimum-viable-product were:
+
+- [ ] New account creation, login, and guest/demo login
+- [ ] CRUD Tunes via Synth
+- [ ] Share tunes via feed
+- [ ] Discoverable tunes
+- [ ] User Pages
+
+## Future features
+I hope to add more to user interaction with friends and follows. I also hope to fill out the keyboard with scales and instruments. Layering songs and also live jam-sessions--plenty of room for growth.
