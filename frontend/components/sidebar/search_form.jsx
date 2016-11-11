@@ -33,16 +33,6 @@ class SearchForm extends React.Component {
     this.props.requestSearchSongs(this.state.query);
   }
 
-  // searchClearButton () {
-  //   if (this.state.query) {
-  //     return(
-  //       <span className="search-clear" onClick={this.clearSearch.bind(this)}>
-  //         <i className="fa fa-times" aria-hidden="true" />
-  //       </span>
-  //     );
-  //   }
-  // }
-
   clearSearch() {
     this.setState({
       query: ""

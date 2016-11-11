@@ -27,14 +27,6 @@ const Root = ({store}) => {
     store.dispatch(requestSong(nextState.params.id));
   };
 
-  // const _redirectIfNoSong = (nextState, replace) => {
-  //   if (
-  //     store.getState().currentSong.slices === undefined ||
-  //     store.getState().currentSong.slices.length < 1) {
-  //       replace("/home");
-  //     }
-  // };
-
   return (
     <Provider store={store}>
       <Router history={hashHistory}>
