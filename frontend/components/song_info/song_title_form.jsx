@@ -41,7 +41,7 @@ class SongTitleForm extends React.Component {
     return(
       <div className="song-title-container">
         <div className="song-info">
-          <span className="song-owner" value={this.props.user} />
+          <span className="song-owner">{this.props.user}</span>
           {this.buildInfoIcons()}
         </div>
         <form className="song-title-form" onSubmit={this.preventDefault}>

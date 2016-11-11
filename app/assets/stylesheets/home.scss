@@ -1,4 +1,13 @@
 .home {
   display: flex;
   justify-content: space-between;
+
+  .github-link{
+    position: absolute;
+    top: 97vh;
+    right: 98.5vw;
+    i{
+      font-size: 20px;
+    }
+  }
 }

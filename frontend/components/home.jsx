@@ -4,7 +4,6 @@ import RecordKeyboardContainer from './synth/record_keyboard_container';
 import PlaybackKeyboardContainer from './synth/playback_keyboard_container';
 import DiscoverContainer from './sidebar/discover_container';
 
-
 class Home extends React.Component {
   constructor (props) {
     super(props);
@@ -28,6 +27,11 @@ class Home extends React.Component {
       <div className="home">
         {this.synth()}
         <DiscoverContainer />
+        <div className="github-link">
+          <a href ="https://github.com/mooserson/chordinate">
+            <i className="fa fa-github" aria-hidden="true"/>
+          </a>
+        </div>
       </div>
     );
   }
