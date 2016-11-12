@@ -96,6 +96,7 @@ class PlaybackKeyboard extends React.Component {
           $holdShift.text('Deleting...');
           $otherShift.text('Deleting...');
           this.props.deleteSong(this.props.params.id);
+          hashHistory.push("/");
         } else {
           $holdShift.toggleClass('pressed');
           $holdShift.text('?');
