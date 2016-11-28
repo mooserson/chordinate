@@ -41,7 +41,7 @@ class SearchList extends React.Component {
       );
     } else if (this.props.songs.length === 1) {
       return (
-        <div className="song-list-single" id="search-song" key={2}>
+        <div className="song-list" id="search-song" key={2}>
           {this.buildListRow(this.props.songs,1)}
         </div>
       );
