@@ -34,7 +34,7 @@ class Api::SongsController < ApplicationController
       @songs = Song.where("title ILIKE ?", "%#{params[:query]}%").order(:title)
     when 'user'
       user_id = User.find_by_username(params[:user]).id
-      @songs = Song.where("user_id = ?", "#{user_id}").order(:title)
+      @songs = Song.where("user_id = ?", user_id.to_s).order(:title)
     end
     render :index
   end
