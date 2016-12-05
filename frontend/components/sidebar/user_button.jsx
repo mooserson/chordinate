@@ -4,6 +4,7 @@ import LogoutButtonContainer from './logout_button_container';
 export default (props) => {
 
   const goToUser = () => {
+    document.getElementById("search").value = "";
     props.requestUserSongs(props.username);
   };
 

@@ -24,8 +24,8 @@ import {
   };
 
   const mapDispatchToProps = dispatch => ({
-    clearUser: () => dispatch(receiveUserSongs("")),
     requestUserSongs: userId => dispatch(requestUserSongs(userId)),
+    clearUser: () => dispatch(receiveUserSongs("")),
     clearErrors: () => dispatch(receiveUserSongsErrors(""))
   });
 

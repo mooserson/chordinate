@@ -15,14 +15,7 @@ class Discover extends React.Component {
   }
 
   currentLists () {
-    if (this.props.isSearching) {
-      return (
-        <div className='lists-container' >
-          <h2>Song Results</h2>
-          <SearchListContainer />
-        </div>
-      );
-    } else if (this.props.username) {
+    if (this.props.username) {
       return (
         <div className='lists-container' >
           <h2>
@@ -44,6 +37,13 @@ class Discover extends React.Component {
             </span>
           </h2>
           <UserListContainer />
+        </div>
+      );
+    } else if (this.props.isSearching) {
+      return (
+        <div className='lists-container' >
+          <h2>Song Results</h2>
+          <SearchListContainer />
         </div>
       );
     } else {

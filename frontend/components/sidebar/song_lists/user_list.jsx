@@ -6,6 +6,15 @@ class UserList extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.clearSearch();
+  }
+
+  componentWillUnmount() {
+    this.props.clearUser();
+    this.props.clearErrors();
+  }
+
   buildListRow(songs, num) {
     return (
       <div className="song-row search" key={num}>
@@ -41,7 +50,7 @@ class UserList extends React.Component {
       );
     } else if (this.props.songs.length === 1) {
       return (
-        <div className="song-list-single" id="user-songs" key={2}>
+        <div className="song-list" id="user-songs" key={2}>
           {this.buildListRow(this.props.songs,1)}
         </div>
       );

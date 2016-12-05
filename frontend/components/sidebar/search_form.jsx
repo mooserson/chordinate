@@ -9,12 +9,12 @@ class SearchForm extends React.Component {
   }
 
   componentWillMount() {
-    this.props.cancelSearch();
+    this.props.clearSearch();
   }
 
   componentDidUpdate() {
    if (this.state.query === "") {
-     this.props.cancelSearch();
+     this.props.clearSearch();
      $('.search-clear .fa').addClass('hidden');
    } else {
      $('.search-clear .fa').removeClass('hidden');
@@ -31,6 +31,8 @@ class SearchForm extends React.Component {
     e.preventDefault();
     $('.search-clear .fa').removeClass('fa-times').addClass('fa-circle-o-notch');
     this.props.requestSearchSongs(this.state.query);
+    this.props.clearUser();
+    this.props.clearErrors();
   }
 
   clearSearch() {
@@ -47,6 +49,7 @@ class SearchForm extends React.Component {
         <input
           type="text"
           placeholder="Search"
+          id="search"
           tabIndex='3'
           onChange={this.update.bind(this)}
           value={this.state.query}>
