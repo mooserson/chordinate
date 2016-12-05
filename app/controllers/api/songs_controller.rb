@@ -34,7 +34,9 @@ class Api::SongsController < ApplicationController
       @songs = Song.where("title ILIKE ?", "%#{params[:query]}%").order(:title)
     when 'user'
       user_id = User.find_by_username(params[:user]).id
-      @songs = Song.where("user_id = ?", "#{user_id}").order(:title)
+      @songs = Song.where("user_id = ?", user_id.to_s).order(:title)
+      render json: "No songs available", status: 404 if @songs.empty?
+      return
     end
     render :index
   end
@@ -50,6 +52,7 @@ class Api::SongsController < ApplicationController
   end
 
   private
+
   def save_slices(song_id)
     JSON.parse(params[:slices]).reverse.each do |slice|
       @slice = Slice.new(

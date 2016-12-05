@@ -34,6 +34,18 @@ class Discover extends React.Component {
           <UserListContainer />
         </div>
       );
+    } else if (this.props.errors) {
+      return(
+        <div className='lists-container' >
+          <h2>
+            {`${this.props.currentUsername} `}
+            <span className="search-clear" onClick={this.props.clearErrors.bind(this)}>
+              <i className="fa fa-times" aria-hidden="true" />
+            </span>
+          </h2>
+          <UserListContainer />
+        </div>
+      );
     } else {
       return (
         <div className='lists-container'>

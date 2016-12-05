@@ -8,7 +8,8 @@ receivePlayedSongs,
 REQUEST_SEARCH_SONGS,
 receiveSearchSongs,
 REQUEST_USER_SONGS,
-receiveUserSongs } from '../actions/lists_actions';
+receiveUserSongs,
+receiveUserSongsErrors } from '../actions/lists_actions';
 
 import {
   fetchNewSongs,
@@ -36,6 +37,9 @@ export default ({getState, dispatch}) => next => action => {
     dispatch(receiveUserSongs(data));
   };
 
+  const receiveUserSongsErrorsCallback = xhr => {
+    dispatch(receiveUserSongsErrors(xhr.responseText));
+  };
   switch (action.type) {
     case REQUEST_NEW_SONGS:
       fetchNewSongs(receiveNewSongsSuccessCallback);
@@ -50,7 +54,7 @@ export default ({getState, dispatch}) => next => action => {
       fetchSearchSongs(action.query, receiveSearchSongsSuccessCallback);
       return next(action);
     case REQUEST_USER_SONGS:
-      fetchUserSongs(action.user, receiveUserSongsSuccessCallback);
+      fetchUserSongs(action.user, receiveUserSongsSuccessCallback, receiveUserSongsErrorsCallback);
       return next(action);
     default:
       return next(action);
