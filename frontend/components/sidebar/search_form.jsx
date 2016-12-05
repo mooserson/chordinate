@@ -22,7 +22,6 @@ class SearchForm extends React.Component {
   }
 
   update(e) {
-    debugger;
     this.setState({
       query: e.target.value
     });
