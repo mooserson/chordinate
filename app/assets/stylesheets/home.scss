@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
 
+  .welcome{
+    position: fixed;
+  }
+
   .github-link{
     position: absolute;
     top: 97vh;

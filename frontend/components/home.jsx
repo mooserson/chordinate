@@ -25,6 +25,9 @@ class Home extends React.Component {
   render() {
     return(
       <div className="home">
+        <div className="welcome">
+          Welcome {this.props.currentUser}
+        </div>
         {this.synth()}
         <DiscoverContainer />
         <div className="github-link">
