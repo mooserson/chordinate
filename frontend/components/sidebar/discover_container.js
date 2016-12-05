@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import Discover from './discover';
 import {
   receiveUserSongs,
-  requestUserSongs} from '../../actions/lists_actions';
+  requestUserSongs,
+  receiveUserSongsErrors
+} from '../../actions/lists_actions';
 
   const mapStateToProps = state => {
     let user = "";
@@ -12,15 +14,19 @@ import {
     }
 
     return({
-      isSearching: !!state.lists.searchedSongs,
+      isSearching: Boolean(state.lists.searchedSongs),
       username: user,
-      currentUsername: `${state.session.currentUser ? state.session.currentUser.username : null}`
+      currentUsername: `${
+        state.session.currentUser ? state.session.currentUser.username : null
+      }`,
+      errors: state.lists.errors
     });
   };
 
   const mapDispatchToProps = dispatch => ({
     clearUser: () => dispatch(receiveUserSongs("")),
-    requestUserSongs: userId => dispatch(requestUserSongs(userId))
+    requestUserSongs: userId => dispatch(requestUserSongs(userId)),
+    clearErrors: () => dispatch(receiveUserSongsErrors(""))
   });
 
 export default connect(

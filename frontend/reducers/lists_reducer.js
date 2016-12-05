@@ -3,7 +3,8 @@ import {
   RECEIVE_POPULAR_SONGS,
   RECEIVE_PLAYED_SONGS,
   RECEIVE_SEARCH_SONGS,
-  RECEIVE_USER_SONGS
+  RECEIVE_USER_SONGS,
+  RECEIVE_USER_SONGS_ERRORS
 } from  '../actions/lists_actions';
 
   import merge from 'lodash/merge';
@@ -13,7 +14,8 @@ const _defaultState = {
   popularSongs: {},
   playedSongs: {},
   searchedSongs: "",
-  userSongs: ""
+  userSongs: "",
+  errors: ""
 };
 
 const ListsReducer = (state = _defaultState, action) => {
@@ -29,6 +31,8 @@ const ListsReducer = (state = _defaultState, action) => {
       return merge({}, state, {searchedSongs: action.songs});
     case RECEIVE_USER_SONGS:
       return merge({}, state, {userSongs: action.songs});
+    case RECEIVE_USER_SONGS_ERRORS:
+      return merge({}, state, {errors: action.errors});
     default:
       return state;
   }

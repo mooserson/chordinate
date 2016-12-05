@@ -37,7 +37,7 @@ export const fetchSearchSongs = (query, success) => {
   });
 };
 
-export const fetchUserSongs = (user, success) => {
+export const fetchUserSongs = (user, success, error) => {
   $.ajax({
     method: 'get',
     url: 'api/songs',
@@ -46,5 +46,6 @@ export const fetchUserSongs = (user, success) => {
       user: user
     },
     success,
+    error,
   });
 };

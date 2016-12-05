@@ -103,6 +103,7 @@
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+
     &#search-song{
       display: block;
       padding-top: 2%;
@@ -179,7 +180,9 @@
 
     &.empty {
       color: #fa461e;
+      align-self: flex-start;
     }
+
     &#search-song, &#user-songs {
       flex-wrap: wrap;
       flex-direction: row;

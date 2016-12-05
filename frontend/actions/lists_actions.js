@@ -8,7 +8,7 @@ export const REQUEST_SEARCH_SONGS = "REQUEST_SEARCH_SONGS";
 export const RECEIVE_SEARCH_SONGS = "RECEIVE_SEARCH_SONGS";
 export const REQUEST_USER_SONGS = "REQUEST_USER_SONGS";
 export const RECEIVE_USER_SONGS = "RECEIVE_USER_SONGS";
-
+export const RECEIVE_USER_SONGS_ERRORS = "RECEIVE_USER_SONGS_ERRORS";
 
 export const requestNewSongs = () => ({
   type: REQUEST_NEW_SONGS
@@ -55,4 +55,9 @@ export const requestUserSongs = user => ({
 export const receiveUserSongs = songs => ({
   type: RECEIVE_USER_SONGS,
   songs
+});
+
+export const receiveUserSongsErrors = errors => ({
+  type: RECEIVE_USER_SONGS_ERRORS,
+  errors
 });

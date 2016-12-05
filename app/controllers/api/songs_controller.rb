@@ -35,6 +35,10 @@ class Api::SongsController < ApplicationController
     when 'user'
       user_id = User.find_by_username(params[:user]).id
       @songs = Song.where("user_id = ?", user_id.to_s).order(:title)
+      if @songs.empty?
+        render json: "No songs available", status: 404
+        return
+      end
     end
     render :index
   end
@@ -50,6 +54,7 @@ class Api::SongsController < ApplicationController
   end
 
   private
+
   def save_slices(song_id)
     JSON.parse(params[:slices]).reverse.each do |slice|
       @slice = Slice.new(
