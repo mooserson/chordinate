@@ -6,8 +6,9 @@ const mapStateToProps = ({ currentSong }) => ({
   title: currentSong.title,
   user: currentSong.user,
   likes: currentSong.likes,
+  likd: currentSong.liked,
   plays: currentSong.plays,
-  loadIcons: !!currentSong.id
+  loadIcons: Boolean(currentSong.id)
 });
 
 const mapDispatchToProps = dispatch => ({
