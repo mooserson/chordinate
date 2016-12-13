@@ -5,8 +5,6 @@
   width: 33.5%;
   height: 100vh;
   color:#053b78;
-  height: 100%;
-  overflow: scroll;
   position: relative;
 
   h2 {
@@ -96,22 +94,29 @@
   display: flex;
   flex-direction: column;
   margin-left: .8%;
+  height: 93vh;
 
   .song-list {
-    margin: 0 5px 2px 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
+    margin-bottom: 1%;
 
-    &#search-song{
+    &#search-song, &#user-songs{
       display: block;
-      padding-top: 2%;
+      flex-wrap: wrap;
+      flex-direction: row;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      width: 100%;
     }
-    &#user-songs{
-      padding-top: 1%;
-      padding-right: 4.5%;
-    }
+    // {
+    //   padding-top: 1%;
+    //   padding-right: 4.5%;
+    //   flex-wrap: wrap;
+    //   flex-direction: row;
+    // }
 
     .song-row {
       display: flex;
@@ -181,11 +186,6 @@
     &.empty {
       color: #fa461e;
       align-self: flex-start;
-    }
-
-    &#search-song, &#user-songs {
-      flex-wrap: wrap;
-      flex-direction: row;
     }
   }
 }
