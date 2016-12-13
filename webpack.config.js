@@ -16,10 +16,9 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
-        query: {
-          presets: ['react', 'es2015']
-        }
-      }
+        query: { presets: ['react', 'es2015'] },
+      },
+      {test: /\.(png|jpg)$/, loader: 'url?limit=25000'}
     ]
   },
   devtool: 'source-maps'

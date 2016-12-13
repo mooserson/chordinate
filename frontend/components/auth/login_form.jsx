@@ -65,7 +65,11 @@ class LoginForm extends React.Component {
     return(
     <div className="auth-form-container">
         <form className="login-form" onSubmit={this.handleSubmit}>
-          <h2>Make Tunes Together</h2>
+          <img
+            src={
+              require('../../../app/assets/images/chordinate_depth.jpg')
+            }
+          />
           <br/>
           <div className="input-area">
           <label htmlFor="username">Username</label>
