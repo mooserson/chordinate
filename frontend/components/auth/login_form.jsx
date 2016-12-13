@@ -65,7 +65,8 @@ class LoginForm extends React.Component {
     return(
     <div className="auth-form-container">
         <form className="login-form" onSubmit={this.handleSubmit}>
-          <h2>Make Tunes Together</h2>
+          <img className="host-profile-pic" title="Chordinate" src={`piano_depth.png`}></img>
+          <h2>Make tunes together</h2>
           <br/>
           <div className="input-area">
           <label htmlFor="username">Username</label>
