@@ -17,15 +17,66 @@ class PlaybackKeyboard extends React.Component {
 
   componentDidMount() {
     $(document).on('keydown', e=> {
-        if (e.target.tagName !== 'INPUT') {
-          this.onKeyDown(e);
-        }
+      if (e.target.tagName !== 'INPUT') { this.onKeyDown(e); }
     });
+
+    $('.keyboard').on('mousedown', e=> {
+      let pressedKey;
+      switch(e.target.classList[0]){
+        case "space-key":
+          pressedKey ={
+            key: " "
+          };
+          break;
+        case "backspace-key":
+          pressedKey = {
+            key: "Backspace"
+          };
+          break;
+        case "enter-key":
+          pressedKey  = {
+            key: "Enter",
+            type: "keydown"
+          };
+          break;
+        case "shift-key":
+          pressedKey = {
+            key: "Shift",
+            type: "keydown",
+            originalEvent: {
+              location: Number(e.target.id)
+            }
+          };
+          break;
+      }
+      this.onKeyDown(pressedKey);
+    });
+
     $(document).on('keyup', e=> {
         if (e.target.tagName !== 'INPUT') {
           this.onKeyUp(e);
         }
     });
+
+    $(document).mouseup(() => {
+      if($('.backspace-key.pressed').length === 1) {
+        this.onKeyUp({
+          key: "Backspace",
+        });
+      }
+      if($('.enter-key.pressed').length === 1) {
+        this.onKeyUp({
+          key: "Enter",
+          type: "keyup"
+        });
+      }
+      if($(".space-key.pressed").length === 1){
+        this.onKeyUp({
+          key: " "
+        });
+      }
+    });
+
     $(window).on('blur', () => {
       this.props.keys.forEach(key => {
         this.onKeyUp({'key': key});
@@ -87,7 +138,7 @@ class PlaybackKeyboard extends React.Component {
     let $holdShift = $(`#${e.originalEvent.location}.shift-key`);
     let other = e.originalEvent.location === 1 ? 2 : 1;
     let $otherShift = $(`#${other}.shift-key`);
-
+    debugger;
     if (!$holdShift.hasClass('disabled')) {
 
       if (e.type === "keydown") {
@@ -97,6 +148,16 @@ class PlaybackKeyboard extends React.Component {
           $otherShift.text('Deleting...');
           this.props.deleteSong(this.props.params.id);
           hashHistory.push("/");
+        } else if($otherShift.text() === "Confirm Delete") {
+          $holdShift.toggleClass('pressed');
+          $otherShift.toggleClass('confirmation');
+          $holdShift.text('Delete');
+          $otherShift.text('Delete');
+        } else if($holdShift.hasClass("pressed")) {
+          $holdShift.toggleClass('pressed');
+          $otherShift.toggleClass('confirmation');
+          $holdShift.text('Delete');
+          $otherShift.text('Delete');
         } else {
           $holdShift.toggleClass('pressed');
           $holdShift.text('?');
@@ -105,7 +166,10 @@ class PlaybackKeyboard extends React.Component {
         }
       }
 
-      if (e.type === "keyup" && $holdShift.text() !== 'Deleting...') {
+      if (e.type === "keyup"
+          && $holdShift.text() !== 'Deleting...'
+          && $holdShift.hasClass("pressed")
+        ) {
         $holdShift.toggleClass('pressed');
         $otherShift.toggleClass('confirmation');
         $holdShift.text('Delete');

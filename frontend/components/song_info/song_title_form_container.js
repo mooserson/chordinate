@@ -6,7 +6,7 @@ const mapStateToProps = ({ currentSong }) => ({
   title: currentSong.title,
   user: currentSong.user,
   likes: currentSong.likes,
-  likd: currentSong.liked,
+  liked: currentSong.liked,
   plays: currentSong.plays,
   loadIcons: Boolean(currentSong.id)
 });

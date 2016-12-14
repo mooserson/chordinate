@@ -38,6 +38,9 @@
     .fa {
       color: #053b78;
       padding-right: 6px;
+      &.true {
+        color: #fa461e;
+      }
     }
     span {
       font-weight: 300;

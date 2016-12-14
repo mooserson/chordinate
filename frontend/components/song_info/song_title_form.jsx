@@ -28,7 +28,7 @@ class SongTitleForm extends React.Component {
     if (this.props.loadIcons) {
       return(
         <div className="song-info-icons-container">
-         <i className="fa fa-heart" aria-hidden="true" />
+          <i className={"fa fa-heart" + " " + this.props.liked} aria-hidden="true" />
           <span>{this.props.likes}</span>
           <i className="fa fa-play" aria-hidden="true" />
           <span>{this.props.plays}</span>

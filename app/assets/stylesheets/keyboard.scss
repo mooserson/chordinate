@@ -110,6 +110,9 @@ span[class*="key"] {
     color: transparent;
     opacity: 0.5;
   }
+  &.confirmation{
+    background-color: #fa461e;
+  }
 }
 
 #tab {
