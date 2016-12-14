@@ -25,6 +25,7 @@ class RecordKeyboard extends React.Component {
             );
           }
       });
+
       $(document).on('keyup', e=> {
           if (e.target.tagName !== 'INPUT') {
             let pressedKey = e.key;

@@ -13,19 +13,42 @@ class SaveKeyboard extends React.Component {
 
   componentDidMount() {
     $(document).on('keydown', e=> {
-      if (e.target.tagName !== 'INPUT') {
-        this.onKeyDown(e);
-      }
+      if (e.target.tagName !== 'INPUT') { this.onKeyDown(e.key); }
     });
+
+    $(document).on('mousedown', e=> {
+      let pressedKey;
+      switch(e.target.className){
+        case "space-key":
+          pressedKey = " ";
+          break;
+        case "backspace-key":
+          pressedKey = "Backspace";
+          break;
+        case "enter-key":
+          pressedKey  = "Enter";
+          break;
+      }
+      this.onKeyDown(pressedKey);
+    });
+
     $(document).on('keyup', e=> {
       if (e.target.tagName !== 'INPUT') {
-        this.onKeyUp(e);
+        const pressedKey = e.key;
+        this.onKeyUp(pressedKey);
       }
     });
-    $(window).on('blur', () => {
-      this.props.keys.forEach(key => {
-        this.onKeyUp({'key': key});
-      });
+
+    $(document).mouseup(() => {
+      if($('.backspace-key.pressed').length === 1) {
+        this.onKeyUp("Backspace");
+      }
+      if($('.enter-key.pressed').length === 1) {
+        this.onKeyUp("Enter");
+      }
+      if($(".space-key.pressed").length === 1){
+        this.onKeyUp(" ");
+      }
     });
   }
 
@@ -45,27 +68,27 @@ class SaveKeyboard extends React.Component {
       space.attr('id', 'playing-back-recording');
       space.text('Stop');
     } else {
-      space.attr('id', 'play-back-recording');
+      space.attr('id', 'play-recording');
       space.text('Play Back Recording');
     }
   }
 
-  onKeyDown(e) {
-    if (e.key === " ") {
+  onKeyDown(pressedKey) {
+    if (pressedKey === " ") {
       $('.space-key').addClass('pressed');
     }
 
-    if (e.key === "Backspace") {
+    if (pressedKey === "Backspace") {
       $('.backspace-key').addClass('pressed');
     }
 
-    if (e.key === "Enter") {
+    if (pressedKey === "Enter") {
       $('.enter-key').addClass('pressed');
     }
   }
 
-  onKeyUp(e) {
-    if (e.key === " ") {
+  onKeyUp(pressedKey) {
+    if (pressedKey === " ") {
       let space = $('.space-key');
       space.removeClass('pressed');
       if (!this.props.isPlaying) {
@@ -76,12 +99,12 @@ class SaveKeyboard extends React.Component {
       }
     }
 
-    if (e.key === "Backspace") {
+    if (pressedKey === "Backspace") {
       $('.backspace-key').removeClass('pressed');
       this.props.stopSaving();
     }
 
-    if (e.key === "Enter") {
+    if (pressedKey === "Enter") {
       $('.enter-key').removeClass('pressed').addClass('disabled');
       this.props.createSong(this.props.currentSong, this.props.userId);
     }
