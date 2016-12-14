@@ -17,19 +17,33 @@ class RecordKeyboard extends React.Component {
     }
 
     componentDidMount() {
-      $(document).on('keydown', e=> {
+      $(document).on('keydown mousedown', e=> {
           if (e.target.tagName !== 'INPUT') {
-            this.onKeyDown(e);
+            const pressedKey = e.key || e.target.id;
+            this.onKeyDown(
+              pressedKey === "start-recording" ? " " : pressedKey
+            );
           }
       });
       $(document).on('keyup', e=> {
           if (e.target.tagName !== 'INPUT') {
-            this.onKeyUp(e);
+            let pressedKey = e.key;
+            this.onKeyUp(pressedKey);
           }
       });
+      // stop playing and release space properly when mouse is released
+      $(document).mouseup(() => {
+        this.props.keys.forEach(key => {
+        this.onKeyUp(key);
+        });
+        if($(".space-key.pressed").length === 1){
+          this.onKeyUp(" ");
+        }
+      });
+      // stop playing notes when focus off window
       $(window).on('blur', () => {
         this.props.keys.forEach(key => {
-          this.onKeyUp({'key': key});
+          this.onKeyUp(key);
         });
       });
     }
@@ -59,23 +73,23 @@ class RecordKeyboard extends React.Component {
       }
     }
 
-    onKeyDown(e) {
-      this.props.keyPressed(e.key);
+    onKeyDown(pressedKey) {
+      this.props.keyPressed(pressedKey);
 
       if (this.props.isRecording) {
         this.props.addNotes(this.props.keys);
       }
 
-      if (e.key === " ") {
+      if (pressedKey === " ") {
         $('.space-key').addClass('pressed');
       }else{
-        if (NOTE_NAMES.includes(e.key)) {
+        if (NOTE_NAMES.includes(pressedKey)) {
           let $key;
 
-          if (e.key === ';') {
+          if (pressedKey === ';') {
             $key = $('.caps-row span:contains(;)');
           } else {
-            $key = $(`#${e.key}`);
+            $key = $(`#${pressedKey}`);
           }
 
           $key.addClass('pressed');
@@ -83,23 +97,22 @@ class RecordKeyboard extends React.Component {
       }
     }
 
-    onKeyUp(e) {
-      this.props.keyReleased(e.key);
-
+    onKeyUp(pressedKey) {
+      this.props.keyReleased(pressedKey);
       if (this.props.isRecording) {
         this.props.addNotes(this.props.keys);
       }
 
-      if (e.key === " ") {
+      if (pressedKey === " ") {
         $('.space-key').removeClass('pressed');
         this.onSpaceUp();
       }else{
-        if (NOTE_NAMES.includes(e.key)) {
+        if (NOTE_NAMES.includes(pressedKey)) {
           let $key;
-          if (e.key === ';') {
+          if (pressedKey === ';') {
             $key = $('.caps-row span:contains(;)');
           } else {
-            $key = $(`#${e.key}`);
+            $key = $(`#${pressedKey}`);
           }
 
         $key.removeClass('pressed');

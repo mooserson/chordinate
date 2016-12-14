@@ -52,6 +52,11 @@ class SignupForm extends React.Component {
     return(
     <div className="auth-form-container">
         <form className="auth-form" onSubmit={this.handleSubmit}>
+          <img
+            className="host-profile-pic"
+            title="Chordinate"
+            src={`piano_depth.png`}
+          />
           <h2>Create New User</h2>
           <br/>
           <div className="input-area">
@@ -75,7 +80,12 @@ class SignupForm extends React.Component {
           <br/>
           <span className="signup-button-span">
             <button className="submit-button">Create</button>
-            <button className="cancel-button" onClick={this.cancel}>Cancel</button>
+            <button
+              className="cancel-button"
+              onClick={this.cancel}
+              >
+              Cancel
+            </button>
           </span>
         </div>
         </form>

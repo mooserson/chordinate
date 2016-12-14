@@ -48,7 +48,7 @@ class SongTitleForm extends React.Component {
           <input
             value = {this.state.title}
             type="text"
-            placeholder="Untitled"
+            placeholder="Song Title"
             onChange={this.update()}
             tabIndex='1' />
         </form>
