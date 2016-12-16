@@ -56,11 +56,11 @@ const CurrentSongReducer = (state = _defaultState, action) => {
     case REMOVE_SONG:
       return {};
     case RECEIVE_LIKE:
-      let newCount = action.liked ? 1 : -1;
+      let newCount = action.liked[0] ? 1 : -1;
       newState = merge(
         {},
         state,
-        {liked: action.liked},
+        {liked: action.liked[0]},
         {likes: state.likes + newCount}
       );
       return newState;

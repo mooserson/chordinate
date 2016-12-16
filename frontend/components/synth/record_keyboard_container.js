@@ -9,7 +9,6 @@ import {
 import RecordKeyboard from './record_keyboard';
 
 const mapStateToProps = ({ keys, currentSong, isRecording, session }) => {
-  console.log(keys);
   return ({
   keys,
   currentSong,

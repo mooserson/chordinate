@@ -3,7 +3,7 @@ class Api::LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
     if @like.save
-      render json: true
+      render json: [true, like_params[:song_id]]
     else
       render json: @like.errors, status: 422
     end
@@ -16,7 +16,7 @@ class Api::LikesController < ApplicationController
     )
     if @like
       @like.delete
-      render json: false
+      render json: [false, like_params[:song_id]]
     else
       render json: "Like not found", status: 422
     end

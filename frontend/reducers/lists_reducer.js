@@ -7,7 +7,11 @@ import {
   RECEIVE_USER_SONGS_ERRORS
 } from  '../actions/lists_actions';
 
-  import merge from 'lodash/merge';
+import {
+  RECEIVE_LIKE
+} from '../actions/songs_actions';
+
+import merge from 'lodash/merge';
 
 const _defaultState = {
   newSongs: {},
@@ -33,6 +37,21 @@ const ListsReducer = (state = _defaultState, action) => {
       return merge({}, state, {userSongs: action.songs});
     case RECEIVE_USER_SONGS_ERRORS:
       return merge({}, state, {errors: action.errors});
+    case RECEIVE_LIKE:
+      let newState = merge({}, state);
+      let lists = [
+        "newSongs", "popularSongs", "searchedSongs", "userSongs"
+      ];
+      lists.forEach(list => {
+        if(newState[list].length > 0){
+          newState[list].forEach((song,idx) => {
+            if(action.liked[1] === String(song.id)){
+              newState[list][idx].liked = action.liked[0];
+            }
+          });
+        }
+      });
+      return newState;
     default:
       return state;
   }

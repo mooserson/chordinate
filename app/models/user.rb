@@ -6,7 +6,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :songs
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :plays
   has_many :liked_songs, through: :likes, source: :song
 
