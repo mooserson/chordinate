@@ -138,7 +138,6 @@ class PlaybackKeyboard extends React.Component {
     let $holdShift = $(`#${e.originalEvent.location}.shift-key`);
     let other = e.originalEvent.location === 1 ? 2 : 1;
     let $otherShift = $(`#${other}.shift-key`);
-    debugger;
     if (!$holdShift.hasClass('disabled')) {
 
       if (e.type === "keydown") {
