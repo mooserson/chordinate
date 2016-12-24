@@ -140,6 +140,7 @@ class RecordKeyboard extends React.Component {
         <div className="keyboard-pane-container">
           <div className="keyboard-pane">
             <SongTitleFormContainer/>
+            <h3>Welcome, use your keyboard to record a tune!</h3>
             {buildRecordKeyboard()}
           </div>
         </div>
