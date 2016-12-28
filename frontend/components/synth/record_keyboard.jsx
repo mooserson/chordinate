@@ -19,7 +19,6 @@ class RecordKeyboard extends React.Component {
     componentDidMount() {
       $(document).on('keydown mousedown', e=> {
           if (e.target.tagName !== 'INPUT') {
-            console.log(e);
             const pressedKey = e.key || e.target.id;
             this.onKeyDown(
               pressedKey === "start-recording" ? " " : pressedKey
