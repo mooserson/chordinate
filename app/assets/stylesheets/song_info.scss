@@ -1,51 +1,74 @@
-.song-title-container {
-  background-color: white;
-  font-size: 16px;
-  height: 35px;
-  width: 330px;
-  margin-bottom: 47px;
-  margin-left: 0;
+.keyboard-info-container{
+  display: flex;
+  margin: 0;
 
-  input {
-    padding-left: 15px;
-    font-size: 22px;
-    height: 56px;
-    border-radius: 3px;
-    color: #053b78;
-    border: solid 1px #053b78;
-    width: 100%;
-    margin-top: 3px;
-    font-weight: 600;
-
-    &:focus {
-      outline: none;
-      border-color: black;
-      box-shadow: 0 0 8px #9ecaed;
-    }
-  }
-}
-
-.song-info{
-  height: 16px;
-  .song-owner {
-    color: #053b78;
+  .song-title-container {
+    background-color: white;
+    font-size: 16px;
+    height: 35px;
+    width: 330px;
+    margin-bottom: 47px;
     margin-left: 0;
-    float: left;
-    padding-right: 5px;
-  }
-  .song-info-icons-container{
-    margin-right: 0;
-    .fa {
+
+    input {
+      padding-left: 15px;
+      font-size: 22px;
+      height: 56px;
+      border-radius: 3px;
       color: #053b78;
-      padding-right: 6px;
-      &.true {
-        color: #fa461e;
+      border: solid 1px #053b78;
+      width: 100%;
+      margin-top: 3px;
+      font-weight: 600;
+
+      &:focus {
+        outline: none;
+        border-color: black;
+        box-shadow: 0 0 8px #9ecaed;
       }
     }
-    span {
-      font-weight: 300;
-      padding-right: 5px;
+  }
+
+  .song-info{
+    height: 16px;
+    .song-owner {
       color: #053b78;
+      margin-left: 0;
+      float: left;
+      padding-right: 5px;
+    }
+    .song-info-icons-container{
+      margin-right: 0;
+      .fa {
+        color: #053b78;
+        padding-right: 6px;
+        &.true {
+          color: #fa461e;
+        }
+      }
+      span {
+        font-weight: 300;
+        padding-right: 5px;
+        color: #053b78;
+      }
+    }
+  }
+
+  .instructions{
+    font-size: 23px;
+    margin: auto;
+    padding-top: 1.5vh;
+    font-weight: 200;
+    color: #053b78;
+    opacity: .5;
+    width: 50%;
+    text-align: center;
+
+    .welcome-username{
+     overflow: hidden;
+     text-overflow: ellipsis;
+     white-space: nowrap;
+     width: 65%;
     }
   }
 }

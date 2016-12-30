@@ -13,7 +13,8 @@ const mapStateToProps = ({ keys, currentSong, isRecording, session }) => {
   keys,
   currentSong,
   isRecording,
-  userId: `${session.currentUser ? session.currentUser.id : null}`
+  userId: `${session.currentUser ? session.currentUser.id : null}`,
+  username: `${session.currentUser ? session.currentUser.username: null}`
   });
 };
 

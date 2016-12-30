@@ -50,6 +50,8 @@ class SaveKeyboard extends React.Component {
         this.onKeyUp(" ");
       }
     });
+
+    $
   }
 
   componentDidUpdate() {
@@ -129,7 +131,12 @@ class SaveKeyboard extends React.Component {
     return (
       <div className="keyboard-pane-container">
         <div className='keyboard-pane'>
-          <SongTitleFormContainer />
+          <div className="keyboard-info-container">
+            <SongTitleFormContainer />
+            <h3 className="instructions">
+              Enter a title, save your song, or go back.
+            </h3>
+          </div>
           {buildSaveKeyboard()}
         </div>
       </div>

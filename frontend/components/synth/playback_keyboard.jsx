@@ -260,7 +260,9 @@ class PlaybackKeyboard extends React.Component {
     return (
       <div className="keyboard-pane-container">
         <div className="keyboard-pane">
-          <SongTitleFormContainer/>
+          <div className="keyboard-info-container">
+            <SongTitleFormContainer/>
+          </div>
           {buildPlaybackKeyboard()}
         </div>
       </div>
