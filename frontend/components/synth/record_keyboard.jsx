@@ -143,8 +143,8 @@ class RecordKeyboard extends React.Component {
               <SongTitleFormContainer/>
               <div className="instructions">
                 <div className="welcome-username">
-                  Welcome, 
-                  {this.props.username}
+                  Welcome,
+                  {" " + this.props.username}
                 </div>
                 <b/>
                Use your keyboard to record a tune!
