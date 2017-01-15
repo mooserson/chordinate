@@ -7,8 +7,8 @@
  height: 100vh;
 
 form{
-  margin-left: 9%;
-  padding-top: 10%;
+  margin-left: 7%;
+  padding-top: 7%;
   padding-left: 3%;
   }
 
@@ -32,8 +32,8 @@ form{
   }
 
   img {
-    width: 80%;
-    height: auto;
+    width: 90%;
+    margin-bottom: 2%;
   }
 
   input{
@@ -44,6 +44,10 @@ form{
     width: 275px;
     padding-left: 15px;
     color: white;
+    margin-bottom: 1.5%;
+    @media screen and (max-width: 340px){
+      width: 80vw;
+    }
     &:focus {
       outline: none;
       box-shadow: 0 0 8px #9ecaed;
@@ -52,7 +56,7 @@ form{
   }
 
   input[type="password"]{
-    margin-bottom: 1vh;
+    margin-bottom: 1%;
   }
 
   button{
@@ -80,7 +84,7 @@ form{
   }
 
   .button-span {
-    display: inline-block;
+    display: flex;
     width: 100%;
       button {
         margin-right: 9px;
@@ -88,12 +92,20 @@ form{
     }
 
   .signup-button-span {
-    display: inline-block;
+    display: flex;
     width: 100%;
       button {
         padding: 11px 47px;
         margin-right: 20px;
+
+        @media screen and (max-width: 340px){
+          padding: 11px 13.3vw
+        }
       }
+  }
+
+  @media screen and (orientation: portrait){
+    height: 105vh;
   }
 
 }
