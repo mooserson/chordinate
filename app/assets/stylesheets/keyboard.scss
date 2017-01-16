@@ -5,6 +5,13 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 1045px){
+  .keyboard-pane-container {
+    position: absolute;
+    top: 25%;
+  }
+}
+
 .keyboard-pane {
   display: flex;
   flex-direction: column;

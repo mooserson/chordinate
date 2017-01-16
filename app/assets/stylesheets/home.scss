@@ -9,7 +9,7 @@
   .github-link{
     position: absolute;
     top: 97vh;
-    right: 98.5vw;
+    right: 97.5vw;
     i{
       font-size: 20px;
     }
@@ -17,4 +17,23 @@
       opacity: 0.5;
     }
   }
+
+  .hamburger-button{
+    position: absolute;
+    right: 3%;
+    top: 2%;
+    font-size: 48px;
+    transition: right .3s ease-out;
+  }
+
+  @media screen and (min-width: 1045px){
+    .hamburger-button{
+      display: none;
+    }
+  }
+
+  .hamburger-button.open{
+    right: 35%;
+  }
+
 }

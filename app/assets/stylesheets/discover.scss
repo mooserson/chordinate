@@ -6,6 +6,8 @@
   height: 100vh;
   color:#053b78;
   position: relative;
+  background-color: white;
+
 
   h2 {
     font-size: 27px;
@@ -101,6 +103,7 @@
     justify-content: space-around;
     height: 100%;
     margin-bottom: 2%;
+    width: 90%;
 
     &#search-song, &#user-songs{
       display: block;
@@ -116,6 +119,7 @@
       flex-direction: column;
       justify-content: space-around;
       height: 100%;
+      width: 100%;
       &.search {
         justify-content: flex-start;
         height: initial;
@@ -125,9 +129,10 @@
       }
 
       .song-item {
-        width: 23vw;
+        width: 100%;
         font-size: 15px;
         margin-top: 1px;
+
 
         .title{
           padding-top: 1%;
@@ -180,5 +185,24 @@
       color: #fa461e;
       align-self: flex-start;
     }
+  }
+}
+
+@media screen and (max-width: 1045px){
+  .discover {
+    width: 0;
+    overflow-x: hidden;
+    transition: width .3s ease-out;
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .discover.open {
+    display: inline;
+    width: 34%;
+    transition: width .3s ease-out;
+    overflow-x: hidden;
+    border-left: solid black 1px;
+    padding-left: .4%;
   }
 }

@@ -9,6 +9,22 @@ class Home extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    var hamburgerButton = document.querySelector('.hamburger-button');
+    var discover = document.querySelector('.discover');
+    var home = document.querySelector('.home');
+
+    hamburgerButton.addEventListener('click', function(e) {
+      discover.classList.toggle("open");
+      hamburgerButton.classList.toggle("open");
+      e.stopPropagation();
+    });
+
+    home.addEventListener('click', function(e) {
+      discover.classList.remove('open');
+    });
+  }
+
   synth () {
     switch (this.props.location.pathname) {
       case "/home":
@@ -27,6 +43,9 @@ class Home extends React.Component {
       <div className="home">
         {this.synth()}
         <DiscoverContainer />
+        <div className="hamburger-button">
+          &#9776;
+        </div>
         <div className="github-link">
           <a href ="https://github.com/mooserson/chordinate">
             <i className="fa fa-github" aria-hidden="true"/>
