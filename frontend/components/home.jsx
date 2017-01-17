@@ -21,7 +21,10 @@ class Home extends React.Component {
     });
 
     home.addEventListener('click', function(e) {
-      discover.classList.remove('open');
+      if(!e.target.closest(".discover")){
+        discover.classList.remove('open');
+        hamburgerButton.classList.remove('open');
+      }
     });
   }
 

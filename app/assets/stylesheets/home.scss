@@ -24,6 +24,10 @@
     top: 2%;
     font-size: 48px;
     transition: right .3s ease-out;
+    cursor: default;
+    &:hover{
+      opacity: 0.5;
+    }
   }
 
   @media screen and (min-width: 1045px){
