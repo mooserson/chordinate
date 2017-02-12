@@ -54,6 +54,11 @@ class Home extends React.Component {
             <i className="fa fa-github" aria-hidden="true"/>
           </a>
         </div>
+        <div className="portrait-warning">
+          <i className="fa fa-repeat" aria-hidden="true"></i>
+          Rotate to landscape for best experience!
+          <i className="fa fa-repeat" aria-hidden="true"></i>
+        </div>
       </div>
     );
   }

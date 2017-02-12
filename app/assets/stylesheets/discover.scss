@@ -7,7 +7,8 @@
   color:#053b78;
   position: relative;
   background-color: white;
-
+  z-index: 1;
+  overflow-y: scroll;
 
   h2 {
     font-size: 27px;
@@ -22,7 +23,7 @@
   margin: 0;
   text-align: center;
   padding-left: 2%;
-  height: 7vh;
+  height: 9%;
 
   .user-nav-buttons{
     display: flex;
@@ -53,7 +54,7 @@
     }
 
     input {
-      font-size: 22px;
+      font-size: 5vh;
       width: 89%;
       margin: 0;
       &:focus {
@@ -89,20 +90,22 @@
   }
 }
 
-
-
 .lists-container {
   display: flex;
   flex-direction: column;
   margin-left: .8%;
-  height: 93vh;
+  height: 91%;
+
+  @media screen and (orientation: landscape) and (max-height: 599px){
+    height: 600px;
+  }
 
   .song-list {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     width: 90%;
 
     &#search-song, &#user-songs{
@@ -191,6 +194,10 @@
 @media screen and (max-width: 1045px){
   .discover {
     width: 0;
+//HERE
+    height: 100%;
+    position: fixed;
+    right: 0%;
     overflow-x: hidden;
     transition: width .3s ease-out;
     border-left: 0;
@@ -200,6 +207,8 @@
   .discover.open {
     display: inline;
     width: 34%;
+    position: fixed;
+    right: 0%;
     transition: width .3s ease-out;
     overflow-x: hidden;
     border-left: solid black 1px;

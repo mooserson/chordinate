@@ -6,9 +6,24 @@
     position: fixed;
   }
 
+  .portrait-warning{
+    font-size: 23px;
+    font-weight: 200;
+    color: #fa461e;
+    position: fixed;
+    left: 13%;
+    width: 100%;
+    opacity: 0.5;
+
+    @media screen and (min-width: 1049px), (orientation: landscape){
+      display: none;
+    }
+
+  }
+
   .github-link{
     position: absolute;
-    top: 97vh;
+    top: 96vh;
     right: 97.5vw;
     i{
       font-size: 20px;
@@ -19,7 +34,7 @@
   }
 
   .hamburger-button{
-    position: absolute;
+    position: fixed;
     right: 3%;
     top: 2%;
     font-size: 48px;
