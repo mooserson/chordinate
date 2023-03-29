@@ -19,5 +19,6 @@
 node_modules/
 bundle.js
 bundle.js.map
+/vender/bundle
 
 .DS_Store
