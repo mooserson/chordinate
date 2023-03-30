@@ -8,12 +8,11 @@
     "test": "test"
   },
   "engines": {
-    "node": "19.0.0",
-    "npm": "8.19.2"
+    "node": "6.2.1",
+    "npm": "3.9.3"
   },
   "scripts": {
-    "heroku-postbuild": "webpack --config webpack.config.prod.js",
-    "postinstall": "./node_modules/.bin/webpack"
+    "heroku-postbuild": "webpack --config webpack.config.prod.js"
   },
   "repository": {
     "type": "git",
