@@ -28,6 +28,8 @@ gem 'font-awesome-sass'
 # gem 'capistrano-rails', group: :development
 gem 'rails_12factor'
 gem 'newrelic_rpm'
+# for Heroku
+ruby "~> 2.6.0"
 
 
 
