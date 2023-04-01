@@ -4,6 +4,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import values from 'object.values';
 import {polyfill} from 'keyboardevent-key-polyfill';
+
 // polyfill safari keyboard event.key
 polyfill();
 

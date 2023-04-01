@@ -56,7 +56,7 @@ class Api::SongsController < ApplicationController
   private
 
   def save_slices(song_id)
-    JSON.parse(params[:slices]).reverse.each do |slice|
+    JSON.parse(params[:slices]).each do |slice|
       @slice = Slice.new(
         notes: (slice['notes'].join if slice['notes']),
         time_slice: slice['timeSlice'],
