@@ -1,8 +1,8 @@
 # Chordinate
 
-[Chordinate live][heroku]
-
-[heroku]: http://www.chordinate-app.com
+<!-- [Chordinate live][heroku]
+Live is WIP currently
+[heroku]: http://www.chordinate-app.com -->
 
 Chordinate is a web-application that offers a light-weight instrument to encourage musical creativity and social play. The project was a chance to grow as a web-developer working under deadline.  
 
