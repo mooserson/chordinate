@@ -1,7 +1,7 @@
 import React from 'react';
 import {buildSaveKeyboard} from './build_keyboard';
 import { NOTE_NAMES, TONES } from '../../util/tones';
-import Note from '../../util/note';
+import Note, { getFilterFrequency, getWaveType, handleArrowDown, handleArrowUp } from '../../util/note';
 import {hashHistory} from 'react-router';
 import SongTitleFormContainer from '../song_info/song_title_form_container';
 
@@ -13,7 +13,12 @@ class SaveKeyboard extends React.Component {
 
   componentDidMount() {
     $(document).on('keydown', e=> {
-      if (e.target.tagName !== 'INPUT') { this.onKeyDown(e.key); }
+      if (e.target.tagName !== 'INPUT') {
+        if (e.key.startsWith("Arrow")) {
+          e.preventDefault();
+        }
+        this.onKeyDown(e.key);
+      }
     });
 
     $(document).on('mousedown', e=> {
@@ -76,6 +81,8 @@ class SaveKeyboard extends React.Component {
   }
 
   onKeyDown(pressedKey) {
+    if (handleArrowDown(pressedKey)) return;
+
     if (pressedKey === " ") {
       $('.space-key').addClass('pressed');
     }
@@ -90,6 +97,7 @@ class SaveKeyboard extends React.Component {
   }
 
   onKeyUp(pressedKey) {
+    handleArrowUp(pressedKey);
     if (pressedKey === " ") {
       let space = $('.space-key');
       space.removeClass('pressed');
@@ -136,6 +144,14 @@ class SaveKeyboard extends React.Component {
             <h3 className="instructions">
               Enter a title, save your song, or go back.
             </h3>
+          </div>
+          <div className="synth-controls">
+            <span className="synth-filter">
+              <i className="fa fa-arrows-v"></i> filter <span className="synth-control-value">{Math.round(getFilterFrequency())} Hz</span>
+            </span>
+            <span className="synth-wave">
+              <i className="fa fa-arrows-h"></i> wave <span className="synth-control-value">{getWaveType()}</span>
+            </span>
           </div>
           {buildSaveKeyboard()}
         </div>

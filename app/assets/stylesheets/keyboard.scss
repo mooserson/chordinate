@@ -148,3 +148,24 @@ span[class*="key"] {
     margin-right: 3px;
   }
 }
+
+.synth-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 4px 8px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #053b78;
+
+  i {
+    font-size: 11px;
+    opacity: 0.5;
+    margin-right: 3px;
+  }
+
+  .synth-control-value {
+    font-weight: 500;
+  }
+}

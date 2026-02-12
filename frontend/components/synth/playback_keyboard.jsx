@@ -2,7 +2,7 @@ import React from 'react';
 import { buildPlaybackKeyboard } from './build_keyboard';
 import SongTitleFormContainer from '../song_info/song_title_form_container';
 import { NOTE_NAMES, TONES } from '../../util/tones';
-import Note from '../../util/note';
+import Note, { getFilterFrequency, getWaveType, handleArrowDown, handleArrowUp } from '../../util/note';
 import { hashHistory, withRouter } from 'react-router';
 
 class PlaybackKeyboard extends React.Component {
@@ -17,7 +17,12 @@ class PlaybackKeyboard extends React.Component {
 
   componentDidMount() {
     $(document).on('keydown', e=> {
-      if (e.target.tagName !== 'INPUT') { this.onKeyDown(e); }
+      if (e.target.tagName !== 'INPUT') {
+        if (e.key.startsWith("Arrow")) {
+          e.preventDefault();
+        }
+        this.onKeyDown(e);
+      }
     });
 
     $('.keyboard').on('mousedown', e=> {
@@ -196,6 +201,8 @@ class PlaybackKeyboard extends React.Component {
   }
 
   onKeyDown(e) {
+    if (handleArrowDown(e.key)) return;
+
     if (e.key === " ") {
       $('.space-key').toggleClass('pressed');
     }
@@ -215,6 +222,7 @@ class PlaybackKeyboard extends React.Component {
 
 
   onKeyUp(e) {
+    handleArrowUp(e.key);
     if (e.key === " ") {
       let space = $('.space-key');
       space.toggleClass('pressed');
@@ -262,6 +270,14 @@ class PlaybackKeyboard extends React.Component {
         <div className="keyboard-pane">
           <div className="keyboard-info-container">
             <SongTitleFormContainer/>
+          </div>
+          <div className="synth-controls">
+            <span className="synth-filter">
+              <i className="fa fa-arrows-v"></i> filter <span className="synth-control-value">{Math.round(getFilterFrequency())} Hz</span>
+            </span>
+            <span className="synth-wave">
+              <i className="fa fa-arrows-h"></i> wave <span className="synth-control-value">{getWaveType()}</span>
+            </span>
           </div>
           {buildPlaybackKeyboard()}
         </div>

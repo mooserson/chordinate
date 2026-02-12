@@ -1,7 +1,7 @@
 import React from 'react';
 import { NOTE_NAMES, TONES } from '../../util/tones';
 import {buildRecordKeyboard} from './build_keyboard';
-import Note from '../../util/note';
+import Note, { getFilterFrequency, getWaveType, handleArrowDown, handleArrowUp } from '../../util/note';
 import {hashHistory} from 'react-router';
 import SongTitleFormContainer from '../song_info/song_title_form_container';
 
@@ -20,6 +20,9 @@ class RecordKeyboard extends React.Component {
     $(document).on('keydown mousedown', e=> {
         if (e.target.tagName !== 'INPUT') {
           const pressedKey = e.key || e.target.id;
+          if (pressedKey.startsWith("Arrow")) {
+            e.preventDefault();
+          }
           this.onKeyDown(
             pressedKey === "start-recording" ? " " : pressedKey
           );
@@ -75,6 +78,8 @@ class RecordKeyboard extends React.Component {
   }
 
   onKeyDown(pressedKey) {
+    if (handleArrowDown(pressedKey)) return;
+
     this.props.keyPressed(pressedKey);
 
     if (this.props.isRecording) {
@@ -99,6 +104,7 @@ class RecordKeyboard extends React.Component {
   }
 
   onKeyUp(pressedKey) {
+    handleArrowUp(pressedKey);
     this.props.keyReleased(pressedKey);
     if (this.props.isRecording) {
       this.props.addNotes(this.props.keys);
@@ -149,6 +155,14 @@ class RecordKeyboard extends React.Component {
                 <b/>
                Use your keyboard to record a tune!
               </div>
+            </div>
+            <div className="synth-controls">
+              <span className="synth-filter">
+                <i className="fa fa-arrows-v"></i> filter <span className="synth-control-value">{Math.round(getFilterFrequency())} Hz</span>
+              </span>
+              <span className="synth-wave">
+                <i className="fa fa-arrows-h"></i> wave <span className="synth-control-value">{getWaveType()}</span>
+              </span>
             </div>
             {buildRecordKeyboard()}
           </div>
