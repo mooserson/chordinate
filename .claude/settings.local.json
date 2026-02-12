@@ -14,7 +14,9 @@
       "Bash(git -C /Users/paul/Github/chordinate diff)",
       "Bash(git -C /Users/paul/Github/chordinate log --oneline -5)",
       "Bash(git -C /Users/paul/Github/chordinate add Gemfile Gemfile.lock app/views/api/songs/show.json.jbuilder .ruby-version package-lock.json)",
-      "Bash(git -C /Users/paul/Github/chordinate commit -m \"$\\(cat <<''EOF''\nfix playback ordering and update deps for modern macOS\n\nExplicitly order slices by time_slice in the song show view to fix\nplayback where all notes fired at once after a long pause. Update pg\ngem to ~> 1.1 and regenerate Gemfile.lock for compatibility with\nRuby 2.7 and ARM64 macOS.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git -C /Users/paul/Github/chordinate commit -m \"$\\(cat <<''EOF''\nfix playback ordering and update deps for modern macOS\n\nExplicitly order slices by time_slice in the song show view to fix\nplayback where all notes fired at once after a long pause. Update pg\ngem to ~> 1.1 and regenerate Gemfile.lock for compatibility with\nRuby 2.7 and ARM64 macOS.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /Users/paul/Github/chordinate add app/assets/stylesheets/keyboard.scss)",
+      "Bash(git -C /Users/paul/Github/chordinate commit -m \"$\\(cat <<''EOF''\nfix synth control display shifting when values change width\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
