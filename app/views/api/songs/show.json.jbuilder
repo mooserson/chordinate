@@ -6,7 +6,7 @@ json.set! :likes, @song.likes.count
 json.set! :plays, @song.plays.count
 json.set! :date, @song.created_at
 json.set! :slices do
-  json.array! @song.slices do |slice|
+  json.array! @song.slices.order(:time_slice) do |slice|
     json.notes slice.notes.split("")
     json.timeSlice slice.time_slice
   end
