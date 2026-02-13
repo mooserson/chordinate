@@ -1,7 +1,7 @@
 FROM ruby:2.7.8
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
+    apt-get install -y nodejs libpq-dev && \
     npm install -g npm
 
 WORKDIR /app

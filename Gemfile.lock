@@ -112,7 +112,9 @@ GEM
     nio4r (2.7.5)
     nokogiri (1.15.7-arm64-darwin)
       racc (~> 1.4)
-    pg (1.6.3)
+    nokogiri (1.15.7-x86_64-linux)
+      racc (~> 1.4)
+    pg (1.5.9)
     pry (0.16.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -205,6 +207,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
@@ -218,7 +221,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   newrelic_rpm
-  pg (~> 1.1)
+  pg (>= 1.1, < 1.6)
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
