@@ -1,13 +1,16 @@
 FROM ruby:2.7.8
 
+RUN gem install bundler:2.4.22
+
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs libpq-dev && \
     npm install -g npm
 
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock ./
-RUN bundle install --without development test
+COPY Gemfile ./
+RUN bundle config set --local without 'development test' && \
+    bundle install
 
 COPY package.json ./
 RUN npm install
